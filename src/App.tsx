@@ -1,34 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+/** @jsxImportSource theme-ui */
+// import { useState } from 'react'
+import React from 'react';
 import './App.css'
+import { ThemeUIProvider } from 'theme-ui'
+import { theme } from './theme'
+import Header from './components/header/header';
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <ThemeUIProvider theme={theme}  >
+      <div sx={{
+      fontWeight: 'bold',
+      fontSize: 4, // picks up value from `theme.fontSizes[4]`
+      color: '#000',
+      background: '#fff', 
+      width: '100%',
+      padding: 0,
+      height: '100vh',
+    }}>
+  {/* Header widget created for the pages */}
+  <Header/>
+</div>
+    </ThemeUIProvider>
   )
 }
 
