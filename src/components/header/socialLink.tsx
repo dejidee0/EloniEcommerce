@@ -1,5 +1,4 @@
 /** @jsxImportSource theme-ui */
-import React from 'react';
 import { IonIcon } from '@ionic/react';
 import { logoFacebook, logoTwitter, logoInstagram, logoLinkedin } from 'ionicons/icons';
 

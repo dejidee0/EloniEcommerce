@@ -2,101 +2,134 @@
 import React from 'react';
 import { FaSearch, FaRegUser, FaRegHeart, } from 'react-icons/fa';
 import { HiOutlineShoppingCart } from "react-icons/hi";
-import '../../App.css'; // Make sure to create this CSS file or adjust the import path as needed
 import logo from '../../assets/logo.gif'
-// import { Flex } from 'theme-ui';
+import { Box, Button, Image, Input } from 'theme-ui';
 
-const HeaderComponent = () => {
+const HeaderComponent: React.FC = () => {
   return (
-    <div className="container" sx={{
-       background: '#000',
-       height: [300, 200, 200],
-       display: 'flex',
-       flexDirection: ["column", "row",],
-       justifyContent: ["center", "space-between"],
-        paddingLeft: [4, 4],
-        paddingRight: [4, 4]
+    <Box className="container" sx={{
+      background: '#000',
+      height: [300, 200, 200],
+      display: 'flex',
+      flexDirection: ["column", "row",],
+      justifyContent: ["center", "space-between"],
+      paddingLeft: [4, 4],
+      paddingRight: [4, 4]
     }}>
       <a href="#home" className="header-logo" >
-        <img
+        <Image
           src={logo}
-        //   alt="Eloni's shop logo"
+          //   alt="Eloni's shop logo"
           width="180"
           height="130"
         />
       </a>
 
-      <div className="header-search-container" sx={{
+      <Box className="header-search-container" sx={{
         background: '#fff',
         height: 45,
         width: ['100%', '80%'],
         borderRadius: 10,
-        display:'flex',
+        display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginLeft: [0, 5],
         marginTop: [3, 0]
       }}>
-        
-        <input
+
+        <Input
           type="search"
           name="search"
           className="search-field"
           placeholder="Search your product name..."
-         sx={{
-          color: 'grey',
-          background: 'white',
-          border: 'none',
-          borderRadius: 15,
-          paddingLeft: 3,
-          fontSize: 18,
-         }}
-         />
-         
-         <div sx={{
-          paddingRight:20,
-        }}>
-          <button className="search-btn" sx={{
-          height: 40,
-          padding: 0,
-          margin: 0,
-          background: "#fff"
-        }}>
-          <FaSearch aria-label="search" sx={{
+          sx={{
             color: 'grey',
             background: 'white',
-            fontSize: 25,
-            
+            border: 'none',
+            borderRadius: 15,
+            paddingLeft: 3,
+            fontSize: 18,
+          }}
+        />
+
+        <Box sx={{
+          paddingRight: 20,
+        }}>
+          <Button className="search-btn" sx={{
+            height: 40,
+            padding: 0,
             margin: 0,
-            paddingTop: 2,
-          }}/>
-        </button>
-        </div>
-        
-      </div>
-      <div className="header-user-actions" sx={{
-    //    background: '#000',
-    //    height: [300, 200, 200],
-    display: ["none", "flex"],
-    marginLeft: 5,
-  }}>
-  <button className="action-btn">
-    <FaRegUser aria-label="user" sx={{
-      color: 'white',
-      background: 'none',
-      fontSize: 30,
-    }}/>
-  </button>
-  <button className="action-btn">
-    <FaRegHeart aria-label="favorites" />
-    <span className="count">0</span>
-  </button>
-  <button className="action-btn">
-    <HiOutlineShoppingCart aria-label="shopping bag" />
-    <span className="count">0</span>
-  </button>
-</div>
-    </div>
+            background: "#fff"
+          }}>
+            <FaSearch aria-label="search" style={{
+              color: 'grey',
+              background: 'white',
+              fontSize: 25,
+
+              margin: 0,
+              paddingTop: 2,
+            }} />
+          </Button>
+        </Box>
+
+      </Box>
+      <Box className="header-user-actions" sx={{
+        //    background: '#000',
+        //    height: [300, 200, 200],
+        display: ["none", "flex"],
+        marginLeft: 5,
+      }}>
+        <Button sx={{
+          backgroundColor: 'black',
+          paddingRight: '25px',
+          paddingLeft: '0px'
+        }}>
+          <FaRegUser aria-label="user" style={{
+            color: 'white',
+            background: 'none',
+            fontSize: 30,
+          }} />
+        </Button>
+        <Button sx={{
+          backgroundColor: 'black',
+          paddingRight: '25px',
+          paddingLeft: '0px'
+        }}>
+          <FaRegHeart aria-label="favorites" />
+          <span style={{
+            paddingTop: '-20px',
+            color: 'white',
+            fontSize: '15px',
+            position: "absolute",
+            marginTop: "10px",
+            backgroundColor: "red",
+            borderRadius: "200px",
+            padding: "1px",
+            width: "20px",
+            marginLeft: -"5px",
+          }}>0</span>
+        </Button>
+        <Button sx={{
+          backgroundColor: 'black',
+          paddingRight: '25px',
+          paddingLeft: '0px'
+        }}>
+          <HiOutlineShoppingCart aria-label="shopping bag" />
+          <span style={{
+            paddingTop: '-20px',
+            color: 'white',
+            fontSize: '15px',
+            position: "absolute",
+            marginTop: "10px",
+            backgroundColor: "red",
+            borderRadius: "200px",
+            padding: "1px",
+            width: "20px",
+            marginLeft: -"5px",
+          }}>0</span>
+        </Button>
+      </Box>
+    </Box>
   );
 };
 
