@@ -30,7 +30,8 @@ const Header: React.FC = () => {
             flexDirection: 'row',
             height: 40,
             justifyContent: 'space-evenly',
-            color: '#fff',
+            color: '#000',
+
           }}>
             <Select defaultValue="currency">
               <option value="USD" label="$US dollar">USD</option>
