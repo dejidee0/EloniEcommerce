@@ -2,8 +2,9 @@
 import React from 'react';
 import { FaSearch, FaRegUser, FaRegHeart, } from 'react-icons/fa';
 import { HiOutlineShoppingCart } from "react-icons/hi";
-import logo from '../../assets/logo.gif'
+import logo from '../../assets/logos/Eloni logo.png'
 import { Box, Button, Image, Input } from 'theme-ui';
+import { Height } from '@mui/icons-material';
 
 const HeaderComponent: React.FC = () => {
   return (
@@ -16,14 +17,26 @@ const HeaderComponent: React.FC = () => {
       paddingLeft: [4, 4],
       paddingRight: [4, 4]
     }}>
-      <a href="#home" className="header-logo" >
+       <Box className="header-search-container" sx={{
+      
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: ['center', ''],
+      }}>
+        <a href="#home" className="header-logo" >
         <Image
           src={logo}
+          sx={{
+            display: ["", "flex"],
+            justifyContent: ["", "center"]
+          }}
           //   alt="Eloni's shop logo"
           width="180"
           height="130"
         />
       </a>
+      </Box>
+      
 
       <Box className="header-search-container" sx={{
         background: '#fff',
@@ -34,7 +47,7 @@ const HeaderComponent: React.FC = () => {
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginLeft: [0, 5],
-        marginTop: [3, 0]
+        marginTop: [0, 5]
       }}>
 
         <Input
@@ -78,16 +91,20 @@ const HeaderComponent: React.FC = () => {
         //    height: [300, 200, 200],
         display: ["none", "flex"],
         marginLeft: 5,
+        
       }}>
         <Button sx={{
           backgroundColor: 'black',
+          Height: '30px',
           paddingRight: '25px',
-          paddingLeft: '0px'
+          
+          paddingLeft: '0px',
         }}>
           <FaRegUser aria-label="user" style={{
             color: 'white',
             background: 'none',
             fontSize: 30,
+            paddingTop: -5,
           }} />
         </Button>
         <Button sx={{
@@ -95,18 +112,23 @@ const HeaderComponent: React.FC = () => {
           paddingRight: '25px',
           paddingLeft: '0px'
         }}>
-          <FaRegHeart aria-label="favorites" />
+          <FaRegHeart aria-label="favorites" style={{
+            color: 'white',
+            background: 'none',
+            fontSize: 30,
+            paddingTop: -5,
+          }}/>
           <span style={{
             paddingTop: '-20px',
             color: 'white',
             fontSize: '15px',
             position: "absolute",
-            marginTop: "10px",
+            marginTop: "-5px",
             backgroundColor: "red",
             borderRadius: "200px",
             padding: "1px",
             width: "20px",
-            marginLeft: -"5px",
+            marginLeft: -5,
           }}>0</span>
         </Button>
         <Button sx={{
@@ -114,18 +136,23 @@ const HeaderComponent: React.FC = () => {
           paddingRight: '25px',
           paddingLeft: '0px'
         }}>
-          <HiOutlineShoppingCart aria-label="shopping bag" />
+          <HiOutlineShoppingCart aria-label="shopping bag" style={{
+            color: 'white',
+            background: 'none',
+            fontSize: 30,
+            paddingTop: -5,
+          }}/>
           <span style={{
             paddingTop: '-20px',
             color: 'white',
             fontSize: '15px',
             position: "absolute",
-            marginTop: "10px",
+            marginTop: "-5px",
             backgroundColor: "red",
             borderRadius: "200px",
             padding: "1px",
             width: "20px",
-            marginLeft: -"5px",
+            marginLeft: -5,
           }}>0</span>
         </Button>
       </Box>

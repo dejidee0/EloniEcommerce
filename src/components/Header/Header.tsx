@@ -3,6 +3,7 @@ import React from 'react';
 import SocialLinks from './SocialLink';
 import HeaderComponent from './HeaderComponent';
 import { Box, Select } from 'theme-ui';
+import { Margin, Padding } from '@mui/icons-material';
 
 const Header: React.FC = () => {
   return (
@@ -30,9 +31,11 @@ const Header: React.FC = () => {
             flexDirection: 'row',
             height: 40,
             justifyContent: 'space-evenly',
-            color: '#fff',
+            color: '#000'
           }}>
-            <Select defaultValue="currency">
+            <Select defaultValue="currency" sx={{
+              Margin: 2,
+            }}>
               <option value="USD" label="$US dollar">USD</option>
               <option value="NGN" label="₦Naira">NGN</option>
               <option value="EUR" label="€Euro">EUR</option>
