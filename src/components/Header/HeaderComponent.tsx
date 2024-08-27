@@ -87,10 +87,12 @@ const HeaderComponent: React.FC = () => {
 
       </Box>
       <Box className="header-user-actions" sx={{
-        //    background: '#000',
+          //  background: 'transparent',
         //    height: [300, 200, 200],
         display: ["none", "flex"],
         marginLeft: 5,
+        marginTop: 5,
+        height: "40px",
         
       }}>
         <Button sx={{

@@ -31,11 +31,10 @@ const Header: React.FC = () => {
             flexDirection: 'row',
             height: 40,
             justifyContent: 'space-evenly',
-            color: '#000'
+            color: '#000',
+
           }}>
-            <Select defaultValue="currency" sx={{
-              Margin: 2,
-            }}>
+            <Select defaultValue="currency">
               <option value="USD" label="$US dollar">USD</option>
               <option value="NGN" label="₦Naira">NGN</option>
               <option value="EUR" label="€Euro">EUR</option>
