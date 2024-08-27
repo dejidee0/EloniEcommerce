@@ -557,6 +557,7 @@ function Banner() {
             </div>
             <div sx={{fontSize: '13px'}} >(600)</div>
           </div>
+
           <div sx={{
             border: '1px solid #ddd',
 
@@ -589,6 +590,8 @@ function Banner() {
             </div>
             <div sx={{fontSize: '13px'}} >(600)</div>
           </div>
+
+
           <div sx={{
             border: '1px solid #ddd',
 
@@ -621,6 +624,8 @@ function Banner() {
             </div>
             <div sx={{fontSize: '13px'}} >(600)</div>
           </div>
+
+
           <div sx={{
             border: '1px solid #ddd',
 
@@ -652,7 +657,40 @@ function Banner() {
             </div>
             </div>
             <div sx={{fontSize: '13px'}} >(600)</div>
-          </div>          
+          </div>   
+          <div sx={{
+            border: '1px solid #ddd',
+
+            paddingTop: 3, paddingLeft: 3, paddingBottom: 1, paddingRight: 3,
+            
+            borderRadius: '10px',
+
+            minWidth: '300px',
+          
+            '@media screen and (max-width: 768px)': {
+              minWidth: '46%'
+             },
+            '@media screen and (max-width: 425px)': {
+              width: '100%',
+              display: 'none'
+             },
+             
+             display: 'flex', justifyContent: 'space-between'
+          }}>
+            <div sx={{display: 'flex', gap: 2}}>
+            <div sx={{
+              width: '60px', height: '60px', background: '#ddd', borderRadius: '10px', border: '1px solid #ddd', display: 'flex', justifyContent: 'center', alignItems: 'center', 
+            }}>
+              <img src={shorts} alt="" sx={{width: '80%',  }} />
+            </div>
+            <div sx={{fontSize: '14px', boxSizing: 'border-box', padding: 0, }}>
+              <p sx={{fontWeight: 'bold',  marginTop: 1}}>DRESS</p>
+              <p sx={{color: 'secondary', cursor: 'pointer' }}>Show All</p>
+            </div>
+            </div>
+            <div sx={{fontSize: '13px'}} >(600)</div>
+          </div>   
+
         </div>
         
         
