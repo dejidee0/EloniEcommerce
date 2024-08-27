@@ -4,7 +4,6 @@ import { FaSearch, FaRegUser, FaRegHeart, } from 'react-icons/fa';
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import logo from '../../assets/logos/Eloni logo.png'
 import { Box, Button, Image, Input } from 'theme-ui';
-import { Height } from '@mui/icons-material';
 
 const HeaderComponent: React.FC = () => {
   return (
