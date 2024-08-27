@@ -3,7 +3,6 @@ import React from 'react';
 import SocialLinks from './SocialLink';
 import HeaderComponent from './HeaderComponent';
 import { Box, Select } from 'theme-ui';
-import { Margin, Padding } from '@mui/icons-material';
 
 const Header: React.FC = () => {
   return (
