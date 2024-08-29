@@ -7,7 +7,8 @@ import { Box, Button, Image, Input } from 'theme-ui';
 
 const HeaderComponent: React.FC = () => {
   return (
-    <Box className="container" sx={{
+    <Box className="container" 
+    sx={{
       background: '#000',
       height: [300, 200, 200],
       display: 'flex',
@@ -15,6 +16,7 @@ const HeaderComponent: React.FC = () => {
       justifyContent: ["center", "space-between"],
       paddingLeft: [4, 4],
       paddingRight: [4, 4]
+      
     }}>
        <Box className="header-search-container" sx={{
       

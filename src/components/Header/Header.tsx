@@ -13,6 +13,8 @@ const Header: React.FC = () => {
         color: '#000',
         background: '#232F3E',
         display: ['none', 'flex'],
+        // paddingLeft: [0, 150], 
+        // paddingRight: [0, 150],
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%',
