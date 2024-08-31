@@ -1,7 +1,35 @@
 {
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": false,
+    "allowJs": false,
+    "strict": true,
+    "resolveJsonModule": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "theme-ui",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "assets": [
+        "./src/assets/*"
+      ],
+      "components": [
+        "./src/components/*"
+      ],
+      "Theme": [
+        "./src/Theme/*"
+      ],
+    }
+  },
   "files": [],
   "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
   ]
 }

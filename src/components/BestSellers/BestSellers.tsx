@@ -4,7 +4,6 @@ import React from 'react';
 import { Box } from 'theme-ui';
 import { IonIcon } from '@ionic/react';
 import { star, starHalf } from 'ionicons/icons';
-import './css/style.css';
 import hat from '../../assets/hat.jpg'
 import jacket from '../../assets/jacket.jpg'
 import TShirt from '../../assets/T-Shirt.jpg'

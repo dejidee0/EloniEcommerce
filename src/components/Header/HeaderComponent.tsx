@@ -15,7 +15,7 @@ const HeaderComponent: React.FC = () => {
       flexDirection: ["column", "row",],
       justifyContent: ["center", "space-between"],
       paddingLeft: [4, 4],
-      paddingRight: [4, 4]
+      paddingRight: [4, 4],
       
     }}>
        <Box className="header-search-container" sx={{
