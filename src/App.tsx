@@ -5,7 +5,7 @@ import Banner from './components/Banner/Banner';
 import Header from './components/Header/Header.tsx';
 import Footer from './components/Footer/Footer.tsx';
 import SideBar from './components/SideBar/SideBar.tsx';
-import AboveFooterSection from './AboveFooterSection.tsx';
+import AboveFooterSection from './components/AboveFooterSection/AboveFooterSection.tsx';
 
 export default function App() {
   return (
