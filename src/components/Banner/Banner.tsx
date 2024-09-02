@@ -1,12 +1,16 @@
 /** @jsxImportSource theme-ui */
+
+
 import elon_banner from '../../assets/elon_banner.jpg'
 import elon_banner_1 from '../../assets/elon_banner_1.jpg'
 import elon_banner_2 from '../../assets/elon_banner2.jpg'
 import elon_banner_3 from '../../assets/elon_banner_3.jpg'
 import mens_banner from '../../assets/mens-banner.jpg';
+
 import dress from '../../assets/dress.png';
 import coat from '../../assets/coat.png';
 import shorts from '../../assets/shorts.png';
+
 import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -723,4 +727,3 @@ function Banner() {
 }
 
 export default Banner
-

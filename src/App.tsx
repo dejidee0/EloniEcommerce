@@ -1,24 +1,38 @@
 /** @jsxImportSource theme-ui */
-import { Container, ThemeUIProvider } from 'theme-ui';
+import { ThemeUIProvider } from 'theme-ui';
 import { theme } from '../src/Theme/theme.tsx';
-import Banner from './components/Banner/Banner';
-import Header from './components/Header/Header.tsx';
-import Footer from './components/Footer/Footer.tsx';
-import SideBar from './components/SideBar/SideBar.tsx';
-import AboveFooterSection from './components/AboveFooterSection/AboveFooterSection.tsx';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import SignIn from '@/pages/SignIn/SignIn';
+import SignUp from '@/pages/SignUp/SignUp';
+import UsersDashboard from '@/pages/Dashboard/UsersDashboard/UsersDashboard';
+import AdminDashboard from '@/pages/Dashboard/AdminDashboard/AdminDashboard';
+import PrivateRoute from '@/components/PrivateRoute/PrivateRoute';
 
 export default function App() {
   return (
-
-
     <ThemeUIProvider theme={theme}>
-      <Header />
-      <Container sx={{ paddingLeft: [0, 150], paddingRight: [0, 150] }}>
-        <Banner />
-        <SideBar />
-        <AboveFooterSection />
-      </Container>
-      <Footer />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<SignIn />} />
+          <Route path='/sign-up' element={<SignUp />} />
+          <Route 
+            path='/users-dashboard' 
+            element={
+              <PrivateRoute roleRequired="user">
+                <UsersDashboard />
+              </PrivateRoute>
+            } 
+          />
+          <Route 
+            path='/admin-dashboard' 
+            element={
+              <PrivateRoute roleRequired="admin">
+                <AdminDashboard />
+              </PrivateRoute>
+            } 
+          />
+        </Routes>
+      </BrowserRouter>
     </ThemeUIProvider>
   );
 }

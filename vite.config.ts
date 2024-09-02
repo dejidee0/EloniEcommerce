@@ -13,6 +13,8 @@ export default defineConfig({
       "@": path.resolve(__dirname, './src'),
       assets: path.resolve(__dirname, './src/assets'),
       components: path.resolve(__dirname, './src/components'),
+      firebaseConfig: path.resolve(__dirname, './src/firebaseConfig'),
+      pages: path.resolve(__dirname, './src/pages'),
       Theme: path.resolve(__dirname, './src/Theme')
     }
   }
