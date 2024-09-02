@@ -9,25 +9,10 @@ const MiddleSection: React.FC = () => {
     <Box sx={{ p: 1 }}>
       <Flex
         sx={{
-          flexDirection: ["column", "row"],
-          gap: 10,
-          justifyContent: "space-between",
+          marginBottom: 30,
+          width: '142%'
         }}
       >
-        {/* Sidebar */}
-        <Box
-          sx={{
-            position: ["relative", "sticky"],
-            top: 0,
-            height: "fit-content",
-            backgroundColor: "#ffffff",
-            flexBasis: "25%",
-            mb: [3, 0],
-            display: ["none", "block"],
-          }}
-        >
-          <SideBar />
-        </Box>
 
         {/* Content Area  for the todays deal*/}
         <Box
@@ -49,6 +34,8 @@ const MiddleSection: React.FC = () => {
             "::-webkit-scrollbar-thumb:hover": {
               backgroundColor: "#b51c1c",
             },
+            justifyContent: 'right',
+            width: '142%'
           }}
         >
           <TodaysDeal />

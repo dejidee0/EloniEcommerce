@@ -8,7 +8,6 @@ const Category = () => {
     <Box
       sx={{
         border: "1px solid #ededed",
-        width: "100%",
         borderRadius: "10px",
         padding: "20px",
         marginBottom: "30px",
