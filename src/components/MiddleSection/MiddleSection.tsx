@@ -29,7 +29,7 @@ const MiddleSection: React.FC = () => {
           <SideBar />
         </Box>
 
-        {/* Content Area */}
+        {/* Content Area  for the todays deal*/}
         <Box
           sx={{
             flexBasis: ["100%", "70%"],
