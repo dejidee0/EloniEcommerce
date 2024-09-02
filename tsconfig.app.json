@@ -17,6 +17,12 @@
       "components": [
         "./src/components/*"
       ],
+      "firebaseConfig": [
+        "src/firebaseConfig/*"
+      ],
+      "pages": [
+        "./src/pages/*"
+      ],
       "Theme": [
         "./src/Theme/*"
       ],

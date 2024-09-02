@@ -3,7 +3,6 @@ import CategoryItems from "@/components/CategoryItems/CategoryItems"
 import categories from "@/utils/categories"
 import { Box, Heading } from "theme-ui"
 
-
 const Category = () => {
 
  return (
