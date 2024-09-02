@@ -9,15 +9,19 @@ const DealCard: React.FC = () => {
       sx={{
         border: "1px solid #e0e0e0",
         borderRadius: "8px",
-        padding: "20px",
+        padding: ["15px", "20px"],
         width: "100%",
         backgroundColor: "#ffffff",
         margin: "20px auto",
       }}
     >
-      <Flex>
+      <Flex
+        sx={{
+          flexDirection: ["column", "row"],
+        }}
+      >
         {/* Product Image */}
-        <Box sx={{ flexBasis: "40%" }}>
+        <Box sx={{ flexBasis: ["100%", "40%"], mb: [3, 0] }}>
           <Image
             src={watchImage}
             alt="Watch"
@@ -29,14 +33,14 @@ const DealCard: React.FC = () => {
         </Box>
 
         {/* Product Details */}
-        <Box sx={{ flexBasis: "60%", paddingLeft: "20px" }}>
+        <Box sx={{ flexBasis: ["100%", "60%"], paddingLeft: [0, "20px"] }}>
           {/* Ratings */}
           <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
             <Box sx={{ color: "#FFA41C", fontSize: "18px", mr: 2 }}>★★★★☆</Box>
           </Box>
 
           {/* Product Title */}
-          <Text sx={{ fontSize: "20px", fontWeight: "bold", mb: 2 }}>
+          <Text sx={{ fontSize: ["16px", "20px"], fontWeight: "bold", mb: 2 }}>
             INVICTA MEN'S 17884 PRO DIVER WATCH
           </Text>
 
@@ -50,7 +54,7 @@ const DealCard: React.FC = () => {
           <Flex sx={{ alignItems: "center", my: 2 }}>
             <Text
               sx={{
-                fontSize: "24px",
+                fontSize: ["20px", "24px"],
                 fontWeight: "bold",
                 color: "#e63946",
                 mr: 3,
@@ -68,7 +72,7 @@ const DealCard: React.FC = () => {
             sx={{
               backgroundColor: "#d62828",
               color: "#ffffff",
-              width: "200px",
+              width: ["100%", "200px"],
               mb: 3,
               cursor: "pointer",
             }}
@@ -77,11 +81,7 @@ const DealCard: React.FC = () => {
           </Button>
 
           {/* Stock Details */}
-          <Box
-            sx={{
-              py: "5px",
-            }}
-          >
+          <Box sx={{ py: "5px" }}>
             <Flex sx={{ justifyContent: "space-between", mb: 2 }}>
               <Text>ALREADY SOLD: 150</Text>
               <Text>AVAILABLE: 200</Text>
@@ -92,16 +92,13 @@ const DealCard: React.FC = () => {
           </Box>
 
           {/* Offer Timer */}
-          <Box
-            sx={{
-              py: "5px",
-            }}
-          >
+          <Box sx={{ py: "5px" }}>
             <Text sx={{ fontWeight: "bold", mb: 2 }}>
               HURRY UP! OFFER ENDS IN:
             </Text>
             <Flex
               sx={{
+                flexDirection: ["column", "row"],
                 marginTop: "10px",
               }}
             >
@@ -114,7 +111,8 @@ const DealCard: React.FC = () => {
                     backgroundColor: "#f0f0f0",
                     borderRadius: "4px",
                     padding: "10px",
-                    marginRight: "10px",
+                    marginBottom: ["10px", 0],
+                    marginRight: ["0", "10px"],
                     textAlign: "center",
                   }}
                 >

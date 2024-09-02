@@ -6,24 +6,24 @@ import TodaysDeal from "../TodaysDeal/TodaysDeal";
 
 const MiddleSection: React.FC = () => {
   return (
-    <Box
-      sx={{
-        p: 1,
-      }}
-    >
+    <Box sx={{ p: 1 }}>
       <Flex
         sx={{
+          flexDirection: ["column", "row"],
+          gap: 10,
           justifyContent: "space-between",
         }}
       >
         {/* Sidebar */}
         <Box
           sx={{
-            position: "sticky",
+            position: ["relative", "sticky"],
             top: 0,
             height: "fit-content",
             backgroundColor: "#ffffff",
-            flexBasis: "30%",
+            flexBasis: "25%",
+            mb: [3, 0],
+            display: ["none", "block"],
           }}
         >
           <SideBar />
@@ -32,9 +32,9 @@ const MiddleSection: React.FC = () => {
         {/* Content Area */}
         <Box
           sx={{
-            flexBasis: "70%",
-            p: 3,
-            maxHeight: "100vh",
+            flexBasis: ["100%", "70%"],
+            p: [2, 3],
+            maxHeight: ["auto", "100vh"],
             overflowY: "auto",
             "::-webkit-scrollbar": {
               width: "12px",
@@ -43,11 +43,11 @@ const MiddleSection: React.FC = () => {
               backgroundColor: "#f0f0f0",
             },
             "::-webkit-scrollbar-thumb": {
-              backgroundColor: "#444142", // Custom scrollbar color
+              backgroundColor: "#444142",
               borderRadius: "6px",
             },
             "::-webkit-scrollbar-thumb:hover": {
-              backgroundColor: "#b51c1c", // Color on hover
+              backgroundColor: "#b51c1c",
             },
           }}
         >
