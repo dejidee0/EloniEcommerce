@@ -1,11 +1,13 @@
+/** @jsxImportSource theme-ui */
 import React from 'react';
 import { Box, Button, Input, Label, Flex } from '@theme-ui/components';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { auth, db } from '@/firebaseConfig/firebaseConfig';
+import { Heading, Paragraph } from 'theme-ui';
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
@@ -48,6 +50,7 @@ const SignIn: React.FC = () => {
 
   return (
     <Box as="form" onSubmit={formik.handleSubmit} sx={{ maxWidth: 400, margin: 'auto auto', alignContent: 'center', height: '100vh' }}>
+      <Heading sx={{ marginBottom: 20, textAlign: 'center' }}>Welcome to <span sx={{ color: '#ff0000' }}>Eloni</span></Heading>
       <Flex sx={{ flexDirection: 'column', gap: 3 }}>
         <Label htmlFor="email">Email</Label>
         <Input
@@ -60,7 +63,7 @@ const SignIn: React.FC = () => {
           required
         />
         {formik.touched.email && formik.errors.email ? (
-          <div>{formik.errors.email}</div>
+          <div sx={{ color: 'red' }}>{formik.errors.email}</div>
         ) : null}
 
         <Label htmlFor="password">Password</Label>
@@ -74,8 +77,9 @@ const SignIn: React.FC = () => {
           required
         />
         {formik.touched.password && formik.errors.password ? (
-          <div>{formik.errors.password}</div>
+          <div sx={{ color: 'red' }}>{formik.errors.password}</div>
         ) : null}
+        <Paragraph sx={{ textAlign: 'right' }}>Don't have an Account <Link to={'/sign-up'} sx={{ color: 'blue', cursor: 'pointer', fontWeight: '600', textDecoration: 'none' }}>Sign Up</Link></Paragraph>
 
         <Button sx={{ backgroundColor: '#192A41', borderRadius: 50, padding: 20, cursor: 'pointer', marginTop: 20 }} type="submit">Sign In</Button>
       </Flex>

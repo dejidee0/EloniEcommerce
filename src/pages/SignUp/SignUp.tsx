@@ -1,11 +1,13 @@
+/** @jsxImportSource theme-ui */
 import React from 'react';
 import { Box, Button, Input, Label, Flex } from '@theme-ui/components';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { setDoc, doc } from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { auth, db } from '@/firebaseConfig/firebaseConfig';
+import { Heading, Paragraph } from 'theme-ui';
 
 const SignUp: React.FC = () => {
   const navigate = useNavigate();
@@ -33,7 +35,7 @@ const SignUp: React.FC = () => {
       try {
         const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
         console.log('userCredential', userCredential);
-        
+
         await setDoc(doc(db, 'users', userCredential.user.uid), {
           firstName: values.firstName,
           lastName: values.lastName,
@@ -49,6 +51,8 @@ const SignUp: React.FC = () => {
 
   return (
     <Box as="form" onSubmit={formik.handleSubmit} sx={{ maxWidth: 400, margin: '0 auto', height: '100vh', alignContent: 'center' }}>
+      <Heading sx={{ marginBottom: 20, textAlign: 'center' }}>Create An Account</Heading>
+
       <Flex sx={{ flexDirection: 'column', gap: 3 }}>
         <Label htmlFor="firstName">First Name</Label>
         <Input
@@ -114,6 +118,9 @@ const SignUp: React.FC = () => {
         {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
           <Box sx={{ color: 'red' }}>{formik.errors.confirmPassword}</Box>
         ) : null}
+
+        <Paragraph sx={{ textAlign: 'right' }}>Don't have an Account <Link to="/" sx={{ color: 'blue', cursor: 'pointer', fontWeight: '600', textDecoration: 'none' }}>Log in</Link></Paragraph>
+
 
         <Button sx={{ backgroundColor: '#192A41', borderRadius: 50, padding: 20, cursor: 'pointer', marginTop: 20 }} type="submit">Sign Up</Button>
       </Flex>
