@@ -43,7 +43,7 @@ const SignUp: React.FC = () => {
           email: values.email,
           role: 'user',
         });
-        navigate('/dashboard');
+        navigate('/users-dashboard');
       } catch (error) {
         console.error('Error signing up:', error);
       }
