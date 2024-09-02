@@ -4,7 +4,6 @@ import Footer from "@/components/Footer/Footer"
 import Header from "@/components/Header/Header"
 import MiddleSection from "@/components/MiddleSection/MiddleSection"
 import NewArrival from "@/components/NewArrival/NewArrival"
-import NewProduct from "@/components/NewProducts/NewProduct"
 import SideBar from "@/components/SideBar/SideBar"
 import { Box, Container } from "theme-ui"
 

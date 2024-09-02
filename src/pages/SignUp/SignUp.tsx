@@ -28,6 +28,7 @@ const SignUp: React.FC = () => {
         .min(6, 'Password must be at least 6 characters')
         .required('Password is required'),
       confirmPassword: Yup.string()
+        // @ts-ignore
         .oneOf([Yup.ref('password'), null], 'Passwords must match')
         .required('Confirm password is required'),
     }),
@@ -50,6 +51,7 @@ const SignUp: React.FC = () => {
   });
 
   return (
+    // @ts-ignore
     <Box as="form" onSubmit={formik.handleSubmit} sx={{ maxWidth: 400, margin: '0 auto', height: '100vh', alignContent: 'center' }}>
       <Heading sx={{ marginBottom: 20, textAlign: 'center' }}>Create An Account</Heading>
 

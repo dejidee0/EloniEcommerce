@@ -49,7 +49,8 @@ const SignIn: React.FC = () => {
   });
 
   return (
-    <Box as="form" onSubmit={formik.handleSubmit} sx={{ maxWidth: 400, margin: 'auto auto', alignContent: 'center', height: '100vh' }}>
+    // @ts-ignore
+    <Box as="form" onSubmit={formik.handleSubmit } sx={{ maxWidth: 400, margin: 'auto auto', alignContent: 'center', height: '100vh' }}>
       <Heading sx={{ marginBottom: 20, textAlign: 'center' }}>Welcome to <span sx={{ color: '#ff0000' }}>Eloni</span></Heading>
       <Flex sx={{ flexDirection: 'column', gap: 3 }}>
         <Label htmlFor="email">Email</Label>

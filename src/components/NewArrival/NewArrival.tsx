@@ -1,7 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { Box } from 'theme-ui';
 import cloth_1 from '../../assets/cloth-1.jpg'
-import Slider from "react-slick";
 
 function NewArrival() {
 

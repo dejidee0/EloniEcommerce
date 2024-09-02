@@ -1,7 +1,6 @@
 /** @jsxImportSource theme-ui */
 import React from "react";
 import { Box, Flex } from "theme-ui";
-import SideBar from "../SideBar/SideBar";
 import TodaysDeal from "../TodaysDeal/TodaysDeal";
 
 const MiddleSection: React.FC = () => {
