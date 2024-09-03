@@ -24,11 +24,13 @@ const SignIn: React.FC = () => {
     onSubmit: async (values) => {
       try {
         const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
+        console.log('userCredential', userCredential);
+        
         const userDoc = await getDoc(doc(db, 'users', userCredential.user.uid));
 
         if (userDoc.exists()) {
           const userData = userDoc.data();
-          // console.log('userData', userData);
+          console.log('userData', userData);
 
           if (userData.role === 'admin') {
             console.log('admin-dashboard');
