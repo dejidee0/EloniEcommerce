@@ -1,8 +1,13 @@
+import AdminForm from "@/components/AdminForm/AdminForm"
 
 
 const AdminDashboard = () => {
 
-    return <p>Welcome to admin</p>
+    return (
+        <div>
+            <AdminForm />
+        </div>
+    )
 }
 
 export default AdminDashboard
