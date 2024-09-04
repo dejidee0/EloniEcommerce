@@ -90,7 +90,7 @@ const AdminForm = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [selectedSubItem, setSelectedSubItem] = useState<string>('');
   const [imagePreviews, setImagePreviews] = useState<string[]>([]);
-  const [uploading, setUploading] = useState(false);
+  const [_, setUploading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -139,7 +139,7 @@ const AdminForm = () => {
       const files = Array.from(event.target.files);
       const imageUrls = files.map(file => URL.createObjectURL(file));
       console.log('imageUrls', imageUrls);
-      
+
       setImagePreviews(imageUrls);
       formik.setFieldValue('productImages', files);
     }
@@ -189,6 +189,7 @@ const AdminForm = () => {
 
       <Box
         as="form"
+        // @ts-ignore
         onSubmit={formik.handleSubmit}
         sx={{
           maxWidth: 600,
@@ -441,6 +442,7 @@ const AdminForm = () => {
             mb={3}
           />
           {formik.touched.productImages && formik.errors.productImages ? (
+            // @ts-ignore
             <div sx={{ color: 'red' }}>{formik?.errors?.productImages}</div>
           ) : null}
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>

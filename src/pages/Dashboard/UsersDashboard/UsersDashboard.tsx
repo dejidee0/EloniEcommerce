@@ -33,7 +33,7 @@ const UsersDashboard = () => {
                     <SideBar />
                     <Box sx={{ minWidth: ['auto', 'auto', 'calc(25% - 15px)'] }}>
                         <NewArrival />
-                        {/* <MiddleSection /> */}
+                        <MiddleSection />
                     </Box>
                 </Box>
                 <AboveFooterSection />
