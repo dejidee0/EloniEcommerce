@@ -9,14 +9,17 @@ const Header: React.FC = () => {
     <Box>
       <Box className="header-top" sx={{
         fontWeight: 'bold',
-        fontSize: 4,
+        fontSize: 2,
         color: '#000',
         background: '#232F3E',
         display: ['none', 'flex'],
         // paddingLeft: [0, 150], 
         // paddingRight: [0, 150],
+        paddingTop: [0, 10],
+        paddingBottom: [0, 10],
         flexDirection: 'row',
         justifyContent: 'space-between',
+        
         width: '100%',
       }}>
         <Box className="container" sx={{
@@ -24,13 +27,16 @@ const Header: React.FC = () => {
           width: '100%',
           display: 'flex',
           flexDirection: 'row',
-          justifyContent: 'space-around',
+          justifyContent: 'space-between',
+          marginLeft: 6,
+          marginRight: 6,
+          // border: "1px solid white",
         }}>
           <SocialLinks />
           <Box className="header-top-actions" sx={{
             display: 'flex',
             flexDirection: 'row',
-            height: 40,
+            height: 35,
             justifyContent: 'space-evenly',
             color: '#000',
 

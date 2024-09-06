@@ -96,7 +96,7 @@ const HeaderComponent: React.FC = () => {
               fontSize: 25,
 
               margin: 0,
-              paddingTop: 2,
+              paddingTop: 9,
             }} />
           </Button>
         </Box>
@@ -124,7 +124,7 @@ const HeaderComponent: React.FC = () => {
             style={{
               color: 'white',
               background: 'none',
-              fontSize: 30,
+              fontSize: 25,
               paddingTop: -5,
             }}
           />
@@ -142,7 +142,7 @@ const HeaderComponent: React.FC = () => {
             style={{
               color: 'white',
               background: 'none',
-              fontSize: 30,
+              fontSize: 25,
               paddingTop: -5,
             }}
           />
@@ -176,7 +176,7 @@ const HeaderComponent: React.FC = () => {
             style={{
               color: 'white',
               background: 'none',
-              fontSize: 30,
+              fontSize: 25,
               paddingTop: -5,
             }}
           />
