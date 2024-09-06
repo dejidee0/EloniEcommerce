@@ -1,15 +1,8 @@
 /** @jsxImportSource theme-ui */
 import cloth_1 from '../../assets/cloth-1.jpg'
-import Slider from "react-slick";
 
 function NewArrival() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1
-  };
+
   return (
     <div sx={{
       display: 'flex', justifyContent: 'right', gap: 3, fontFamily: 'heading', flexWrap: 'wrap', '@media screen and (max-width: 768px)': {
@@ -21,7 +14,7 @@ function NewArrival() {
     }}>
         <div sx={{ width: '340px', 
         padding: 2, '@media screen and (max-width: 425px)': {
-          width: '100%', border: '2px solid red'
+          width: '100%', 
          }, }}>
           <h3 sx={{
             borderBottom: '1px solid #ddd', paddingBottom: 3
@@ -36,7 +29,7 @@ function NewArrival() {
           
           <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px',
         '@media screen and (max-width: 425px)': {
-          width: '95%', border: '2px solid blue'
+          width: '', 
          },
         }} >
           
@@ -203,7 +196,7 @@ function NewArrival() {
 
           <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px',
         '@media screen and (max-width: 425px)': {
-          width: '95%', border: '2px solid blue'
+          width: '100%', border: '2px solid black'
          },
         }} >
           
