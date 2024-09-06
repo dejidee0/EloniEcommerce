@@ -13,16 +13,17 @@ export default function App() {
     <ThemeUIProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<SignIn />} />
+          <Route path='/' element={<UsersDashboard />} />
+          <Route path='/sign-in' element={<SignIn />} />
           <Route path='/sign-up' element={<SignUp />} />
-          <Route 
+          {/* <Route 
             path='/users-dashboard' 
             element={
               <PrivateRoute roleRequired="user">
                 <UsersDashboard />
               </PrivateRoute>
             } 
-          />
+          /> */}
           <Route 
             path='/admin-dashboard' 
             element={
