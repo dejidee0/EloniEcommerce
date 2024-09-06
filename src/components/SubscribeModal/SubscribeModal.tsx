@@ -21,8 +21,8 @@ const SubscribeModal: React.FC = () => {
           <Box
             sx={{
               position: "fixed",
-              top: 0,
-              left: 0,
+              top: "50%",
+              left: "50%",
               width: "100vw",
               height: "100vh",
               backgroundColor: "rgba(0, 0, 0, 0.5)",
@@ -34,7 +34,7 @@ const SubscribeModal: React.FC = () => {
           <Box
             sx={{
               position: "absolute",
-              top: ["5%", "30%"],
+              top: "10px",
               left: "50%",
               transform: "translate(-50%, 0)",
               width: ["90%", "400px"],
@@ -67,7 +67,7 @@ const SubscribeModal: React.FC = () => {
             <Image
               src="/Telegram logo.png"
               alt="Telegram Icon"
-              sx={{ width: "100%", marginRight: "10px" }}
+              sx={{ width: "50%", marginRight: "5px" }}
             />
 
             <Flex
@@ -75,6 +75,9 @@ const SubscribeModal: React.FC = () => {
                 alignItems: "center",
                 justifyContent: "space-between",
                 marginBottom: "20px",
+                display: "flex",
+                flexDirection: "column",
+                width: "50%",
               }}
             >
               <Heading as="h2" sx={{ fontSize: 3, marginBottom: "10px" }}>
@@ -84,18 +87,17 @@ const SubscribeModal: React.FC = () => {
                 Subscribe to <strong>Eloni's Shop</strong> to get the latest
                 products and discount updates.
               </Text>
+
               <Input
-                height="50px"
-                padding="8px 16px"
-                type="email"
                 placeholder="Enter your email"
+                type="email"
                 sx={{
+                  width: "70%",
+                  height: "50%",
+                  padding: "8px 16px",
                   marginBottom: "10px",
                   justifyContent: "center",
-                  alignItems: "center",
-                  height: "50px",
-                  textAlign: "center",
-                  fontSize: "24px",
+                  alignItems: "end",
                   borderRadius: "4px",
                 }}
                 onChange={(e) => setEmail(e.target.value)}
