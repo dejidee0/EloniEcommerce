@@ -7,6 +7,7 @@ import { Box, Button, Image, Input } from 'theme-ui';
 import { signOut } from 'firebase/auth';
 import { auth } from '@/firebaseConfig/firebaseConfig';
 import { useNavigate } from 'react-router-dom';
+import "../SideBar/css/style.css"
 
 const HeaderComponent: React.FC = () => {
   const navigate = useNavigate();
@@ -112,6 +113,7 @@ const HeaderComponent: React.FC = () => {
         }}
       >
         <Button
+        className='icon'
           sx={{
             cursor: 'pointer',
             backgroundColor: 'black',
@@ -121,11 +123,15 @@ const HeaderComponent: React.FC = () => {
         >
           <FaRegUser
             aria-label="user"
-            style={{
+            sx={{
               color: 'white',
               background: 'none',
               fontSize: 25,
               paddingTop: -5,
+              '&:hover': {
+                color: 'orange',               // Change the text color on hover
+                fontSize: '30px',   // Slightly increase the size on hover
+              },
             }}
           />
         </Button>
@@ -136,14 +142,19 @@ const HeaderComponent: React.FC = () => {
             paddingRight: '25px',
             paddingLeft: '0px',
           }}
+          className='icon'
         >
           <FaRegHeart
             aria-label="favorites"
-            style={{
+            sx={{
               color: 'white',
               background: 'none',
               fontSize: 25,
               paddingTop: -5,
+              '&:hover': {
+                color: 'orange',               // Change the text color on hover
+                fontSize: '30px',   // Slightly increase the size on hover
+              },
             }}
           />
           <span
@@ -169,16 +180,23 @@ const HeaderComponent: React.FC = () => {
             backgroundColor: 'black',
             paddingRight: '25px',
             paddingLeft: '0px',
+            
           }}
+          
+          
         >
           <HiOutlineShoppingCart
             aria-label="shopping bag"
-            style={{
+            sx={{
               color: 'white',
               background: 'none',
               fontSize: 25,
               paddingTop: -5,
-            }}
+              '&:hover': {
+                color: 'orange',               // Change the text color on hover
+                fontSize: '30px',   // Slightly increase the size on hover
+              },
+            }} 
           />
           <span
             style={{
