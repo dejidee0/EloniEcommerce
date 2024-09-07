@@ -7,6 +7,7 @@ import SignUp from "@/pages/SignUp/SignUp";
 import AdminDashboard from "@/pages/Dashboard/AdminDashboard/AdminDashboard";
 import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
 import Otp from "./pages/Otp/Otp.tsx";
+import UsersDashboard from "./pages/Dashboard/UsersDashboard/UsersDashboard.tsx";
 
 export default function App() {
   return (
@@ -21,7 +22,7 @@ export default function App() {
             path="/users-dashboard"
             element={
               <PrivateRoute roleRequired="user">
-                <></>
+                <UsersDashboard />
               </PrivateRoute>
             }
           />

@@ -23,7 +23,7 @@ const PopupModal: React.FC = () => {
       }, 6000);
 
       return () => clearInterval(interval);
-    }, 3000);
+    }, 5000);
 
     if (modal) {
       const autoHide = setTimeout(() => {
@@ -43,7 +43,7 @@ const PopupModal: React.FC = () => {
             sx={{
               position: "fixed",
               bottom: 0,
-              left: visible ? 0 : "-400px", // Move left off-screen when not visible
+              left: visible ? 0 : "-400px",
               margin: "20px",
               width: ["90%", "400px"],
               backgroundColor: "white",
@@ -54,11 +54,11 @@ const PopupModal: React.FC = () => {
               display: "flex",
               flexDirection: "column",
               gap: "20px",
-              transition: "left 0.5s ease-in-out", // Animate the left position
+              transition: "left 0.5s ease-in-out",
             }}
           >
             <Button
-              onClick={() => setVisible(false)} // Close button to hide the modal
+              onClick={() => setVisible(false)}
               sx={{
                 position: "absolute",
                 top: "10px",
@@ -84,9 +84,13 @@ const PopupModal: React.FC = () => {
             >
               <Box sx={{ display: "flex", flexDirection: "column" }}>
                 <Image
-                  src="/cloth-"
+                  src="/T-shirt.jpg"
                   alt="cloth"
-                  sx={{ width: "40px", height: "40px" }}
+                  sx={{
+                    width: "100px",
+                    height: "100px",
+                    display: ["none", "none", "block"],
+                  }}
                 />
               </Box>
               <Box
@@ -115,7 +119,7 @@ const PopupModal: React.FC = () => {
               onSubmit={(values, { resetForm }) => {
                 console.log(`Subscribed with email: ${values.email}`);
                 resetForm();
-                setVisible(false); // Hide modal on form submission
+                setVisible(false);
               }}
             ></Formik>
           </Box>

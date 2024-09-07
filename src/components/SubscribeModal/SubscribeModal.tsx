@@ -39,7 +39,7 @@ const SubscribeModal: React.FC = () => {
           <Box
             sx={{
               position: "fixed",
-              top: "50%",
+              top: "30%",
               left: "50%",
               transform: "translate(-50%, 0)",
               backgroundColor: "white",
@@ -142,6 +142,10 @@ const SubscribeModal: React.FC = () => {
                         width: "auto",
                         padding: "8px 16px",
                         fontSize: 1,
+                        cursor: "pointer",
+                        "&:hover": {
+                          backgroundColor: "red",
+                        },
                       }}
                     >
                       Subscribe
