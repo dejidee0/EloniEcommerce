@@ -14,12 +14,14 @@ const SignIn: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string().email('Invalid email address').required('Email is required'),
-      password: Yup.string().required('Password is required'),
+      email: Yup.string()
+        .email("Invalid email address")
+        .required("Email is required"),
+      password: Yup.string().required("Password is required"),
     }),
     onSubmit: async (values) => {
       setLoading(true);
@@ -31,22 +33,22 @@ const SignIn: React.FC = () => {
 
         if (userDoc.exists()) {
           const userData = userDoc.data();
-          console.log('userData', userData);
+          console.log("userData", userData);
 
-          if (userData.role === 'admin') {
-            console.log('admin-dashboard');
+          if (userData.role === "admin") {
+            console.log("admin-dashboard");
 
-            navigate('/admin-dashboard');
+            navigate("/admin-dashboard");
           } else {
-            console.log('users-dashboard');
+            console.log("users-dashboard");
 
-            navigate('/users-dashboard');
+            navigate("/users-dashboard");
           }
         } else {
-          console.error('No user data found in Firestore');
+          console.error("No user data found in Firestore");
         }
       } catch (error) {
-        console.error('Error signing in:', error);
+        console.error("Error signing in:", error);
       }
       setLoading(false);
     },
@@ -68,7 +70,7 @@ const SignIn: React.FC = () => {
           required
         />
         {formik.touched.email && formik.errors.email ? (
-          <div sx={{ color: 'red' }}>{formik.errors.email}</div>
+          <div sx={{ color: "red" }}>{formik.errors.email}</div>
         ) : null}
 
         <Label htmlFor="password">Password</Label>
@@ -82,9 +84,22 @@ const SignIn: React.FC = () => {
           required
         />
         {formik.touched.password && formik.errors.password ? (
-          <div sx={{ color: 'red' }}>{formik.errors.password}</div>
+          <div sx={{ color: "red" }}>{formik.errors.password}</div>
         ) : null}
-        <Paragraph sx={{ textAlign: 'right' }}>Don't have an Account <Link to={'/sign-up'} sx={{ color: 'blue', cursor: 'pointer', fontWeight: '600', textDecoration: 'none' }}>Sign Up</Link></Paragraph>
+        <Paragraph sx={{ textAlign: "right" }}>
+          Don't have an Account{" "}
+          <Link
+            to={"/sign-up"}
+            sx={{
+              color: "blue",
+              cursor: "pointer",
+              fontWeight: "600",
+              textDecoration: "none",
+            }}
+          >
+            Sign Up
+          </Link>
+        </Paragraph>
 
         {
           loading ? (

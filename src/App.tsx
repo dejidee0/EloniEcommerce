@@ -4,20 +4,20 @@ import { theme } from "../src/Theme/theme.tsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignIn from "@/pages/SignIn/SignIn";
 import SignUp from "@/pages/SignUp/SignUp";
-import UsersDashboard from "@/pages/Dashboard/UsersDashboard/UsersDashboard";
 import AdminDashboard from "@/pages/Dashboard/AdminDashboard/AdminDashboard";
 import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
-import Otp from "@/pages/Otp/Otp.tsx";
+import Otp from "./pages/Otp/Otp.tsx";
+import UsersDashboard from "./pages/Dashboard/UsersDashboard/UsersDashboard.tsx";
 
 export default function App() {
   return (
     <ThemeUIProvider theme={theme}>
       <BrowserRouter>
         <Routes>
-        <Route path='/' element={<UsersDashboard />} />
-          <Route path='/sign-in' element={<SignIn />} />
-          <Route path='/sign-up' element={<SignUp />} />
-          <Route path="/otp" element={<Otp />} />
+          <Route path="/" element={<SignIn />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/otp-page" element={<Otp />} />
+          {/* <Route path="/wish-list" element={<WishList />} /> */}
           <Route
             path="/users-dashboard"
             element={
