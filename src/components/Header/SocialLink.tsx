@@ -8,9 +8,10 @@ const SocialLinks = () => {
         listStyleType: 'none',
         display: 'flex',
         flexDirection: 'row',
-        width: 180,
+        width: 140,
         justifyContent: 'space-evenly',
         color: '#fff',
+        paddingTop: 0.2,
       }}>
       <li>
         <a href="#" className="social-link">

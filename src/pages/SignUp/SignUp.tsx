@@ -1,17 +1,17 @@
 /** @jsxImportSource theme-ui */
-import React from "react";
-import { Box, Button, Input, Label, Flex } from "@theme-ui/components";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { setDoc, doc } from "firebase/firestore";
-import { Link, useNavigate } from "react-router-dom";
-import { auth, db } from "@/firebaseConfig/firebaseConfig";
-import { Heading, Paragraph } from "theme-ui";
+import React, { useState } from 'react';
+import { Box, Button, Input, Label, Flex, Spinner } from '@theme-ui/components';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { setDoc, doc } from 'firebase/firestore';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth, db } from '@/firebaseConfig/firebaseConfig';
+import { Heading, Paragraph } from 'theme-ui';
 
 const SignUp: React.FC = () => {
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(false);
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -35,6 +35,7 @@ const SignUp: React.FC = () => {
         .required("Confirm password is required"),
     }),
     onSubmit: async (values) => {
+      setLoading(true);
       try {
         const userCredential = await createUserWithEmailAndPassword(
           auth,
@@ -54,13 +55,14 @@ const SignUp: React.FC = () => {
       } catch (error) {
         console.error("Error signing up:", error);
       }
+      setLoading(false);
     },
   });
 
   return (
-    // @ts-ignore
     <Box
       as="form"
+      // @ts-ignore
       onSubmit={formik.handleSubmit}
       sx={{
         maxWidth: 400,
@@ -154,18 +156,15 @@ const SignUp: React.FC = () => {
           </Link>
         </Paragraph>
 
-        <Button
-          sx={{
-            backgroundColor: "#192A41",
-            borderRadius: 50,
-            padding: 20,
-            cursor: "pointer",
-            marginTop: 20,
-          }}
-          type="submit"
-        >
-          Sign Up
-        </Button>
+        {
+          loading ? (
+            <Button sx={{ backgroundColor: '#192A41', borderRadius: 50, padding: 20, cursor: 'pointer', marginTop: 20 }} type="submit">
+              <Spinner sx={{ color: 'white' }} />
+            </Button>
+          ) : (
+            <Button sx={{ backgroundColor: '#192A41', borderRadius: 50, padding: 20, cursor: 'pointer', marginTop: 20 }} type="submit">Sign Up</Button>
+          )
+        }
       </Flex>
     </Box>
   );

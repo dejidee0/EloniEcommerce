@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '@/firebaseConfig/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
+import { Box, Spinner } from 'theme-ui';
 
 interface PrivateRouteProps {
   children: React.ReactElement;
@@ -17,10 +18,15 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, roleRequired }) =
   useEffect(() => {
     const fetchUserRole = async () => {
       if (user) {
-        const userDoc = await getDoc(doc(db, 'users', user.uid));
-        if (userDoc.exists()) {
-          setRole(userDoc.data().role);
-        } else {
+        try {
+          const userDoc = await getDoc(doc(db, 'users', user.uid));
+          if (userDoc.exists()) {
+            setRole(userDoc.data().role);
+          } else {
+            setRole(null); // User document doesn't exist, set role to null
+          }
+        } catch (error) {
+          console.error("Error fetching user role:", error);
           setRole(null);
         }
       }
@@ -31,7 +37,18 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, roleRequired }) =
   }, [user]);
 
   if (loading || roleLoading) {
-    return <div>Loading...</div>; // Replace with your loading spinner or component
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh'
+        }}
+      >
+        <Spinner color="#192A41" size={94} />
+      </Box>
+    );
   }
 
   if (!user || (roleRequired && role !== roleRequired)) {

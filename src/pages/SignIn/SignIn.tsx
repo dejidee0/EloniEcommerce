@@ -1,17 +1,17 @@
 /** @jsxImportSource theme-ui */
-import React from "react";
-import { Box, Button, Input, Label, Flex } from "@theme-ui/components";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
-import { Link, useNavigate } from "react-router-dom";
-import { auth, db } from "@/firebaseConfig/firebaseConfig";
-import { Heading, Paragraph } from "theme-ui";
+import React, { useState } from 'react';
+import { Box, Button, Input, Label, Flex, Spinner } from '@theme-ui/components';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth, db } from '@/firebaseConfig/firebaseConfig';
+import { Heading, Paragraph } from 'theme-ui';
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(false);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -24,15 +24,12 @@ const SignIn: React.FC = () => {
       password: Yup.string().required("Password is required"),
     }),
     onSubmit: async (values) => {
+      setLoading(true);
       try {
-        const userCredential = await signInWithEmailAndPassword(
-          auth,
-          values.email,
-          values.password
-        );
-        console.log("userCredential", userCredential);
+        const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
+        console.log('userCredential', userCredential);
 
-        const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
+        const userDoc = await getDoc(doc(db, 'users', userCredential.user.uid));
 
         if (userDoc.exists()) {
           const userData = userDoc.data();
@@ -53,25 +50,15 @@ const SignIn: React.FC = () => {
       } catch (error) {
         console.error("Error signing in:", error);
       }
+      setLoading(false);
     },
   });
 
   return (
     // @ts-ignore
-    <Box
-      as="form"
-      onSubmit={formik.handleSubmit}
-      sx={{
-        maxWidth: 400,
-        margin: "auto auto",
-        alignContent: "center",
-        height: "100vh",
-      }}
-    >
-      <Heading sx={{ marginBottom: 20, textAlign: "center" }}>
-        Welcome to <span sx={{ color: "#ff0000" }}>Eloni</span>
-      </Heading>
-      <Flex sx={{ flexDirection: "column", gap: 3 }}>
+    <Box as="form" onSubmit={formik.handleSubmit} sx={{ maxWidth: 400, margin: 'auto auto', alignContent: 'center', height: '100vh' }}>
+      <Heading sx={{ marginBottom: 20, textAlign: 'center' }}>Welcome to <span sx={{ color: '#ff0000' }}>Eloni</span></Heading>
+      <Flex sx={{ flexDirection: 'column', gap: 3 }}>
         <Label htmlFor="email">Email</Label>
         <Input
           id="email"
@@ -114,18 +101,16 @@ const SignIn: React.FC = () => {
           </Link>
         </Paragraph>
 
-        <Button
-          sx={{
-            backgroundColor: "#192A41",
-            borderRadius: 50,
-            padding: 20,
-            cursor: "pointer",
-            marginTop: 20,
-          }}
-          type="submit"
-        >
-          Sign In
-        </Button>
+        {
+          loading ? (
+            <Button sx={{ backgroundColor: '#192A41', borderRadius: 50, padding: 20, cursor: 'pointer', marginTop: 20 }} type="submit">
+              <Spinner sx={{ color: 'white' }} />
+            </Button>
+          ) : (
+            <Button sx={{ backgroundColor: '#192A41', borderRadius: 50, padding: 20, cursor: 'pointer', marginTop: 20 }} type="submit">Sign In</Button>
+          )
+        }
+
       </Flex>
     </Box>
   );

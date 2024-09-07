@@ -39,7 +39,7 @@ const SubscribeModal: React.FC = () => {
           <Box
             sx={{
               position: "fixed",
-              top: "20%",
+              top: "50%",
               left: "50%",
               transform: "translate(-50%, 0)",
               backgroundColor: "white",
@@ -74,7 +74,7 @@ const SubscribeModal: React.FC = () => {
               src="/Telegram logo.png"
               alt="Telegram Icon"
               sx={{
-                width: "30%",
+                width: "50%",
                 marginRight: "5px",
                 display: ["none", "none", "block"],
               }}

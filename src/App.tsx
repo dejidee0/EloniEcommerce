@@ -4,11 +4,9 @@ import { theme } from "../src/Theme/theme.tsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignIn from "@/pages/SignIn/SignIn";
 import SignUp from "@/pages/SignUp/SignUp";
-import UsersDashboard from "@/pages/Dashboard/UsersDashboard/UsersDashboard";
 import AdminDashboard from "@/pages/Dashboard/AdminDashboard/AdminDashboard";
 import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
-import OtpPage from "./pages/OtpPage/OtpPage.tsx";
-import WishList from "./pages/WishList/WishList";
+import Otp from "./pages/Otp/Otp.tsx";
 
 export default function App() {
   return (
@@ -17,13 +15,13 @@ export default function App() {
         <Routes>
           <Route path="/" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/otp-page" element={<OtpPage />} />
-          <Route path="/wish-list" element={<WishList />} />
+          <Route path="/otp-page" element={<Otp />} />
+          {/* <Route path="/wish-list" element={<WishList />} /> */}
           <Route
             path="/users-dashboard"
             element={
               <PrivateRoute roleRequired="user">
-                <UsersDashboard />
+                <></>
               </PrivateRoute>
             }
           />
