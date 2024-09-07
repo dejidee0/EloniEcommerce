@@ -1,5 +1,7 @@
 /** @jsxImportSource theme-ui */
 import { Box, Button, Input, Label, Select, Textarea, Checkbox, Image } from '@theme-ui/components';
+import { Spinner } from 'theme-ui';
+
 import React, { useState } from 'react';
 import { db, storage } from '@/firebaseConfig/firebaseConfig'; // Import the Firebase configuration
 import { addDoc, collection } from 'firebase/firestore';
@@ -90,7 +92,7 @@ const AdminForm = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [selectedSubItem, setSelectedSubItem] = useState<string>('');
   const [imagePreviews, setImagePreviews] = useState<string[]>([]);
-  const [_, setUploading] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -112,7 +114,7 @@ const AdminForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: async (values, { resetForm }) => {
-      setUploading(true);
+      setUploading(true); // Start spinner
       try {
         const imageUrls = await uploadImages(values.productImages);
         await handleSubmit(values, imageUrls, resetForm);
@@ -120,11 +122,11 @@ const AdminForm = () => {
         console.error('Error adding product: ', error);
         alert('Error adding product to the database.');
       } finally {
-        setUploading(false);
+        setUploading(false); // Stop spinner
       }
     },
   });
-
+  
   const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCategory(event.target.value);
     setSelectedSubItem(''); // Reset sub-item selection when category changes
@@ -468,9 +470,28 @@ const AdminForm = () => {
           </Label>
         </Box>
         {/* Submit Button */}
-        <Button type="submit" sx={{ borderRadius: 50, padding: 20, width: '100%', bg: '#192A41', cursor: 'pointer' }}>
-          Add Product
-        </Button>
+        <Button
+  type="submit"
+  sx={{
+    borderRadius: 50,
+    padding: 20,
+    width: '100%',
+    bg: '#192A41',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}
+  disabled={uploading} // Disable the button while uploading
+>
+  {uploading ? (
+    <Spinner size={24} sx={{ marginRight: 2 }} />
+  ) : (
+    'Add Product'
+  )}
+</Button>
+
+
       </Box>
     </>
   );
