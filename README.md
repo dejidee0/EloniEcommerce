@@ -37,8 +37,8 @@ npm install
 
 
 ## Folder Structure
-src/
-│
+src/  
+│  
 ├── Theme/ # Theme UI configurations  
 ├── assets/ # Static assets (images, fonts, etc.)  
 ├── components/ # Reusable React components  
