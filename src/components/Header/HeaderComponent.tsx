@@ -46,7 +46,7 @@ const HeaderComponent: React.FC = () => {
         flexDirection: 'row',
         justifyContent: ['center', ''],
       }}>
-        <a href="#home" className="header-logo" >
+        <Link to="/users-dashboard" className="header-logo" >
           <Image
             src={logo}
             sx={{
@@ -57,7 +57,7 @@ const HeaderComponent: React.FC = () => {
             width="180"
             height="130"
           />
-        </a>
+        </Link>
       </Box>
 
       <Box className="header-search-container" sx={{

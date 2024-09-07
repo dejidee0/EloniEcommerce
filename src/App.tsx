@@ -8,6 +8,7 @@ import AdminDashboard from "@/pages/Dashboard/AdminDashboard/AdminDashboard";
 import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
 import Otp from "./pages/Otp/Otp.tsx";
 import UsersDashboard from "./pages/Dashboard/UsersDashboard/UsersDashboard.tsx";
+import WishList from "./pages/WishList/WishList.tsx";
 
 export default function App() {
   return (
@@ -17,7 +18,7 @@ export default function App() {
           <Route path="/" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/otp-page" element={<Otp />} />
-          {/* <Route path="/wish-list" element={<WishList />} /> */}
+          <Route path="/wishlist" element={<WishList />} />
           <Route
             path="/users-dashboard"
             element={
