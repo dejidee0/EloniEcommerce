@@ -101,15 +101,16 @@ const PopupModal: React.FC = () => {
                   alignItems: "center",
                   justifyContent: "space-between",
                   padding: 2,
+                  width: '220px'
                 }}
               >
                 <Text sx={{ fontSize: 1 }}>
                   A recent purchase was just made by a new customer.
                 </Text>
-                <Text sx={{ fontSize: 2 }}>
+                <Text sx={{ fontSize: 2, fontWeight: 'bold', marginTop: 10 }}>
                   Gildan Adult ultra cotton T-shirt.
                 </Text>
-                <Text sx={{ fontSize: 1 }}>Just now</Text>
+                <Text sx={{ fontSize: 1, marginTop: 10 }}>Just now</Text>
               </Box>
             </Flex>
 

@@ -43,15 +43,17 @@ const SubscribeModal: React.FC = () => {
               left: "50%",
               transform: "translate(-50%, 0)",
               backgroundColor: "white",
-              padding: "50px",
+              justifyContent: 'center',
               borderRadius: "8px",
               zIndex: 11,
               textAlign: "center",
               boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
               display: "flex",
               flexDirection: "row",
+              height: '400px',
               maxWidth: "750px",
               gap: 5,
+              padding: '50px 30px'
             }}
           >
             <Button
@@ -62,9 +64,12 @@ const SubscribeModal: React.FC = () => {
                 right: "10px",
                 backgroundColor: "red",
                 border: "none",
-                fontSize: "20px",
+                fontSize: "16px",
                 cursor: "pointer",
-                padding: 2,
+                // padding: '5px',
+                borderRadius: '5px',
+                color: '#ffffff',
+                display: 'block'
               }}
             >
               &times;
@@ -74,25 +79,27 @@ const SubscribeModal: React.FC = () => {
               src="/Telegram logo.png"
               alt="Telegram Icon"
               sx={{
-                width: "50%",
+                // width: "50%",
+                width: '230px',
+                height: '230px',
                 marginRight: "5px",
+                marginTop: 10,
                 display: ["none", "none", "block"],
               }}
             />
 
             <Flex
               sx={{
-                alignItems: "center",
-                justifyContent: "space-between",
-                marginBottom: "20px",
+                justifyContent: "center",
                 flexDirection: "column",
-                width: ["100%", "100%", "50%"],
+                width: ["100%", "100%", "40%"],
+                textAlign: 'left',
               }}
             >
-              <Heading as="h2" sx={{ fontSize: 3, marginBottom: "10px" }}>
+              <Heading sx={{ fontSize: '1.125rem', marginBottom: "10px", color: '#454545', fontWeight: '600' }}>
                 Subscribe Newsletter
               </Heading>
-              <Text sx={{ fontSize: 2 }}>
+              <Text sx={{ fontSize: '0.875rem', lineHeight: 1.6, color: '#0f1111' }}>
                 Subscribe to <strong>Eloni's Shop</strong> to get the latest
                 products and discount updates.
               </Text>
@@ -112,18 +119,17 @@ const SubscribeModal: React.FC = () => {
                       name="email"
                       type="email"
                       as={Input}
-                      placeholder="Enter your email"
+                      placeholder="Email Address"
                       sx={{
-                        width: ["90%", "80%", "100%"],
-                        height: ["8px 12px", "8px 16px", "8px 20px"],
-                        fontSize: [1, 2, 3],
                         padding: "8px 16px",
-                        marginBottom: "10px",
-                        borderRadius: "4px",
-                        font: "inherit",
+                        marginBottom: "16px",
+                        borderRadius: "5px",
+                        fontSize: "0.875rem",
                         display: "block",
                         justifyContent: "center",
                         alignItems: "end",
+                        border: '1px solid #ededed',
+                        marginTop: '20px'
                       }}
                     />
                     <ErrorMessage
@@ -138,10 +144,17 @@ const SubscribeModal: React.FC = () => {
                     <Button
                       type="submit"
                       sx={{
-                        backgroundColor: "primary",
+                        backgroundColor: "#232f35",
+                        textTransform: 'uppercase',
+                        color: '#fff',
+                        fontWeight: '600',
                         width: "auto",
-                        padding: "8px 16px",
-                        fontSize: 1,
+                        display: 'block',
+                        transition: '0.2s ease',
+                        padding: "10px 15px",
+                        borderRadius: 5,
+                        margin: 'auto',
+                        fontSize: '0.875rem',
                         cursor: "pointer",
                         "&:hover": {
                           backgroundColor: "red",
