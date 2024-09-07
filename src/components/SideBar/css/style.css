@@ -10,3 +10,7 @@
 .bestseller-title{
     color: rgb(54, 54, 54);
 }
+.icon:hover{
+    font-size: 30px;
+    color: greenyellow;
+}
