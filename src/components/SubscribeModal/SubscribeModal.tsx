@@ -15,26 +15,13 @@ const SubscribeModal: React.FC = () => {
     } else console.log("please enter a valid email Address");
   };
   return (
-    <Flex>
+    <>
       {modal && (
         <>
           <Box
             sx={{
               position: "fixed",
               top: "50%",
-              left: "50%",
-              width: "100vw",
-              height: "100vh",
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-              zIndex: 10,
-            }}
-            onClick={toggleModal}
-          />
-
-          <Box
-            sx={{
-              position: "absolute",
-              top: "10px",
               left: "50%",
               transform: "translate(-50%, 0)",
               width: ["90%", "400px"],
@@ -47,6 +34,7 @@ const SubscribeModal: React.FC = () => {
               transition: "top 0.3s ease",
               display: "flex",
               flexDirection: "row",
+              maxWidth: '750px'
             }}
           >
             <Button
@@ -67,7 +55,11 @@ const SubscribeModal: React.FC = () => {
             <Image
               src="/Telegram logo.png"
               alt="Telegram Icon"
-              sx={{ width: "50%", marginRight: "5px" }}
+              sx={{ 
+                width: "50%", 
+                marginRight: "5px", 
+                display: ['none', 'block']
+              }}
             />
 
             <Flex
@@ -118,7 +110,7 @@ const SubscribeModal: React.FC = () => {
           </Box>
         </>
       )}
-    </Flex>
+    </>
   );
 };
 
