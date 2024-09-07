@@ -52,28 +52,28 @@ src/
 
 ## Technologies Used
 
-**React 18:** A JavaScript library for building user interfaces.
-**Vite:** A fast build tool for modern web projects.
-**Theme UI:** A library for creating theme-based UI components.
-**Formik:** A form management library for React.
-**Firebase:** For authentication and Firestore database integration.
-**React Router:** For client-side routing.
-**Yup:** A schema builder for form validation.
+**React 18:** A JavaScript library for building user interfaces.  
+**Vite:** A fast build tool for modern web projects.  
+**Theme UI:** A library for creating theme-based UI components.  
+**Formik:** A form management library for React.  
+**Firebase:** For authentication and Firestore database integration.  
+**React Router:** For client-side routing.  
+**Yup:** A schema builder for form validation.  
 
 ### Additional libraries
-**@emotion/react:** CSS-in-JS library used with Theme UI.
-**@mui/icons-material:** Material Design icons for React.
-**react-icons:** Icon library for React.
-**react-slick:** Carousel component for React.
-**slick-carousel:** CSS for React Slick.
-**ionicons:** A set of beautiful, high-quality icons.
+**@emotion/react:** CSS-in-JS library used with Theme UI.  
+**@mui/icons-material:** Material Design icons for React.  
+**react-icons:** Icon library for React.  
+**react-slick:** Carousel component for React.  
+**slick-carousel:** CSS for React Slick.  
+**ionicons:** A set of beautiful, high-quality icons.  
 
 ## Features
-**Firebase Authentication:** Sign-up, login, and authentication using Firebase.
-**Product Display:** Browse through available products.
-**Formik Forms:** Form handling and validation using Formik and Yup.
-**Responsive Design:** Ensures the application works well on different screen sizes.
-**Theme UI:** Provides customizable theming across the app.
+**Firebase Authentication:** Sign-up, login, and authentication using Firebase.  
+**Product Display:** Browse through available products.  
+**Formik Forms:** Form handling and validation using Formik and Yup.  
+**Responsive Design:** Ensures the application works well on different screen sizes.  
+**Theme UI:** Provides customizable theming across the app.  
 
 ## Running the project
 ```bash
