@@ -7,7 +7,6 @@ import NewArrival from "@/components/NewArrival/NewArrival"
 import SideBar from "@/components/SideBar/SideBar"
 import { Box, Container } from "theme-ui"
 
-
 const UsersDashboard = () => {
 
     return (

@@ -17,10 +17,15 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, roleRequired }) =
   useEffect(() => {
     const fetchUserRole = async () => {
       if (user) {
-        const userDoc = await getDoc(doc(db, 'users', user.uid));
-        if (userDoc.exists()) {
-          setRole(userDoc.data().role);
-        } else {
+        try {
+          const userDoc = await getDoc(doc(db, 'users', user.uid));
+          if (userDoc.exists()) {
+            setRole(userDoc.data().role);
+          } else {
+            setRole(null); // User document doesn't exist, set role to null
+          }
+        } catch (error) {
+          console.error("Error fetching user role:", error);
           setRole(null);
         }
       }

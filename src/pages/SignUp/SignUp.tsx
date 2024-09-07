@@ -8,7 +8,6 @@ import { setDoc, doc } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "@/firebaseConfig/firebaseConfig";
 import { Heading, Paragraph } from "theme-ui";
-import { log } from "console";
 
 const SignUp: React.FC = () => {
   const navigate = useNavigate();
@@ -59,9 +58,9 @@ const SignUp: React.FC = () => {
   });
 
   return (
-    // @ts-ignore
     <Box
       as="form"
+      // @ts-ignore
       onSubmit={formik.handleSubmit}
       sx={{
         maxWidth: 400,
