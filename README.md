@@ -39,16 +39,16 @@ npm install
 ## Folder Structure
 src/
 │
-├── Theme/ # Theme UI configurations
-├── assets/ # Static assets (images, fonts, etc.)
-├── components/ # Reusable React components
-├── firebaseConfig/ # Firebase setup and configuration
-├── pages/ # Application pages (e.g., Home, Product)
-├── utils/ # Utility functions and helpers
-├── App.tsx # Main application entry point
-├── main.tsx # Vite main file to bootstrap React
-├── theme.tsx # Global Theme UI settings
-└── vite-env.d.ts # Vite environment type declaration
+├── Theme/ # Theme UI configurations  
+├── assets/ # Static assets (images, fonts, etc.)  
+├── components/ # Reusable React components  
+├── firebaseConfig/ # Firebase setup and configuration  
+├── pages/ # Application pages (e.g., Home, Product)  
+├── utils/ # Utility functions and helpers  
+├── App.tsx # Main application entry point  
+├── main.tsx # Vite main file to bootstrap React  
+├── theme.tsx # Global Theme UI settings  
+└── vite-env.d.ts # Vite environment type declaration  
 
 ## Technologies Used
 
@@ -77,5 +77,11 @@ src/
 
 ## Running the project
 ```bash
-npm install or npm run dev
+npm install
+```
+
+or
+
+```bash
+npm run dev
 ```
