@@ -36,7 +36,31 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, roleRequired }) =
   }, [user]);
 
   if (loading || roleLoading) {
-    return <div>Loading...</div>; // Replace with your loading spinner or component
+    return (
+      <div className="loading-spinner">
+        <div className="spinner"></div>
+        <style>
+          {`
+            .spinner {
+              border: 8px solid rgba(0, 0, 0, 0.1);
+              border-left-color: #000;
+              border-radius: 50%;
+              width: 40px;
+              height: 40px;
+              animation: spin 1s linear infinite;
+            }
+            @keyframes spin {
+              0% {
+                transform: rotate(0deg);
+              }
+              100% {
+                transform: rotate(360deg);
+              }
+            }
+          `}
+        </style>
+      </div>
+    );
   }
 
   if (!user || (roleRequired && role !== roleRequired)) {
