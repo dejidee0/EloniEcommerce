@@ -1,19 +1,40 @@
-import React, { useState } from "react";
-import { Box, Button, Input, Text, Heading, Image, Flex } from "theme-ui";
+import React, { useEffect, useState } from "react";
+import { Box, Button, Text, Image, Flex } from "theme-ui";
+import { Formik } from "formik";
+import * as Yup from "yup";
 
-const SubscribeModal: React.FC = () => {
-  const [modal, setModal] = useState(true);
-  const [email, setEmail] = useState("");
+const PopupModal: React.FC = () => {
+  const [modal, setModal] = useState(false);
+  const [visible, setVisible] = useState(false);
 
-  const toggleModal = () => {
-    setModal(!modal);
-  };
-  const handleSubscribe = () => {
-    if (email) {
-      console.log(`Subscribed with email: $(email)`);
-      setEmail("");
-    } else console.log("please enter a valid email Address");
-  };
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+  });
+
+  useEffect(() => {
+    const initialTimeout = setTimeout(() => {
+      setModal(true);
+      setVisible(true);
+
+      const interval = setInterval(() => {
+        setVisible(true);
+      }, 6000);
+
+      return () => clearInterval(interval);
+    }, 5000);
+
+    if (modal) {
+      const autoHide = setTimeout(() => {
+        setVisible(false);
+      }, 5000);
+      return () => clearTimeout(autoHide);
+    }
+
+    return () => clearTimeout(initialTimeout);
+  }, [modal]);
+
   return (
     <Flex>
       {modal && (
@@ -21,101 +42,86 @@ const SubscribeModal: React.FC = () => {
           <Box
             sx={{
               position: "fixed",
-              top: "50%",
-              left: "50%",
-              width: "100vw",
-              height: "100vh",
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-              zIndex: 10,
-              gap: 5,
-            }}
-            onClick={toggleModal}
-          />
-
-          <Box
-            sx={{
-              position: "absolute",
-              left: "50%",
-              transform: "translate(-50%, 0)",
+              bottom: 0,
+              left: visible ? 0 : "-400px",
+              margin: "20px",
               width: ["90%", "400px"],
               backgroundColor: "white",
               padding: "20px",
               borderRadius: "8px",
-              zIndex: 11,
-              textAlign: "center",
+              zIndex: 9,
               boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-              transition: "top 0.3s ease",
               display: "flex",
-              flexDirection: "row",
+              flexDirection: "column",
+              gap: "20px",
+              transition: "left 0.5s ease-in-out",
             }}
           >
             <Button
-              onClick={toggleModal}
+              onClick={() => setVisible(false)}
               sx={{
                 position: "absolute",
                 top: "10px",
                 right: "10px",
-                backgroundColor: "red",
+                backgroundColor: "transparent",
                 border: "none",
-                fontSize: "20px",
+                fontSize: "24px",
                 cursor: "pointer",
-                padding: 0,
+                color: "#000000",
               }}
             >
               &times;
             </Button>
-            <Image
-              src="/Telegram logo.png"
-              alt="Telegram Icon"
-              sx={{ width: "30px", marginRight: "5px" }}
-            />
-
-            <Heading as="h2" sx={{ fontSize: 3, marginBottom: "10px" }}>
-              Subscribe Newsletter
-            </Heading>
 
             <Flex
               sx={{
+                padding: 3,
                 alignItems: "center",
-                justifyContent: "space-between",
-                marginBottom: "20px",
+                gap: "10px",
+                display: "flex",
+                flexDirection: "row",
               }}
             >
-              <Text sx={{ fontSize: 2 }}>
-                Subscribe to <strong>Eloni's Shop</strong> to get the latest
-                products and discount updates.
-              </Text>
+              <Box sx={{ display: "flex", flexDirection: "column" }}>
+                <Image
+                  src="/T-shirt.jpg"
+                  alt="cloth"
+                  sx={{
+                    width: "100px",
+                    height: "100px",
+                    display: ["none", "none", "block"],
+                  }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  textAlign: "center",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  padding: 2,
+                }}
+              >
+                <Text sx={{ fontSize: 1 }}>
+                  A recent purchase was just made by a new customer.
+                </Text>
+                <Text sx={{ fontSize: 2 }}>
+                  Gildan Adult ultra cotton T-shirt.
+                </Text>
+                <Text sx={{ fontSize: 1 }}>Just now</Text>
+              </Box>
             </Flex>
 
-            <Input
-              height="50px"
-              padding="8px 16px"
-              type="email"
-              placeholder="Enter your email"
-              sx={{
-                marginBottom: "10px",
-                justifyContent: "center",
-                alignItems: "end",
-
-                height: "50px",
-                textAlign: "center",
-                fontSize: "24px",
-                borderRadius: "4px",
+            <Formik
+              initialValues={{ email: "" }}
+              validationSchema={validationSchema}
+              onSubmit={(values, { resetForm }) => {
+                console.log(`Subscribed with email: ${values.email}`);
+                resetForm();
+                setVisible(false);
               }}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-
-            <Button
-              onClick={handleSubscribe}
-              sx={{
-                backgroundColor: "primary",
-                width: "auto",
-                padding: "8px 16px",
-                fontSize: 1,
-              }}
-            >
-              Subscribe
-            </Button>
+            ></Formik>
           </Box>
         </>
       )}
@@ -123,4 +129,4 @@ const SubscribeModal: React.FC = () => {
   );
 };
 
-export default SubscribeModal;
+export default PopupModal;

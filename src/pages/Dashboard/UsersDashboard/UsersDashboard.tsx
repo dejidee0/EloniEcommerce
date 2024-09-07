@@ -4,6 +4,7 @@ import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import MiddleSection from "@/components/MiddleSection/MiddleSection";
 import NewArrival from "@/components/NewArrival/NewArrival";
+import PopupModal from "@/components/PopupModal/PopupModal";
 import SideBar from "@/components/SideBar/SideBar";
 import SubscribeModal from "@/components/SubscribeModal/SubscribeModal";
 import { Box, Container } from "theme-ui";
@@ -13,6 +14,7 @@ const UsersDashboard = () => {
     <>
       <Header />
       <SubscribeModal />
+      <PopupModal />
       <Container sx={{ paddingLeft: [0, 150], paddingRight: [0, 150] }}>
         <Banner />
         <Box

@@ -1,19 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, Input, Text, Heading, Image, Flex } from "theme-ui";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 const SubscribeModal: React.FC = () => {
-  const [modal, setModal] = useState(true);
-  const [email, setEmail] = useState("");
+  const [modal, setModal] = useState(false);
+
+  useEffect(() => {
+    const showModal = () => {
+      setModal(true);
+    };
+
+    const initialTimeout = setTimeout(() => {
+      showModal();
+      const interval = setInterval(() => {
+        showModal();
+      }, 600000);
+      return () => clearInterval(interval);
+    }, 3000);
+
+    return () => clearTimeout(initialTimeout);
+  }, []);
 
   const toggleModal = () => {
     setModal(!modal);
   };
-  const handleSubscribe = () => {
-    if (email) {
-      console.log(`Subscribed with email: $(email)`);
-      setEmail("");
-    } else console.log("please enter a valid email Address");
-  };
+
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+  });
+
   return (
     <>
       {modal && (
@@ -21,20 +39,19 @@ const SubscribeModal: React.FC = () => {
           <Box
             sx={{
               position: "fixed",
-              top: "40%",
+              top: "30%",
               left: "50%",
               transform: "translate(-50%, 0)",
-              width: ["90%", "400px"],
               backgroundColor: "white",
-              padding: "20px",
+              padding: "50px",
               borderRadius: "8px",
               zIndex: 11,
               textAlign: "center",
               boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-              transition: "top 0.3s ease",
               display: "flex",
               flexDirection: "row",
-              maxWidth: '750px'
+              maxWidth: "750px",
+              gap: 5,
             }}
           >
             <Button
@@ -47,18 +64,19 @@ const SubscribeModal: React.FC = () => {
                 border: "none",
                 fontSize: "20px",
                 cursor: "pointer",
-                padding: 0,
+                padding: 2,
               }}
             >
               &times;
             </Button>
+
             <Image
               src="/Telegram logo.png"
               alt="Telegram Icon"
-              sx={{ 
-                width: "50%", 
-                marginRight: "5px", 
-                display: ['none', 'block']
+              sx={{
+                width: "50%",
+                marginRight: "5px",
+                display: ["none", "none", "block"],
               }}
             />
 
@@ -67,9 +85,8 @@ const SubscribeModal: React.FC = () => {
                 alignItems: "center",
                 justifyContent: "space-between",
                 marginBottom: "20px",
-                display: "flex",
                 flexDirection: "column",
-                width: "50%",
+                width: ["100%", "100%", "50%"],
               }}
             >
               <Heading as="h2" sx={{ fontSize: 3, marginBottom: "10px" }}>
@@ -80,32 +97,62 @@ const SubscribeModal: React.FC = () => {
                 products and discount updates.
               </Text>
 
-              <Input
-                placeholder="Enter your email"
-                type="email"
-                sx={{
-                  width: "70%",
-                  height: "50%",
-                  padding: "8px 16px",
-                  marginBottom: "10px",
-                  justifyContent: "center",
-                  alignItems: "end",
-                  borderRadius: "4px",
-                }}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-
-              <Button
-                onClick={handleSubscribe}
-                sx={{
-                  backgroundColor: "primary",
-                  width: "auto",
-                  padding: "8px 16px",
-                  fontSize: 1,
+              <Formik
+                initialValues={{ email: "" }}
+                validationSchema={validationSchema}
+                onSubmit={(values, { resetForm }) => {
+                  console.log(`Subscribed with email: ${values.email}`);
+                  resetForm();
+                  toggleModal();
                 }}
               >
-                Subscribe
-              </Button>
+                {() => (
+                  <Form>
+                    <Field
+                      name="email"
+                      type="email"
+                      as={Input}
+                      placeholder="Enter your email"
+                      sx={{
+                        width: ["90%", "80%", "100%"],
+                        height: ["8px 12px", "8px 16px", "8px 20px"],
+                        fontSize: [1, 2, 3],
+                        padding: "8px 16px",
+                        marginBottom: "10px",
+                        borderRadius: "4px",
+                        font: "inherit",
+                        display: "block",
+                        justifyContent: "center",
+                        alignItems: "end",
+                      }}
+                    />
+                    <ErrorMessage
+                      name="email"
+                      component="div"
+                      // style={{
+                      //   color: "red",
+                      //   fontSize: "12px",
+                      //   marginBottom: "10px",
+                      // }}
+                    />
+                    <Button
+                      type="submit"
+                      sx={{
+                        backgroundColor: "primary",
+                        width: "auto",
+                        padding: "8px 16px",
+                        fontSize: 1,
+                        cursor: "pointer",
+                        "&:hover": {
+                          backgroundColor: "red",
+                        },
+                      }}
+                    >
+                      Subscribe
+                    </Button>
+                  </Form>
+                )}
+              </Formik>
             </Flex>
           </Box>
         </>
