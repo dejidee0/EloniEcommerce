@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
-import React, { useState } from 'react';
-import { Box, Button, Input, Label, Flex, Spinner } from '@theme-ui/components';
+import React, { useEffect, useState } from 'react';
+import { Box, Button, Input, Label, Flex, Spinner, Message } from '@theme-ui/components';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -8,10 +8,14 @@ import { doc, getDoc } from 'firebase/firestore';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth, db } from '@/firebaseConfig/firebaseConfig';
 import { Heading, Paragraph } from 'theme-ui';
+import { firebaseErrorMessages } from '@/firebaseConfig/firebaseErrors';
+import { FirebaseError } from '@/type/FirebaseError';
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>("");
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -25,6 +29,8 @@ const SignIn: React.FC = () => {
     }),
     onSubmit: async (values) => {
       setLoading(true);
+      setErrorMessage(''); // Clear previous error message before submitting
+
       try {
         const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
         console.log('userCredential', userCredential);
@@ -35,29 +41,62 @@ const SignIn: React.FC = () => {
           const userData = userDoc.data();
           console.log("userData", userData);
 
-          if (userData.role === "admin") {
-            console.log("admin-dashboard");
-
-            navigate("/admin-dashboard");
+          if (userData.role === 'admin') {
+            console.log('admin-dashboard');
+            navigate('/admin-dashboard');
           } else {
-            console.log("users-dashboard");
-
-            navigate("/users-dashboard");
+            console.log('users-dashboard');
+            navigate('/users-dashboard');
           }
         } else {
           console.error("No user data found in Firestore");
         }
-      } catch (error) {
-        console.error("Error signing in:", error);
+      } catch (error: unknown) {
+        if (typeof error === 'object' || error !== null || 'code' in error) {
+          const firebaseError = error as FirebaseError
+          const errorMessage = firebaseErrorMessages[firebaseError.code] || firebaseErrorMessages.default
+          setErrorMessage(errorMessage); // Set the error message from Firebase
+        }
       }
+
       setLoading(false);
     },
   });
 
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setErrorMessage(null); // Set the error message from Firebase
+    }, 5000)
+
+    return () => clearTimeout(timerId)
+  }, [errorMessage])
+
   return (
     // @ts-ignore
     <Box as="form" onSubmit={formik.handleSubmit} sx={{ maxWidth: 400, margin: 'auto auto', alignContent: 'center', height: '100vh' }}>
+
+      {/* Display error message if it exists */}
+      {errorMessage && (
+        <Message variant="danger" sx={{
+          width: 'fit-content',
+          maxWidth: '80%',
+          zIndex: 1,
+          right: 0,
+          top: 0,
+          position: 'absolute',
+          borderRadius: '4px',
+          padding: '8px 16px',
+          backgroundColor: 'red',
+          color: 'white',
+          transition: '0.2s ease-in',
+          borderLeftColor: 'none'
+        }}>
+          {errorMessage}
+        </Message>
+      )}
+
       <Heading sx={{ marginBottom: 20, textAlign: 'center' }}>Welcome to <span sx={{ color: '#ff0000' }}>Eloni</span></Heading>
+
       <Flex sx={{ flexDirection: 'column', gap: 3 }}>
         <Label htmlFor="email">Email</Label>
         <Input
@@ -86,31 +125,18 @@ const SignIn: React.FC = () => {
         {formik.touched.password && formik.errors.password ? (
           <div sx={{ color: "red" }}>{formik.errors.password}</div>
         ) : null}
-        <Paragraph sx={{ textAlign: "right" }}>
-          Don't have an Account{" "}
-          <Link
-            to={"/sign-up"}
-            sx={{
-              color: "blue",
-              cursor: "pointer",
-              fontWeight: "600",
-              textDecoration: "none",
-            }}
-          >
-            Sign Up
-          </Link>
-        </Paragraph>
 
-        {
-          loading ? (
-            <Button sx={{ backgroundColor: '#192A41', borderRadius: 50, padding: 20, cursor: 'pointer', marginTop: 20 }} type="submit">
-              <Spinner sx={{ color: 'white' }} />
-            </Button>
-          ) : (
-            <Button sx={{ backgroundColor: '#192A41', borderRadius: 50, padding: 20, cursor: 'pointer', marginTop: 20 }} type="submit">Sign In</Button>
-          )
-        }
+        <Paragraph sx={{ textAlign: 'right' }}>Don't have an Account? <Link to={'/sign-up'} sx={{ color: 'blue', cursor: 'pointer', fontWeight: '600', textDecoration: 'none' }}>Sign Up</Link></Paragraph>
 
+        {loading ? (
+          <Button sx={{ backgroundColor: '#192A41', borderRadius: 50, padding: 20, cursor: 'pointer', marginTop: 20 }} type="submit">
+            <Spinner sx={{ color: 'white' }} />
+          </Button>
+        ) : (
+          <Button sx={{ backgroundColor: '#192A41', borderRadius: 50, padding: 20, cursor: 'pointer', marginTop: 20 }} type="submit">
+            Sign In
+          </Button>
+        )}
       </Flex>
     </Box>
   );

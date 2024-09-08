@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
-import React, { useState } from 'react';
-import { Box, Button, Input, Label, Flex, Spinner } from '@theme-ui/components';
+import React, { useEffect, useState } from 'react';
+import { Box, Button, Input, Label, Flex, Spinner, Message } from '@theme-ui/components';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
@@ -8,10 +8,14 @@ import { setDoc, doc } from 'firebase/firestore';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth, db } from '@/firebaseConfig/firebaseConfig';
 import { Heading, Paragraph } from 'theme-ui';
+import { FirebaseError } from '@/type/FirebaseError';
+import { firebaseErrorMessages } from '@/firebaseConfig/firebaseErrors';
 
 const SignUp: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(''); // State to handle error message
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -36,13 +40,14 @@ const SignUp: React.FC = () => {
     }),
     onSubmit: async (values) => {
       setLoading(true);
+      setErrorMessage(''); // Clear previous error message
+
       try {
         const userCredential = await createUserWithEmailAndPassword(
           auth,
           values.email,
           values.password
         );
-        console.log("userCredential", userCredential);
 
         await setDoc(doc(db, "users", userCredential.user.uid), {
           firstName: values.firstName,
@@ -52,12 +57,26 @@ const SignUp: React.FC = () => {
         });
         navigate("/otp-page");
         console.log("/otp-page");
-      } catch (error) {
-        console.error("Error signing up:", error);
+      } catch (error: any) {
+        console.log('error', error.code);
+        
+        if (typeof error === 'object' || error !== null || 'code' in error) {
+          const firebaseError = error as FirebaseError
+          const errorMessage = firebaseErrorMessages[firebaseError.code] || firebaseErrorMessages.default
+          setErrorMessage(errorMessage); // Set the error message from Firebase
+        }
       }
       setLoading(false);
     },
   });
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setErrorMessage(null); // Set the error message from Firebase
+    }, 5000)
+
+    return () => clearTimeout(timerId)
+  }, [errorMessage])
 
   return (
     <Box
@@ -71,6 +90,26 @@ const SignUp: React.FC = () => {
         alignContent: "center",
       }}
     >
+      {/* Display error message if it exists */}
+      {errorMessage && (
+        <Message variant="danger" sx={{
+          width: 'fit-content',
+          maxWidth: '80%',
+          zIndex: 1,
+          right: 0,
+          top: 0,
+          position: 'absolute',
+          borderRadius: '4px',
+          padding: '8px 16px',
+          backgroundColor: 'red',
+          color: 'white',
+          transition: '0.2s ease-in',
+          borderLeftColor: 'none'
+        }}>
+          {errorMessage}
+        </Message>
+      )}
+
       <Heading sx={{ marginBottom: 20, textAlign: "center" }}>
         Create An Account
       </Heading>
@@ -142,7 +181,7 @@ const SignUp: React.FC = () => {
         ) : null}
 
         <Paragraph sx={{ textAlign: "right" }}>
-          Don't have an Account{" "}
+          Already have an account?{" "}
           <Link
             to="/"
             sx={{
@@ -156,15 +195,33 @@ const SignUp: React.FC = () => {
           </Link>
         </Paragraph>
 
-        {
-          loading ? (
-            <Button sx={{ backgroundColor: '#192A41', borderRadius: 50, padding: 20, cursor: 'pointer', marginTop: 20 }} type="submit">
-              <Spinner sx={{ color: 'white' }} />
-            </Button>
-          ) : (
-            <Button sx={{ backgroundColor: '#192A41', borderRadius: 50, padding: 20, cursor: 'pointer', marginTop: 20 }} type="submit">Sign Up</Button>
-          )
-        }
+        {loading ? (
+          <Button
+            sx={{
+              backgroundColor: "#192A41",
+              borderRadius: 50,
+              padding: 20,
+              cursor: "pointer",
+              marginTop: 20,
+            }}
+            type="submit"
+          >
+            <Spinner sx={{ color: "white" }} />
+          </Button>
+        ) : (
+          <Button
+            sx={{
+              backgroundColor: "#192A41",
+              borderRadius: 50,
+              padding: 20,
+              cursor: "pointer",
+              marginTop: 20,
+            }}
+            type="submit"
+          >
+            Sign Up
+          </Button>
+        )}
       </Flex>
     </Box>
   );
