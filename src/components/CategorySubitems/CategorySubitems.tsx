@@ -7,9 +7,11 @@ type CategoryItemsProps = {
  subItems: {
   item: string;
   price: number;
+  stockQuantity: string
  }[] | {
   item: string;
   price: string;
+  stockQuantity: string
  }[]
 }
 
@@ -53,9 +55,9 @@ const CategorySubitems = (props: CategoryItemsProps) => {
             textTransform: 'capitalize'
            }}
           >
-           {subItem.item}
+           {subItem.productName}
           </Paragraph>
-          <data>{subItem.price}</data>
+          <data>{subItem.stockQuantity}</data>
          </Link>
         </li>
        ))

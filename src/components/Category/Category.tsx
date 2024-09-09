@@ -1,9 +1,35 @@
 /** @jsxImportSource theme-ui */
-import CategoryItems from "@/components/CategoryItems/CategoryItems"
-import categories from "@/utils/categories"
-import { Box, Heading } from "theme-ui"
+import { addOutline } from "ionicons/icons";
+import { useState, useEffect } from "react";
+import CategoryItems from "@/components/CategoryItems/CategoryItems";
+import { fetchProductsByCategory } from "../../utils/categories"; // Import the function to fetch products
+import { Box, Heading } from "theme-ui";
+import Categories from "../../utils/categories";
 
 const Category = () => {
+  const [categories, setCategories] = useState(Categories);
+  const [products, setProducts] = useState({});
+
+  // Fetch products for each category when the component mounts
+  useEffect(() => {
+    const fetchAllCategoryProducts = async () => {
+      const categoryProductPromises = categories.map(async (category) => {
+        const categoryProducts = await fetchProductsByCategory(category.name);
+        return { name: category.name, products: categoryProducts };
+      });
+
+      const categoryProducts = await Promise.all(categoryProductPromises);
+      const productsMap = categoryProducts.reduce((acc, { name, products }) => {
+        acc[name] = products;
+        return acc;
+      }, {});
+
+      setProducts(productsMap);
+    };
+
+    fetchAllCategoryProducts();
+  }, [categories]);
+
   return (
     <Box
       sx={{
@@ -11,7 +37,6 @@ const Category = () => {
         borderRadius: "10px",
         padding: "20px",
         marginBottom: "30px",
-        // marginLeft: 50,
       }}
     >
       <Heading
@@ -22,7 +47,7 @@ const Category = () => {
           textTransform: "uppercase",
           fontSize: "0.941rem",
           letterSpacing: "0.8px",
-          width: '20%'
+          width: "20%",
         }}
       >
         Category
@@ -32,7 +57,6 @@ const Category = () => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
-          // padding: 2,
           marginBottom: "10px",
         }}
       >
@@ -42,8 +66,8 @@ const Category = () => {
               key={index}
               image={category.image}
               name={category.name}
-              addOutline={category.addOutline}
-              subItems={category.subItems}
+              addOutline={addOutline}  // Use the state to control the addOutline prop
+              subItems={products[category.name] || []} // Ensure subItems is an array
             />
           ))}
         </ul>
