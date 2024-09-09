@@ -53,7 +53,7 @@ const CategorySubitems = (props: CategoryItemsProps) => {
             textTransform: 'capitalize'
            }}
           >
-           {subItem.item}
+           {subItem.productName}
           </Paragraph>
           <data>{subItem.price}</data>
          </Link>

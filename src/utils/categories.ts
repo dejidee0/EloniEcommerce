@@ -1,4 +1,3 @@
-import { addOutline } from "ionicons/icons";
 import dress from "@/assets/dress.png"
 import bag from '@/assets/bag.png'
 import glasses from '@/assets/glasses.png'
@@ -7,164 +6,72 @@ import perfume from '@/assets/perfume.png'
 import jewelry from '@/assets/jewelry.png'
 import shoe from '@/assets/shoes.png'
 
-const categories = [
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { db } from '../firebaseConfig/firebaseConfig'; // Import your Firebase configuration
+
+// Function to fetch products by category name from Firestore
+export const fetchProductsByCategory = async (categoryName) => {
+  let productList = []; // List to store all product data
+
+  try {
+    const productsRef = collection(db, 'products'); // Reference to the 'products' collection
+    const q = query(productsRef, where('productCategory', '==', categoryName)); // Query to filter by category
+
+    const querySnapshot = await getDocs(q); // Get documents based on the category query
+
+    querySnapshot.forEach((doc) => {
+      productList.push({
+        id: doc.id,
+        ...doc.data(), // Spread the document data
+        subcategory: doc.data().subcategory // Assuming 'subcategory' is a field in your product document
+      });
+    });
+
+  } catch (err) {
+    console.error('Error fetching products by category:', err);
+  }
+  console.log(productList);
+  return productList; // Return the list containing all products of the specified category
+};
+
+
+
+const Categories = [
  {
   image: dress,
   name: 'Clothes',
-  addOutline: addOutline,
-  subItems: [
-   {
-    item: 'Shirt',
-    price: 300
-   },
-   {
-    item: 'Short & Jeans',
-    price: 60
-   },
-   {
-    item: 'Jacket',
-    price: 50
-   },
-   {
-    item: 'Dress & Frock',
-    price: 87
-   },
-  ]
+  subItems: fetchProductsByCategory('Clothes')
  },
  {
   image: bag,
   name: 'Bags',
-  addOutline: addOutline,
-  subItems: [
-   {
-    item: 'Clothes Perfume',
-    price: '12pcs'
-   },
-   {
-    item: 'Deodorant',
-    price: '60pcs'
-   },
-   {
-    item: 'Jacket',
-    price: '50pcs'
-   },
-   {
-    item: 'Dress & Frock',
-    price: '87pcs'
-   },
-  ]
+  subItems: fetchProductsByCategory('Bags')
  },
  {
   image: glasses,
   name: 'Glasses',
-  addOutline: addOutline,
-  subItems: [
-   {
-    item: 'Clothes Perfume',
-    price: '12pcs'
-   },
-   {
-    item: 'Deodorant',
-    price: '60pcs'
-   },
-   {
-    item: 'Jacket',
-    price: '50pcs'
-   },
-   {
-    item: 'Dress & Frock',
-    price: '87pcs'
-   },
-  ]
+  subItems: fetchProductsByCategory('Glasses')
  },
  {
   image: cosmetics,
   name: 'Cosmetics',
-  addOutline: addOutline,
-  subItems: [
-   {
-    item: 'Clothes Perfume',
-    price: '12pcs'
-   },
-   {
-    item: 'Deodorant',
-    price: '60pcs'
-   },
-   {
-    item: 'Jacket',
-    price: '50pcs'
-   },
-   {
-    item: 'Dress & Frock',
-    price: '87pcs'
-   },
-  ]
+  subItems: fetchProductsByCategory('Cosmetics')
  },
  {
   image: perfume,
   name: 'Perfume',
-  addOutline: addOutline,
-  subItems: [
-   {
-    item: 'Clothes Perfume',
-    price: '12pcs'
-   },
-   {
-    item: 'Deodorant',
-    price: '60pcs'
-   },
-   {
-    item: 'Jacket',
-    price: '50pcs'
-   },
-   {
-    item: 'Dress & Frock',
-    price: '87pcs'
-   },
-  ]
+  subItems: fetchProductsByCategory('perfume')
  },
  {
   image: jewelry,
   name: 'Jewelry',
-  addOutline: addOutline,
-  subItems: [
-   {
-    item: 'Earrings',
-    price: 46
-   },
-   {
-    item: 'Couple Rings',
-    price: 73
-   },
-   {
-    item: 'Necklace',
-    price: 61
-   },
-  ]
+  subItems: fetchProductsByCategory('Jewelry')
  },
  {
   image: shoe,
   name: 'footwear',
-  addOutline: addOutline,
-  subItems: [
-   {
-    item: 'Sports',
-    price: 45
-   },
-   {
-    item: 'Formal',
-    price: 75
-   },
-   {
-    item: 'Casual',
-    price: 35
-   },
-   {
-    item: 'Safety Shoes',
-    price: 26
-   },
-  ]
+  subItems: fetchProductsByCategory('footwear')
  },
 ]
 
-export default categories
+export default Categories;

@@ -1,11 +1,34 @@
 /** @jsxImportSource theme-ui */
-// import { useState } from "react";
+import { addOutline } from "ionicons/icons";
+import { useState, useEffect } from "react";
 import CategoryItems from "@/components/CategoryItems/CategoryItems";
-import categories from "@/utils/categories";
+import { fetchProductsByCategory } from "../../utils/categories"; // Import the function to fetch products
 import { Box, Heading } from "theme-ui";
+import Categories from "../../utils/categories";
 
 const Category = () => {
- 
+  const [categories, setCategories] = useState(Categories);
+  const [products, setProducts] = useState({});
+
+  // Fetch products for each category when the component mounts
+  useEffect(() => {
+    const fetchAllCategoryProducts = async () => {
+      const categoryProductPromises = categories.map(async (category) => {
+        const categoryProducts = await fetchProductsByCategory(category.name);
+        return { name: category.name, products: categoryProducts };
+      });
+
+      const categoryProducts = await Promise.all(categoryProductPromises);
+      const productsMap = categoryProducts.reduce((acc, { name, products }) => {
+        acc[name] = products;
+        return acc;
+      }, {});
+
+      setProducts(productsMap);
+    };
+
+    fetchAllCategoryProducts();
+  }, [categories]);
 
   return (
     <Box
@@ -43,13 +66,12 @@ const Category = () => {
               key={index}
               image={category.image}
               name={category.name}
-              addOutline={category.addOutline}  // Use the state to control the addOutline prop
-              subItems={category.subItems}
+              addOutline={addOutline}  // Use the state to control the addOutline prop
+              subItems={products[category.name] || []} // Ensure subItems is an array
             />
           ))}
         </ul>
       </Box>
-      {/* Button or icon to toggle the state */}
     </Box>
   );
 };
