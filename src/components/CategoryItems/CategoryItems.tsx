@@ -1,5 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { IonIcon } from "@ionic/react"
+import { removeOutline } from "ionicons/icons"; 
 import { useState } from "react"
 import { Box, Button, Paragraph } from "theme-ui"
 import CategorySubitems from "../CategorySubitems/CategorySubitems"
@@ -24,9 +25,13 @@ const capitalizeFirstLetter = (name: string) => {
 const CategoryItems = (props: CategoryItemsProps) => {
   const { image, name, addOutline, subItems } = props
   const [visibility, setVisibiilty] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
+   
+   
   const handleSubItems = () => {
     setVisibiilty(!visibility)
+    setIsOpen(!isOpen);
   }
 
   return (
@@ -64,7 +69,7 @@ const CategoryItems = (props: CategoryItemsProps) => {
             }}>{capitalizeFirstLetter(name)}</Paragraph>
         </Box>
         <Box>
-          <IonIcon icon={addOutline} role="img" aria-label="add outline"
+          <IonIcon icon={isOpen? removeOutline: addOutline} role="img" aria-label="add outline"
             sx={{
               color: '#000',
               padding: '1',

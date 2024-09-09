@@ -1,9 +1,12 @@
 /** @jsxImportSource theme-ui */
-import CategoryItems from "@/components/CategoryItems/CategoryItems"
-import categories from "@/utils/categories"
-import { Box, Heading } from "theme-ui"
+// import { useState } from "react";
+import CategoryItems from "@/components/CategoryItems/CategoryItems";
+import categories from "@/utils/categories";
+import { Box, Heading } from "theme-ui";
 
 const Category = () => {
+ 
+
   return (
     <Box
       sx={{
@@ -11,7 +14,6 @@ const Category = () => {
         borderRadius: "10px",
         padding: "20px",
         marginBottom: "30px",
-        // marginLeft: 50,
       }}
     >
       <Heading
@@ -22,7 +24,7 @@ const Category = () => {
           textTransform: "uppercase",
           fontSize: "0.941rem",
           letterSpacing: "0.8px",
-          width: '20%'
+          width: "20%",
         }}
       >
         Category
@@ -32,7 +34,6 @@ const Category = () => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
-          // padding: 2,
           marginBottom: "10px",
         }}
       >
@@ -42,12 +43,13 @@ const Category = () => {
               key={index}
               image={category.image}
               name={category.name}
-              addOutline={category.addOutline}
+              addOutline={category.addOutline}  // Use the state to control the addOutline prop
               subItems={category.subItems}
             />
           ))}
         </ul>
       </Box>
+      {/* Button or icon to toggle the state */}
     </Box>
   );
 };
