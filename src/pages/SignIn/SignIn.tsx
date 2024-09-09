@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import React, { useState } from 'react';
-import { Box, Button, Input, Label, Flex, Spinner } from '@theme-ui/components';
+import { Box, Button, Input, Label, Flex, Spinner, Message } from '@theme-ui/components';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { signInWithEmailAndPassword } from 'firebase/auth';
@@ -12,6 +12,8 @@ import { Heading, Paragraph } from 'theme-ui';
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -23,6 +25,8 @@ const SignIn: React.FC = () => {
     }),
     onSubmit: async (values) => {
       setLoading(true);
+      setErrorMessage(''); // Clear previous error message before submitting
+
       try {
         const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
         console.log('userCredential', userCredential);
@@ -35,19 +39,19 @@ const SignIn: React.FC = () => {
 
           if (userData.role === 'admin') {
             console.log('admin-dashboard');
-
             navigate('/admin-dashboard');
           } else {
             console.log('users-dashboard');
-
             navigate('/users-dashboard');
           }
         } else {
           console.error('No user data found in Firestore');
         }
-      } catch (error) {
+      } catch (error: any) {
         console.error('Error signing in:', error);
+        setErrorMessage(error.message); // Set the error message from Firebase
       }
+
       setLoading(false);
     },
   });
@@ -55,7 +59,16 @@ const SignIn: React.FC = () => {
   return (
     // @ts-ignore
     <Box as="form" onSubmit={formik.handleSubmit} sx={{ maxWidth: 400, margin: 'auto auto', alignContent: 'center', height: '100vh' }}>
+      
+      {/* Display error message if it exists */}
+      {errorMessage && (
+        <Message variant="danger" sx={{ mb: 3 }}>
+          {errorMessage}
+        </Message>
+      )}
+
       <Heading sx={{ marginBottom: 20, textAlign: 'center' }}>Welcome to <span sx={{ color: '#ff0000' }}>Eloni</span></Heading>
+
       <Flex sx={{ flexDirection: 'column', gap: 3 }}>
         <Label htmlFor="email">Email</Label>
         <Input
@@ -84,18 +97,18 @@ const SignIn: React.FC = () => {
         {formik.touched.password && formik.errors.password ? (
           <div sx={{ color: 'red' }}>{formik.errors.password}</div>
         ) : null}
-        <Paragraph sx={{ textAlign: 'right' }}>Don't have an Account <Link to={'/sign-up'} sx={{ color: 'blue', cursor: 'pointer', fontWeight: '600', textDecoration: 'none' }}>Sign Up</Link></Paragraph>
+        
+        <Paragraph sx={{ textAlign: 'right' }}>Don't have an Account? <Link to={'/sign-up'} sx={{ color: 'blue', cursor: 'pointer', fontWeight: '600', textDecoration: 'none' }}>Sign Up</Link></Paragraph>
 
-        {
-          loading ? (
-            <Button sx={{ backgroundColor: '#192A41', borderRadius: 50, padding: 20, cursor: 'pointer', marginTop: 20 }} type="submit">
-              <Spinner sx={{ color: 'white' }} />
-            </Button>
-          ) : (
-            <Button sx={{ backgroundColor: '#192A41', borderRadius: 50, padding: 20, cursor: 'pointer', marginTop: 20 }} type="submit">Sign In</Button>
-          )
-        }
-
+        {loading ? (
+          <Button sx={{ backgroundColor: '#192A41', borderRadius: 50, padding: 20, cursor: 'pointer', marginTop: 20 }} type="submit">
+            <Spinner sx={{ color: 'white' }} />
+          </Button>
+        ) : (
+          <Button sx={{ backgroundColor: '#192A41', borderRadius: 50, padding: 20, cursor: 'pointer', marginTop: 20 }} type="submit">
+            Sign In
+          </Button>
+        )}
       </Flex>
     </Box>
   );
