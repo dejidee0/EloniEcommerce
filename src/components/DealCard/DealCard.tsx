@@ -1,9 +1,25 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /** @jsxImportSource theme-ui */
 import React from "react";
 import { Box, Flex, Text, Image, Button, Progress } from "theme-ui";
-import watchImage from "./../../assets/watch.jpg";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "./../../store/cartSlice";
 
-const DealCard: React.FC = () => {
+const DealCard: React.FC<{ product: any; key: any }> = ({ key, product }) => {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    const item = {
+      id: product.id,
+      name: product.productName,
+      price: product.price,
+      quantity: 1,
+      image: product.productImages[0],
+    };
+
+    dispatch(addItemToCart(item));
+    console.log("Added successfully");
+  };
   return (
     <Box
       sx={{
@@ -14,6 +30,7 @@ const DealCard: React.FC = () => {
         backgroundColor: "#ffffff",
         margin: "20px auto",
       }}
+      key={key}
     >
       <Flex
         sx={{
@@ -21,12 +38,14 @@ const DealCard: React.FC = () => {
         }}
       >
         {/* Product Image */}
-        <Box sx={{ flexBasis: ["100%", "40%"], mb: [3, 0] }}>
+        <Box sx={{ flexBasis: ["100%", "40%"], mb: [3, 0], height: "100%" }}>
           <Image
-            src={watchImage}
-            alt="Watch"
+            src={product?.productImages[0]}
+            alt="product image"
             sx={{
-              maxWidth: "100%",
+              width: "100%",
+              height: "400px",
+              objectFit: "cover",
               borderRadius: "4px",
             }}
           />
@@ -41,29 +60,35 @@ const DealCard: React.FC = () => {
 
           {/* Product Title */}
           <Text sx={{ fontSize: ["16px", "20px"], fontWeight: "bold", mb: 2 }}>
-            INVICTA MEN'S 17884 PRO DIVER WATCH
+            {product?.productName}
           </Text>
-
+          <br />
           {/* Product Description */}
           <Text sx={{ color: "#555", mb: 2 }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mollitia
-            facere quos deleniti odio, aspernatur enim!
+            {product?.productDescription}
           </Text>
 
           {/* Pricing */}
           <Flex sx={{ alignItems: "center", my: 2 }}>
+            {product?.discount && (
+              <Text
+                sx={{
+                  fontSize: ["20px", "24px"],
+                  fontWeight: "bold",
+                  color: "#e63946",
+                  mr: 3,
+                }}
+              >
+                ${product?.discount}
+              </Text>
+            )}
             <Text
               sx={{
-                fontSize: ["20px", "24px"],
-                fontWeight: "bold",
-                color: "#e63946",
-                mr: 3,
+                textDecoration: product?.discount && "line-through",
+                color: "#555",
               }}
             >
-              $89.00
-            </Text>
-            <Text sx={{ textDecoration: "line-through", color: "#555" }}>
-              $100.00
+              ${product?.price}
             </Text>
           </Flex>
 
@@ -76,6 +101,7 @@ const DealCard: React.FC = () => {
               mb: 3,
               cursor: "pointer",
             }}
+            onClick={handleAddToCart}
           >
             ADD TO CART
           </Button>
