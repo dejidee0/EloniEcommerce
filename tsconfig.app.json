@@ -6,6 +6,28 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "assets": [
+        "./src/assets/*"
+      ],
+      "components": [
+        "./src/components/*"
+      ],
+      "firebaseConfig": [
+        "src/firebaseConfig/*"
+      ],
+      "pages": [
+        "./src/pages/*"
+      ],
+      "Theme": [
+        "./src/Theme/*"
+      ],
+    },
+
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,

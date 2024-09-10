@@ -1,594 +1,188 @@
 /** @jsxImportSource theme-ui */
-import cloth_1 from '../../assets/cloth-1.jpg'
+import { Box } from 'theme-ui';
+import { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '@/firebaseConfig/firebaseConfig';
+import ProductContainer from './ProductContainer';
 
-function NewArrival() {
-
-  return (
-    <div sx={{
-      display: 'flex', justifyContent: 'right', gap: 3, fontFamily: 'heading', flexWrap: 'wrap', '@media screen and (max-width: 768px)': {
-        justifyContent: 'center',
-       },
-       '@media screen and (max-width: 425px)': {
-        flexDirection: 'column',
-       },
-    }}>
-        <div sx={{ width: '340px', 
-        padding: 2, '@media screen and (max-width: 425px)': {
-          width: '100%', 
-         }, }}>
-          <h3 sx={{
-            borderBottom: '1px solid #ddd', paddingBottom: 3
-          }}>Latest Arrivals
-          </h3>
-          <div sx={{
-            display: 'flex', gap: 3, overflowX: 'auto', marginTop: 4, scrollSnapType: 'x'
-          }}>
-             <div sx={{
-            display: 'flex', flexDirection: 'column', gap: 3, scrollSnapAlign: 'start'
-          }}>
-          
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px',
-        '@media screen and (max-width: 425px)': {
-          width: '', 
-         },
-        }} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px',
-        '@media screen and (max-width: 425px)': {
-          width: '95%', border: '2px solid blue'
-         },
-        }} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px',
-        '@media screen and (max-width: 425px)': {
-          width: '95%', border: '2px solid blue'
-         },
-        }} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px',
-        '@media screen and (max-width: 425px)': {
-          width: '95%', border: '2px solid blue'
-         },
-        }} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-
-          
-          </div>
-
-          <div sx={{
-            display: 'flex', flexDirection: 'column', gap: 3, scrollSnapAlign: 'start'
-          }}>
-          
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px',
-        '@media screen and (max-width: 425px)': {
-          width: '95%', border: '2px solid blue'
-         },
-        }} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px', '@media screen and (max-width: 425px)': {
-          width: '95%', border: '2px solid blue'
-         },}} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px',
-        '@media screen and (max-width: 425px)': {
-          width: '95%', border: '2px solid blue'
-         },
-        }} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px',
-        '@media screen and (max-width: 425px)': {
-          width: '100%', border: '2px solid black'
-         },
-        }} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-
-          
-          </div>
-
-          </div>
-         
-        </div>
-
-
-        <div sx={{ width: '340px', padding: 2, }}>
-          <h3 sx={{
-            borderBottom: '1px solid #ddd', paddingBottom: 3
-          }}>Trending
-          </h3>
-          <div sx={{
-            display: 'flex', gap: 3, overflowX: 'auto', marginTop: 4, scrollSnapType: 'x'
-          }}>
-             <div sx={{
-            display: 'flex', flexDirection: 'column', gap: 3, scrollSnapAlign: 'start'
-          }}>
-          
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px'}} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px'}} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px'}} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px'}} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-
-          
-          </div>
-
-          <div sx={{
-            display: 'flex', flexDirection: 'column', gap: 3, scrollSnapAlign: 'start'
-          }}>
-          
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px'}} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px'}} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px'}} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px'}} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-
-          
-          </div>
-
-          </div>
-         
-        </div>
-
-
-        <div sx={{ width: '340px', padding: 2, }}>
-          <h3 sx={{
-            borderBottom: '1px solid #ddd', paddingBottom: 3
-          }}>Top Rated
-          </h3>
-          <div sx={{
-            display: 'flex', gap: 3, overflowX: 'auto', marginTop: 4, scrollSnapType: 'x'
-          }}>
-             <div sx={{
-            display: 'flex', flexDirection: 'column', gap: 3, scrollSnapAlign: 'start'
-          }}>
-          
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px'}} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px'}} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px'}} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px'}} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-
-          
-          </div>
-
-          <div sx={{
-            display: 'flex', flexDirection: 'column', gap: 3, scrollSnapAlign: 'start'
-          }}>
-          
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px'}} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px'}} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px'}} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-          <div sx={{ border: '1px solid #ddd', display: 'flex', justifyContent: 'center',gap: 3, alignContent: 'center', borderRadius: '10px', height: '100px', width: '320px'}} >
-          
-          <div sx={{
-            width: '20%', paddingTop: 3
-          }}>
-            <img src={cloth_1} alt="cloth" sx={{width: '100%'}}/>
-          </div>
-          <div sx={{padding: 0}}>
-            <div sx={{display: 'flex', flexDirection: 'column', padding: 2}}>
-            <span sx={{whiteSpace: 'nowrap', marginBottom: 1, fontWeight: 800, color: '#333'}}>French Toast Girls Sho ...</span>
-            <span>Clothes</span>
-            </div>
-            <div sx={{display: 'flex', gap: 2, marginLeft: 2}}>
-              <span sx={{color: 'secondary', fontWeight: 800 }}>$9.00</span>
-              <span sx={{ fontWeight: 300, textDecoration: 'line-through', color: 'gray' }}>$4.00</span>
-            </div>
-          </div>
-        </div>
-
-
-          
-          </div>
-
-          </div>
-         
-        </div>
-
-    </div>
-  )
+interface Product {
+  id: string;
+  topSelection: string;
+  productName: string;
+  discount: string;
+  productImages: [string];
+  price: string;
+  productCategory: string;
 }
 
-export default NewArrival
+// Utility function to split products into chunks of a given size
+function chunkArray<T>(array: T[], chunkSize: number): T[][] {
+  const result = [];
+  for (let i = 0; i < array.length; i += chunkSize) {
+    result.push(array.slice(i, i + chunkSize));
+  }
+  return result;
+}
+
+function NewArrival() {
+  const [latestProducts, setLatestProducts] = useState<Product[][]>([]);
+  const [trendingProducts, setTrendingProducts] = useState<Product[][]>([]);
+  const [topRatedProducts, setTopRatedProducts] = useState<Product[][]>([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'products'));
+        const productsList = querySnapshot.docs.map((doc) => {
+          const data = doc.data() as Product;
+          return { ...data, id: doc.id };
+        });
+
+     
+        setLatestProducts(
+          chunkArray(productsList.filter((product) => product.topSelection === 'isLatest'), 4)
+        );
+        setTrendingProducts(
+          chunkArray(productsList.filter((product) => product.topSelection === 'isTrending'), 4)
+        );
+        setTopRatedProducts(
+          chunkArray(productsList.filter((product) => product.topSelection === 'isTopRated'), 4)
+        );
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  return (
+    <Box
+      sx={{
+        marginBottom: ['0', '0', '0', '20px'],
+        display: ['block', 'flex'],
+        flexWrap: ['nowrap', 'wrap'],
+        justifyContent: ['flex-start', 'center'],
+        gap: ['0', '20px'],
+      }}
+    >
+      {/* Latest Products */}
+      <div
+        sx={{
+          width: '340px',
+          padding: 2,
+          '@media screen and (max-width: 620px)': {
+            width: '100%',
+          },
+        }}
+      >
+        <h3
+          sx={{
+            borderBottom: '1px solid #ddd',
+            paddingBottom: 3,
+          }}
+        >
+          Latest Arrivals
+        </h3>
+        
+          
+          <div
+            
+            sx={{
+              display: 'flex',
+              gap: 3,
+              overflowX: 'auto',
+              marginTop: 4,
+              scrollSnapType: 'x mandatory',
+              width: '100%'
+            }}
+          >
+            {latestProducts.map((chunk, index) => (
+            <ProductContainer products={chunk} key={index} />
+            ))}
+          </div>
+       
+      </div>
+
+      {/* Trending Products */}
+      <div
+        sx={{
+          width: '340px',
+          padding: 2,
+          '@media screen and (max-width: 620px)': {
+            width: '100%',
+          },
+        }}
+      >
+        <h3
+          sx={{
+            borderBottom: '1px solid #ddd',
+            paddingBottom: 3,
+          }}
+        >
+          Trending
+        </h3>
+        
+          <div
+           
+            sx={{
+              display: 'flex',
+              gap: 3,
+              overflowX: 'auto',
+              marginTop: 4,
+              scrollSnapType: 'x mandatory',
+              '@media screen and (max-width: 620px)': {
+                width: '100%',
+              },
+            }}
+          >
+            {trendingProducts.map((chunk, index) => (
+            <ProductContainer products={chunk} key={index} />
+            ))}
+          </div>
+       
+      </div>
+
+      {/* Top Rated Products */}
+      <div
+        sx={{
+          width: '340px',
+          padding: 2,
+          '@media screen and (max-width: 620px)': {
+            width: '100%',
+          },
+        }}
+      >
+        <h3
+          sx={{
+            borderBottom: '1px solid #ddd',
+            paddingBottom: 3,
+          }}
+        >
+          Top Rated
+        </h3>
+        
+          <div
+            
+            sx={{
+              display: 'flex',
+              gap: 3,
+              overflowX: 'auto',
+              marginTop: 4,
+              scrollSnapType: 'x mandatory',
+              '@media screen and (max-width: 620px)': {
+                width: '100%',
+              },
+            }}
+          >
+            {topRatedProducts.map((chunk, index) => (
+            <ProductContainer products={chunk} key={index} />
+            ))}
+          </div>
+        
+      </div>
+    </Box>
+  );
+}
+
+export default NewArrival;
