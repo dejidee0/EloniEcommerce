@@ -10,6 +10,7 @@ import Otp from "./pages/Otp/Otp.tsx";
 import UsersDashboard from "./pages/Dashboard/UsersDashboard/UsersDashboard.tsx";
 import WishList from "./pages/WishList/WishList.tsx";
 
+
 export default function App() {
   return (
     <ThemeUIProvider theme={theme}>
