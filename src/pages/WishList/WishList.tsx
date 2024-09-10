@@ -4,6 +4,7 @@ import { Box, Flex, IconButton } from "theme-ui";
 import WishListBar from "@/components/WishListBar/WishListBar";
 import WishListContent from "@/components/WishListContent/WishListContent";
 import Cookies from "@/components/Cookies/Cookies";
+import Footer from "@/components/Footer/Footer";
 
 const WishList: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -51,6 +52,9 @@ const WishList: React.FC = () => {
           <Cookies />
         </Box>
       </Flex>
+      {/* Section goes here */}
+
+      <Footer />
     </>
   );
 };

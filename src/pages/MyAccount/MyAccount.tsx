@@ -1,4 +1,5 @@
 import AccountDetails from "@/components/AccountDetails/AccountDetails";
+import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import Recommend from "@/components/Recommend/Recommend";
 import WishListBar from "@/components/WishListBar/WishListBar";
@@ -19,6 +20,7 @@ const MyAccount: React.FC = () => {
         <AccountDetails />
       </Box>
       <Recommend />
+      <Footer />
     </>
   );
 };

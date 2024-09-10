@@ -123,7 +123,7 @@ const SubscribeModal: React.FC = () => {
                       name="email"
                       type="email"
                       as={Input}
-                      placeholder="Enter your email"
+                      placeholder="Email Address"
                       sx={{
                         width: "100%",
                         padding: "12px 16px",
