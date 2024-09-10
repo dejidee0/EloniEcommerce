@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import { Box, Flex, Text, Link, Image } from 'theme-ui';
+import { Box, Flex, Text, Link, Image, Grid } from 'theme-ui';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 
 const Footer = () => {
@@ -113,8 +113,8 @@ const Footer = () => {
       <Box sx={{ borderTop: '1px solid #6C757D', paddingTop: 4, marginTop: 4 }}>
         <Flex
           sx={{
-            flexDirection: ['column', 'row'],
-            justifyContent: 'space-between',
+            flexDirection: ['column', 'column'],
+            justifyContent: 'center',
             alignItems: 'center',
             maxWidth: '1200px',
             margin: '0 auto',
@@ -124,44 +124,38 @@ const Footer = () => {
           }}
         >
           {/* Payment Icons */}
-          <Flex
-  sx={{
-    justifyContent: 'center',
-    alignItems: 'center', // Ensure icons are vertically centered
-    flexWrap: 'wrap',
-    gap: 3,
-    marginBottom: [3, 0],
-    width: '100%', // Ensure the Flex container takes up full width
-    textAlign: 'center',
-  }}
->
-  {[
-    { src: '/images/mastercard.jpg', alt: 'Mastercard' },
-    { src: '/images/payoneer.jpg', alt: 'Payoneer' },
-    { src: '/images/applepay.jpg', alt: 'Apple Pay' },
-    { src: '/images/stripe.jpg', alt: 'Stripe' },
-    { src: '/images/paypal.jpg', alt: 'PayPal' },
-    { src: '/images/visa.jpg', alt: 'Visa' },
-    { src: '/images/skrill.png', alt: 'Skrill' },
-    { src: '/images/googlepay.jpg', alt: 'Google Pay' },
-  ].map((icon) => (
-    <Image
-      key={icon.alt}
-      src={icon.src}
-      sx={{
-        width: ['40px', '50px'],
-        height: 'auto',
-        marginX: '10px', // Equal margin on both sides
-        borderRadius: '8px', // Adjust this value to match the original design
-      }}
-      alt={icon.alt}
-    />
-  ))}
-</Flex>
+          <Grid
+            gap={3}
+            columns={[4, 4]}
+            sx={{ justifyContent: 'center', alignItems: 'center' }}
+          >
+            {[
+              { src: '/images/mastercard.jpg', alt: 'Mastercard' },
+              { src: '/images/payoneer.jpg', alt: 'Payoneer' },
+              { src: '/images/applepay.jpg', alt: 'Apple Pay' },
+              { src: '/images/stripe.jpg', alt: 'Stripe' },
+              { src: '/images/paypal.jpg', alt: 'PayPal' },
+              { src: '/images/visa.jpg', alt: 'Visa' },
+              { src: '/images/skrill.png', alt: 'Skrill' },
+              { src: '/images/googlepay.jpg', alt: 'Google Pay' },
+            ].map((icon) => (
+              <Image
+                key={icon.alt}
+                src={icon.src}
+                sx={{
+                  width: ['60px', '50px'],
+                  height: 'auto',
+                  marginX: '10px', // Equal margin on both sides
+                  borderRadius: '8px', // Adjust this value to match the original design
+                }}
+                alt={icon.alt}
+              />
+            ))}
+          </Grid>
 
           {/* Copyright */}
-          <Text sx={{ textAlign: 'center', color: '#6C757D', fontSize: 1, paddingTop: 2 }}>
-            © Codemonktech All Rights Reserved.
+          <Text sx={{ textAlign: 'center', color: '#ddd', fontSize: '0.813rem', paddingTop: 2, fontWeight: '500', textTransform: 'capitalize', letterSpacing: 1.2, marginTop: 20 }}>
+            Copyright © Codemonktech All Rights Reserved.
           </Text>
         </Flex>
       </Box>
