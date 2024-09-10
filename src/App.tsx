@@ -20,9 +20,9 @@ export default function App() {
       <BrowserRouter>
         <Provider store={store}>
           <Routes>
-            <Route path="/" element={<UsersDashboard />} />
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/" element={<UsersDashboard />} />
             <Route path="/otp-page" element={<Otp />} />
             <Route path="/wishlist" element={<WishList />} />
             <Route path="/cart" element={<CartList />} />

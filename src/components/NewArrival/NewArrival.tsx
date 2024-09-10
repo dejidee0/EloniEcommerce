@@ -56,6 +56,9 @@ function NewArrival() {
     fetchProducts();
   }, []);
 
+  console.log('latestProducts',latestProducts);
+  
+
   return (
     <Box
       sx={{

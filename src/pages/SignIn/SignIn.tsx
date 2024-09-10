@@ -44,7 +44,7 @@ const SignIn: React.FC = () => {
             navigate('/admin-dashboard');
           } else {
             console.log('users-dashboard');
-            navigate('/users-dashboard');
+            navigate('/');
           }
         } else {
           console.error('No user data found in Firestore');
