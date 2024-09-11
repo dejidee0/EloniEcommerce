@@ -731,7 +731,7 @@ const AdminForm: React.FC = () => {
               accept="image/*"
             />
             {formik.touched.productImages && formik.errors.productImages && (
-              // @ts-ignore
+              // @ts-expect-error
               <Box sx={{ color: 'red' }}>{formik?.errors?.productImages}</Box>
             )}
             {imagePreviews.length > 0 && (
