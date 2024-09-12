@@ -2,11 +2,13 @@
 /** @jsxImportSource theme-ui */
 import React from "react";
 import { Box, Flex, Text, Image, Button, Progress } from "theme-ui";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "./../../store/cartSlice";
 
 const DealCard: React.FC<{ product: any; key: any }> = ({ key, product }) => {
   const dispatch = useDispatch();
+  const naviagate = useNavigate();
 
   const handleAddToCart = () => {
     const item = {
@@ -19,6 +21,8 @@ const DealCard: React.FC<{ product: any; key: any }> = ({ key, product }) => {
 
     dispatch(addItemToCart(item));
     console.log("Added successfully");
+
+    naviagate("/cart");
   };
   return (
     <Box
