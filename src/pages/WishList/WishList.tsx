@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 import { Box, Flex, IconButton } from "theme-ui";
 import WishListBar from "@/components/WishListBar/WishListBar";
 import WishListContent from "@/components/WishListContent/WishListContent";
 import Cookies from "@/components/Cookies/Cookies";
-import Footer from "@/components/Footer/Footer";
 import Recommend from "@/components/Recommend/Recommend";
 
 const WishList: React.FC = () => {

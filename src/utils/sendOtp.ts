@@ -8,7 +8,7 @@ export const sendOTP = async (email:string) => {
   const otp = generateOTP();
 
   // Store the OTP and email in Firestore for verification later
-  await firestore.collection("otps").doc(email).set({
+  await firebase.firestore().collection("otps").doc(email).set({
     email,
     otp,
     timestamp: firebase.firestore.FieldValue.serverTimestamp(),

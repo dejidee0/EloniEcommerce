@@ -1,3 +1,4 @@
+/** @jsxImportSource theme-ui */
 import { FaLuggageCart } from "react-icons/fa";
 import { Box, Button, Text } from "theme-ui";
 
@@ -47,7 +48,7 @@ const EmptyOrder: React.FC = () => {
             >
               You have palced no orders yet!
             </Text>
-            <Text fontSize={["10px", "13px"]}>
+            <Text sx={{ fontSize: ["10px", "13px"] }}>
               All your orders will be saved here for you access thier state
               anytime.{" "}
             </Text>

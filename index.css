@@ -1,5 +1,6 @@
 body {
  font-family: "Poppins", sans-serif;
+ 
 }
 
 *, *::before, *::after {
@@ -7,5 +8,35 @@ body {
  padding: 0;
  -webkit-box-sizing: border-box;
  box-sizing: border-box;
+}
+
+
+::-webkit-scrollbar {
+    
+    height: 4px; /
+}
+
+
+
+
+::-webkit-scrollbar-track {
+    
+    background: #fff; 
+}
+
+
+::-webkit-scrollbar-thumb {
+    opacity: 0;
+    /* visibility: hidden; */
+    background: #ddd; 
+    border-radius: 10px; 
+}
+
+
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb {
+    background: #ddd; 
+   
 }
 

@@ -1,18 +1,11 @@
 /** @jsxImportSource theme-ui */
 
+import { SubItem } from "@/type/SubItem";
 import { Link, Paragraph } from "theme-ui";
 
 type CategoryItemsProps = {
  visibility: boolean
- subItems: {
-  item: string;
-  price: number;
-  stockQuantity: string
- }[] | {
-  item: string;
-  price: string;
-  stockQuantity: string
- }[]
+ subItems: SubItem[]
 }
 
 const CategorySubitems = (props: CategoryItemsProps) => {

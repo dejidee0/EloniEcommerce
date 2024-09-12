@@ -32,9 +32,10 @@ function Banner() {
       fontFamily: 'heading',
       color: 'primary',
       position: 'relative',
+      marginTop: 2
     }}>
       <ul sx={{
-        display: 'flex', listStyleType: 'none', justifyContent: 'center', gap: 4, fontSize: 2, fontWeight: 600, position: 'relative',
+        display: 'flex', listStyleType: 'none', justifyContent: 'center', gap: 4, fontSize: 2, fontWeight: 600, position: 'relative', marginBottom: 2,
         '@media screen and (max-width: 768px)': {
           display: 'none'
         },
@@ -79,14 +80,18 @@ function Banner() {
             width: '100%',
           },
           '&:hover + .categories-modal': {
-            display: 'flex',
+           visibility: 'visible',
             opacity: 1,
             transition: 'opacity 0.3s ease',
 
           }
         }}>CATEGORIES</li>
         <div sx={{
-          paddingLeft: 5, paddingRight: 5, position: 'absolute', top: '35px', left: 0, zIndex: 2, background: '#fff', opacity: 0, '&:hover': { display: 'flex', opacity: 1 },
+          paddingLeft: 5, paddingRight: 5, position: 'absolute', top: '25px', left: 0, zIndex: 2, background: '#fff', opacity: 0,  display: 'flex', visibility: 'hidden',
+          
+          '&:hover': { display: 'flex', opacity: 1 }
+          
+          
         }} className='categories-modal'>
           <div sx={{
             width: '100%', borderRadius: '15px', boxShadow: '0 0 15px #ddd', display: 'flex', justifyContent: 'space-evenly', padding: 2, '&:hover': { display: 'flex', opacity: 1 }
@@ -280,16 +285,16 @@ function Banner() {
             width: '100%',
           },
           '&:hover > .men-modal': {
-            display: 'flex',
+            visibility: 'visible',
             opacity: 1,
             transition: 'width 0.3s ease',
           },
         }}>MEN'S
           <ul className='men-modal' sx={{
             position: 'absolute',
-            top: '38px', background: '#fff', zIndex: 1, fontWeight: 400,
+            top: '25px', background: '#fff', zIndex: 1, fontWeight: 400,
             padding: 4, opacity: 0,
-            color: 'primary', flexDirection: 'column', gap: 3, border: '2px solid #ebedef', width: '200px', listStyleType: 'none', borderRadius: '10px',
+            color: 'primary', flexDirection: 'column', gap: 3, border: '2px solid #ebedef', width: '200px', listStyleType: 'none', borderRadius: '10px', display: 'flex', visibility: 'hidden'
 
           }}>
             {['Leather Jackets', 'Shorts & Jeans', 'Boots', 'T-Shirt', 'Shoes'].map((item) => (
@@ -316,16 +321,16 @@ function Banner() {
             width: '100%',
           },
           '&:hover > .women-modal': {
-            display: 'flex',
+            visibility: 'visible',
             opacity: 1,
             transition: 'width 0.3s ease',
           },
         }}>WOMEN'S
           <ul className='women-modal' sx={{
             position: 'absolute',
-            top: '38px', background: '#fff', zIndex: 1, fontWeight: 400,
+            top: '25px', background: '#fff', zIndex: 1, fontWeight: 400,
             padding: 4, opacity: 0,
-            color: 'primary', flexDirection: 'column', gap: 3, border: '2px solid #ebedef', width: '200px', listStyleType: 'none', borderRadius: '10px',
+            color: 'primary', flexDirection: 'column', gap: 3, border: '2px solid #ebedef', width: '200px', listStyleType: 'none', borderRadius: '10px', display: 'flex', visibility: 'hidden'
 
           }}>
             {['Stilletos', 'Scarf', 'Earrings', 'Dress'].map((item) => (
@@ -352,16 +357,16 @@ function Banner() {
             width: '100%',
           },
           '&:hover > .perfume-modal': {
-            display: 'flex',
+            visibility: 'visible',
             opacity: 1,
             transition: 'width 0.3s ease',
           },
         }}>PERFUME
           <ul className='perfume-modal' sx={{
             position: 'absolute',
-            top: '38px', background: '#fff', zIndex: 1, fontWeight: 400,
+            top: '25px', background: '#fff', zIndex: 1, fontWeight: 400,
             padding: 4, opacity: 0,
-            color: 'primary', flexDirection: 'column', gap: 3, border: '2px solid #ebedef', width: '200px', listStyleType: 'none', borderRadius: '10px',
+            color: 'primary', flexDirection: 'column', gap: 3, border: '2px solid #ebedef', width: '200px', listStyleType: 'none', borderRadius: '10px', display: 'flex', visibility: 'hidden'
 
           }}>
             {['Floral Elegance', 'Mystic Amber', 'Ocean Breeze', 'Velvet Rose'].map((item) => (
@@ -388,7 +393,7 @@ function Banner() {
             width: '100%',
           },
           '&:hover > .jewelry-modal': {
-            display: 'flex',
+            visibility: 'visible',
             opacity: 1,
             transition: 'width 0.3s ease',
           },
@@ -396,9 +401,9 @@ function Banner() {
           JEWELRY
           <ul className='jewelry-modal' sx={{
             position: 'absolute',
-            top: '38px', background: '#fff', zIndex: 1, fontWeight: 400,
+            top: '25px', background: '#fff', zIndex: 1, fontWeight: 400,
             padding: 4, opacity: 0,
-            color: 'primary', flexDirection: 'column', gap: 3, border: '2px solid #ebedef', width: '200px', listStyleType: 'none', borderRadius: '10px',
+            color: 'primary', flexDirection: 'column', gap: 3, border: '2px solid #ebedef', width: '200px', listStyleType: 'none', borderRadius: '10px', display: 'flex', visibility: 'hidden'
 
           }}>
             {['Necklace', 'Gold Bangle', 'Diamond Ring', 'Bracelets'].map((item) => (
@@ -543,14 +548,14 @@ function Banner() {
       </div>
 
       <div sx={{
-        width: '90%', margin: 'auto', marginTop: 4, display: 'flex', gap: '28px', overflowX: 'auto',
+        width: '90%', margin: 'auto', marginTop: 4, display: 'flex', gap: '28px', overflowX: 'auto', 
         '@media screen and (max-width: 1024px)': {
           gap: 2,
         },
         '@media screen and (max-width: 768px)': {
           gap: 4,
         },
-        marginBottom: 30
+        marginBottom: 30, paddingBottom: '10px'
       }}>
 
         <div sx={{
