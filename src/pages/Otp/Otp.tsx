@@ -14,8 +14,8 @@ const Otp: React.FC = () => {
     validationSchema: Yup.object({
       otp: Yup.array()
         .of(Yup.string().length(1, "Each digit must be a single character"))
-        // @ts-ignore
         .test("complete", "Please enter the complete 4-digit OTP.", (value) =>
+          // @ts-ignore
           value.every((val) => val !== "")
         ),
     }),

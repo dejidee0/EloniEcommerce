@@ -7,7 +7,7 @@ import { Box, Heading } from "theme-ui";
 import Categories from "../../utils/categories";
 
 const Category = () => {
-  const [categories, setCategories] = useState(Categories);
+  const [categories] = useState(Categories);
   const [products, setProducts] = useState({});
 
   // Fetch products for each category when the component mounts
@@ -20,6 +20,7 @@ const Category = () => {
 
       const categoryProducts = await Promise.all(categoryProductPromises);
       const productsMap = categoryProducts.reduce((acc, { name, products }) => {
+        // @ts-ignore
         acc[name] = products;
         return acc;
       }, {});
@@ -70,6 +71,7 @@ const Category = () => {
               image={category.image}
               name={category.name}
               addOutline={addOutline}  // Use the state to control the addOutline prop
+              // @ts-ignore
               subItems={products[category.name] || []} // Ensure subItems is an array
             />
           ))}

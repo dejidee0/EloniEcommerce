@@ -1,5 +1,6 @@
+/** @jsxImportSource theme-ui */
 import React from "react";
-import { Box, NavLink, Flex } from "theme-ui";
+import { Box, Flex } from "theme-ui";
 import { Link } from "react-router-dom";
 import {
   FaUser,
@@ -66,8 +67,7 @@ const WishListBar: React.FC = () => {
                 },
               }}
             >
-              <NavLink
-                as={Link}
+              <Link
                 to={item.link}
                 sx={{
                   color: "inherit",
@@ -79,7 +79,7 @@ const WishListBar: React.FC = () => {
                   <item.icon sx={{ mr: 2 }} />
                   {item.name}
                 </Flex>
-              </NavLink>
+              </Link>
             </Box>
           ))}
         </Box>
