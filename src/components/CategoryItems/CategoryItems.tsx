@@ -4,12 +4,13 @@ import { removeOutline } from "ionicons/icons";
 import { useState } from "react";
 import { Box, Button, Paragraph } from "theme-ui";
 import CategorySubitems from "../CategorySubitems/CategorySubitems";
+import { SubItem } from "@/type/SubItem";
 
 type CategoryItemsProps = {
   image: string;
   name: string;
   addOutline: string;
-  subItems: { item: string; price: number | string }[];
+  subItems: SubItem[];
 };
 
 const capitalizeFirstLetter = (name: string) => {
@@ -21,6 +22,9 @@ const CategoryItems = (props: CategoryItemsProps) => {
   const { image, name, addOutline, subItems } = props;
   const [visibility, setVisibility] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  console.log('subItems', subItems);
+  
 
   const handleSubItems = () => {
     setVisibility(!visibility);

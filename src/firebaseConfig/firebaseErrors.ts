@@ -1,5 +1,3 @@
-
-
 export const firebaseErrorMessages: Record<string, string> = {
     'auth/claims-too-large': 'The claims payload exceeds the maximum allowed size of 1000 bytes.',
     'auth/email-already-exists': 'The email is already in use by another user.',
