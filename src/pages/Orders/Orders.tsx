@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
 import { Box, Flex, IconButton } from "theme-ui";
 import WishListBar from "@/components/WishListBar/WishListBar";
-import WishListContent from "@/components/WishListContent/WishListContent";
 import Cookies from "@/components/Cookies/Cookies";
+import OrdersContent from "@/components/OrdersContent/OrdersContent";
 
-const WishList: React.FC = () => {
+const Orders: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -46,7 +45,7 @@ const WishList: React.FC = () => {
             p: [2, 4],
           }}
         >
-          <WishListContent />
+          <OrdersContent />
         </Box>
         <Box>
           <Cookies />
@@ -56,4 +55,4 @@ const WishList: React.FC = () => {
   );
 };
 
-export default WishList;
+export default Orders;

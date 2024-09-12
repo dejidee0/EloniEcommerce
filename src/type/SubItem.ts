@@ -1,0 +1,20 @@
+export type SubItem = {
+    id: string;
+    discount: string;
+    shippingInfo: string;
+    status: boolean;
+    seoDescription: string;
+    productName: string;
+    seoKeywords: string;
+    seoTitle: string;
+    productCategory: string;
+    productVariants: string;
+    adminName: string;
+    productSubCategory: string;
+    price: number;
+    productImages: string[];
+    sku: string;
+    stockQuantity: string;
+    productDescription: string;
+    tags: string;
+};

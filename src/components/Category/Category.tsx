@@ -30,6 +30,9 @@ const Category = () => {
     fetchAllCategoryProducts();
   }, [categories]);
 
+  console.log('products', products);
+  
+
   return (
     <Box
       sx={{

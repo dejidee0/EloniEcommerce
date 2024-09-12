@@ -48,7 +48,6 @@ const SignUp: React.FC = () => {
           values.email,
           values.password
         );
-
         await setDoc(doc(db, "users", userCredential.user.uid), {
           firstName: values.firstName,
           lastName: values.lastName,

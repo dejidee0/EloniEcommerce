@@ -39,37 +39,36 @@ const SubscribeModal: React.FC = () => {
           <Box
             sx={{
               position: "fixed",
-              top: "30%",
+              top: "50%",
               left: "50%",
-              transform: "translate(-50%, 0)",
+              transform: "translate(-50%, -50%)",
               backgroundColor: "white",
-              justifyContent: 'center',
-              borderRadius: "8px",
+              padding: ["30px", "40px", "50px"],
+              borderRadius: "12px",
               zIndex: 11,
               textAlign: "center",
-              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+              boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.15)",
               display: "flex",
-              flexDirection: "row",
-              height: '400px',
-              maxWidth: "750px",
-              gap: 5,
-              padding: '50px 30px'
+              flexDirection: ["column", "row"],
+              maxWidth: ["95%", "70%", "600px"],
+              gap: 4,
             }}
           >
             <Button
               onClick={toggleModal}
               sx={{
                 position: "absolute",
-                top: "10px",
-                right: "10px",
+                top: "15px",
+                right: "15px",
                 backgroundColor: "red",
                 border: "none",
-                fontSize: "16px",
+                fontSize: "28px",
                 cursor: "pointer",
-                // padding: '5px',
-                borderRadius: '5px',
-                color: '#ffffff',
-                display: 'block'
+                padding: 2,
+                color: "black",
+                "&:hover": {
+                  color: "red",
+                },
               }}
             >
               &times;
@@ -79,29 +78,34 @@ const SubscribeModal: React.FC = () => {
               src="/Telegram logo.png"
               alt="Telegram Icon"
               sx={{
-                // width: "50%",
-                width: '230px',
-                height: '230px',
-                marginRight: "5px",
-                marginTop: 10,
-                display: ["none", "none", "block"],
+                width: "35%",
+                marginRight: ["0", "5px"],
+                marginBottom: ["20px", "0"],
+                display: ["none", "block"],
+                borderRadius: "10px",
               }}
             />
 
             <Flex
               sx={{
-                justifyContent: "center",
                 flexDirection: "column",
-                width: ["100%", "100%", "40%"],
-                textAlign: 'left',
+                width: ["100%", "65%"],
+                textAlign: "left",
               }}
             >
-              <Heading sx={{ fontSize: '1.125rem', marginBottom: "10px", color: '#454545', fontWeight: '600' }}>
-                Subscribe Newsletter
+              <Heading
+                as="h2"
+                sx={{
+                  fontSize: [3, 3, 4],
+                  marginBottom: "12px",
+                  fontWeight: "bold",
+                }}
+              >
+                Subscribe to Our Newsletter
               </Heading>
-              <Text sx={{ fontSize: '0.875rem', lineHeight: 1.6, color: '#0f1111' }}>
-                Subscribe to <strong>Eloni's Shop</strong> to get the latest
-                products and discount updates.
+              <Text sx={{ fontSize: [2, 2, 3], marginBottom: "16px" }}>
+                Stay updated with <strong>Eloni's Shop</strong> for exclusive
+                product updates and discounts.
               </Text>
 
               <Formik
@@ -121,48 +125,50 @@ const SubscribeModal: React.FC = () => {
                       as={Input}
                       placeholder="Email Address"
                       sx={{
-                        padding: "8px 16px",
-                        marginBottom: "16px",
-                        borderRadius: "5px",
-                        fontSize: "0.875rem",
-                        display: "block",
-                        justifyContent: "center",
-                        alignItems: "end",
-                        border: '1px solid #ededed',
-                        marginTop: '20px'
+                        width: "100%",
+                        padding: "12px 16px",
+                        fontSize: [2, 2, 3],
+                        borderRadius: "6px",
+                        marginBottom: "12px",
+                        border: "1px solid #ddd",
                       }}
                     />
                     <ErrorMessage
                       name="email"
                       component="div"
-                      // style={{
-                      //   color: "red",
-                      //   fontSize: "12px",
-                      //   marginBottom: "10px",
-                      // }}
+                      style={{
+                        color: "red",
+                        fontSize: "12px",
+                        marginBottom: "10px",
+                      }}
                     />
-                    <Button
-                      type="submit"
+                    <Flex
                       sx={{
-                        backgroundColor: "#232f35",
-                        textTransform: 'uppercase',
-                        color: '#fff',
-                        fontWeight: '600',
-                        width: "auto",
-                        display: 'block',
-                        transition: '0.2s ease',
-                        padding: "10px 15px",
-                        borderRadius: 5,
-                        margin: 'auto',
-                        fontSize: '0.875rem',
-                        cursor: "pointer",
-                        "&:hover": {
-                          backgroundColor: "red",
-                        },
+                        justifyContent: "center",
+                        alignItems: "center",
+                        gap: 2,
+                        flexDirection: ["column", "row"],
                       }}
                     >
-                      Subscribe
-                    </Button>
+                      <Button
+                        type="submit"
+                        sx={{
+                          backgroundColor: "#192A41",
+                          width: "auto",
+                          padding: "10px 24px",
+                          fontSize: [1, 2],
+                          cursor: "pointer",
+                          borderRadius: "8px",
+                          color: "white",
+                          transition: "background-color 0.3s",
+                          "&:hover": {
+                            backgroundColor: "#1A2B50",
+                          },
+                        }}
+                      >
+                        Subscribe
+                      </Button>
+                    </Flex>
                   </Form>
                 )}
               </Formik>
