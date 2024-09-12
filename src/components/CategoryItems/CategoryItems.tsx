@@ -1,42 +1,45 @@
 /** @jsxImportSource theme-ui */
-import { IonIcon } from "@ionic/react"
-import { useState } from "react"
-import { Box, Button, Paragraph } from "theme-ui"
-import CategorySubitems from "../CategorySubitems/CategorySubitems"
+import { IonIcon } from "@ionic/react";
+import { removeOutline } from "ionicons/icons"; 
+import { useState } from "react";
+import { Box, Button, Paragraph } from "theme-ui";
+import CategorySubitems from "../CategorySubitems/CategorySubitems";
+import { SubItem } from "@/type/SubItem";
 
 type CategoryItemsProps = {
-  image: string
-  name: string
-  addOutline: string
-  subItems: {
-    item: string;
-    price: number;
-  }[] | {
-    item: string;
-    price: string;
-  }[]
-}
+  image: string;
+  name: string;
+  addOutline: string;
+  subItems: SubItem[];
+};
 
 const capitalizeFirstLetter = (name: string) => {
-  return name.charAt(0).toUpperCase() + name.slice(1)
-}
+  // console.log(name);
+  return name.charAt(0).toUpperCase() + name.slice(1);
+};
 
 const CategoryItems = (props: CategoryItemsProps) => {
-  const { image, name, addOutline, subItems } = props
-  const [visibility, setVisibiilty] = useState(false)
+  const { image, name, addOutline, subItems } = props;
+  const [visibility, setVisibility] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  console.log('subItems', subItems);
+  
 
   const handleSubItems = () => {
-    setVisibiilty(!visibility)
-  }
+    setVisibility(!visibility);
+    setIsOpen(!isOpen);
+  };
 
   return (
-
-    <li sx={{ 
+    <li
+      sx={{ 
         listStyleType: 'none', 
         height: visibility ? 'auto' : '40.66px',
         transition: "height 0.3s ease-in-out",
         overflow: 'hidden'
-        }}>
+      }}
+    >
       <Button
         onClick={handleSubItems}
         sx={{
@@ -49,7 +52,8 @@ const CategoryItems = (props: CategoryItemsProps) => {
           background: 'none',
           border: 'none',
           font: 'inherit'
-        }}>
+        }}
+      >
         <Box sx={{
           display: 'flex',
           alignItems: 'center',
@@ -61,10 +65,16 @@ const CategoryItems = (props: CategoryItemsProps) => {
               fontSize: '0.941rem',
               color: '#0f1111',
               fontWeight: '500'
-            }}>{capitalizeFirstLetter(name)}</Paragraph>
+            }}
+          >
+            {capitalizeFirstLetter(name)}
+          </Paragraph>
         </Box>
         <Box>
-          <IonIcon icon={addOutline} role="img" aria-label="add outline"
+          <IonIcon 
+            icon={isOpen ? removeOutline : addOutline} 
+            role="img" 
+            aria-label="add outline"
             sx={{
               color: '#000',
               padding: '1',
@@ -77,7 +87,7 @@ const CategoryItems = (props: CategoryItemsProps) => {
       </Button>
       <CategorySubitems visibility={visibility} subItems={subItems} />
     </li>
-  )
-}
+  );
+};
 
-export default CategoryItems
+export default CategoryItems;

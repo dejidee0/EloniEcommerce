@@ -46,7 +46,7 @@ const HeaderComponent: React.FC = () => {
         flexDirection: 'row',
         justifyContent: ['center', ''],
       }}>
-        <Link to="/users-dashboard" className="header-logo" >
+        <Link to="/" className="header-logo" >
           <Image
             src={logo}
             sx={{

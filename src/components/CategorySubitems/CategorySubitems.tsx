@@ -1,16 +1,11 @@
 /** @jsxImportSource theme-ui */
 
+import { SubItem } from "@/type/SubItem";
 import { Link, Paragraph } from "theme-ui";
 
 type CategoryItemsProps = {
  visibility: boolean
- subItems: {
-  item: string;
-  price: number;
- }[] | {
-  item: string;
-  price: string;
- }[]
+ subItems: SubItem[]
 }
 
 const CategorySubitems = (props: CategoryItemsProps) => {
@@ -53,9 +48,9 @@ const CategorySubitems = (props: CategoryItemsProps) => {
             textTransform: 'capitalize'
            }}
           >
-           {subItem.item}
+           {subItem.productName}
           </Paragraph>
-          <data>{subItem.price}</data>
+          <data>{subItem.stockQuantity}</data>
          </Link>
         </li>
        ))
