@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /** @jsxImportSource theme-ui */
 import { Box, Button, Input, Label, Select, Textarea, Image, Message } from '@theme-ui/components';
 import { Spinner, Heading,  Radio, Checkbox } from 'theme-ui';

@@ -12,7 +12,6 @@ import UsersDashboard from "./pages/Dashboard/UsersDashboard/UsersDashboard.tsx"
 import WishList from "./pages/WishList/WishList.tsx";
 import store from "./store/store.ts";
 import CartList from "./components/Cart/CartList.tsx";
-
 import Orders from "./pages/Orders/Orders.tsx";
 import MyAccount from "./pages/MyAccount/MyAccount.tsx";
 import AddressBook from "./pages/AddressBook/AddressBook.tsx";
@@ -30,8 +29,10 @@ export default function App() {
             <Route path="/wishlist" element={<WishList />} />
             <Route path="/cart" element={<CartList />} />
             <Route path="/orders" element={<Orders />} />
-          <Route path="/my-account" element={<MyAccount />} />
-          <Route path="/address-book" element={<AddressBook />} />
+            <Route path="/my-account" element={<MyAccount />} />
+            <Route path="/address-book" element={<AddressBook />} />
+            <Route path="/my-account" element={<MyAccount />} />
+            <Route path="/address-book" element={<AddressBook />} />
             <Route
               path="/admin-dashboard"
               element={

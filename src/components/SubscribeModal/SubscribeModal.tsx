@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useEffect, useState } from "react";
 import { Box, Button, Input, Text, Heading, Image, Flex } from "theme-ui";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -43,10 +44,10 @@ const SubscribeModal: React.FC = () => {
               left: "50%",
               transform: "translate(-50%, -50%)",
               backgroundColor: "white",
-              padding: ["30px", "40px", "50px"],
+              padding: ["55px", "50px", "50px"],
               borderRadius: "12px",
               zIndex: 11,
-              textAlign: "center",
+              textAlign: ["center", "center"],
               boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.15)",
               display: "flex",
               flexDirection: ["column", "row"],
@@ -139,6 +140,7 @@ const SubscribeModal: React.FC = () => {
                     <ErrorMessage
                       name="email"
                       component="div"
+                      // @ts-ignore
                       style={{
                         color: "red",
                         fontSize: "12px",

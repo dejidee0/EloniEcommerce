@@ -1,26 +1,30 @@
-import React, { useState } from "react";
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/** @jsxImportSource theme-ui */
+import { useState } from "react";
 import { Box, Text, Button } from "theme-ui";
 import Cookies from "../Cookies/Cookies";
+import { IoPencil } from "react-icons/io5";
 
 const AccountDetails = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [accountDetails, setAccountDetails] = useState({
-    name: "Khalid Umar",
-    email: "khalid.umar@example.com",
-    phone: "8100-456-7890",
-    address: "123 Main St, Victoria island, Lagos, Nigeria",
+    name: "",
+    email: "",
+    phone1: "",
+    Phone2: "",
+    address: "",
   });
 
   const toggleEditMode = () => {
     setIsEditing(!isEditing);
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setAccountDetails({ ...accountDetails, [name]: value });
   };
 
-  const handleSave = (e) => {
+  const handleSave = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     //
     setIsEditing(false);
@@ -31,14 +35,14 @@ const AccountDetails = () => {
     <>
       <Box
         sx={{
-          maxWidth: "500px",
-          mx: "auto",
+          //   maxWidth: "500px",
+          //   mx: "auto",
           p: 6,
           borderRadius: "8px",
           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
           bg: "white",
-          position: "absolute",
-          ml: "350px",
+          //   // position: "absolute",
+          //   // ml: "550px",
         }}
       >
         <Text as="h2" sx={{ mb: 3, fontWeight: "bold" }}>
@@ -54,7 +58,11 @@ const AccountDetails = () => {
               <strong>Email:</strong> {accountDetails.email}
             </Text>
             <Text as="p">
-              <strong>Phone:</strong> {accountDetails.phone}
+              <strong>Phone:</strong> {accountDetails.phone1}
+            </Text>
+            <Text as="p">
+              <strong>Alternate Phone number</strong>
+              {accountDetails.Phone2}
             </Text>
             <Text as="p">
               <strong>Address:</strong> {accountDetails.address}
@@ -63,7 +71,7 @@ const AccountDetails = () => {
             <Button
               sx={{
                 width: "100%",
-                bg: "primary",
+                bg: "#192A41",
                 color: "white",
                 fontWeight: "bold",
                 mt: 4,
@@ -73,7 +81,7 @@ const AccountDetails = () => {
               }}
               onClick={toggleEditMode}
             >
-              Edit Details
+              <IoPencil />
             </Button>
           </Box>
         ) : (
@@ -111,7 +119,19 @@ const AccountDetails = () => {
               <input
                 type="tel"
                 name="phone"
-                value={accountDetails.phone}
+                value={accountDetails.phone1}
+                onChange={handleChange}
+                sx={{ width: "100%", padding: "8px", borderColor: "#ccc" }}
+              />
+            </Box>
+            <Box sx={{ mb: 3 }}>
+              <Text as="label" sx={{ display: "block", mb: 1 }}>
+                Alternate Phone Number
+              </Text>
+              <input
+                type="tel"
+                name="phone"
+                value={accountDetails.Phone2}
                 onChange={handleChange}
                 sx={{ width: "100%", padding: "8px", borderColor: "#ccc" }}
               />
@@ -124,6 +144,7 @@ const AccountDetails = () => {
               <textarea
                 name="address"
                 value={accountDetails.address}
+                // @ts-ignore
                 onChange={handleChange}
                 rows={3}
                 sx={{ width: "100%", padding: "8px", borderColor: "#ccc" }}
@@ -134,7 +155,7 @@ const AccountDetails = () => {
               type="submit"
               sx={{
                 width: "100%",
-                bg: "primary",
+                bg: "#192A41",
                 color: "white",
                 fontWeight: "bold",
                 mt: 4,

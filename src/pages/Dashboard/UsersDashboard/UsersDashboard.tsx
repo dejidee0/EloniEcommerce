@@ -29,8 +29,8 @@ const UsersDashboard = () => {
               "100%", // Default
               "750px", // At 768px and above
               "980px", // At 1024px and above
-              "1450px", // At 1200px and above
-              "1500px", // At 1400px and above
+              // "1450px", // At 1200px and above
+              "1630px", // At 1400px and above
             ],
           }}
         >
