@@ -2,35 +2,32 @@ import React, { useEffect, useState } from "react";
 import { Box, Button, Text, Flex } from "theme-ui";
 
 const Cookies: React.FC = () => {
-  const [cookies, setCookies] = useState(false);
-  const [visible, setVisible] = useState(false);
+  const [cookiesAccepted, setCookiesAccepted] = useState<boolean>(() => {
+    return localStorage.getItem("cookiesAccepted") === "true";
+  });
+
+  const [visible, setVisible] = useState<boolean>(!cookiesAccepted);
 
   useEffect(() => {
-    const initialTimeout = setTimeout(() => {
-      setCookies(true);
-      setVisible(true);
-
-      const interval = setInterval(() => {
+    if (!cookiesAccepted) {
+      const initialTimeout = setTimeout(() => {
         setVisible(true);
-      }, 60000);
-
-      return () => clearInterval(interval);
-    }, 5000);
-
-    if (cookies) {
-      const autoHide = setTimeout(() => {
-        setVisible(false);
       }, 5000);
-      return () => clearTimeout(autoHide);
-    }
 
-    return () => clearTimeout(initialTimeout);
-  }, [cookies]);
+      return () => clearTimeout(initialTimeout);
+    }
+  }, [cookiesAccepted]);
+
+  const handleAcceptCookies = () => {
+    localStorage.setItem("cookiesAccepted", "true");
+    setCookiesAccepted(true);
+    setVisible(false);
+  };
 
   return (
-    <Flex sx={{ display: "flex", flexDirection: "column" }}>
-      {cookies && (
-        <>
+    <>
+      {!cookiesAccepted && visible && (
+        <Flex sx={{ display: "flex", flexDirection: "column" }}>
           <Box
             sx={{
               position: "fixed",
@@ -87,17 +84,20 @@ const Cookies: React.FC = () => {
                 <Text sx={{ fontSize: 2 }}>This website uses cookies</Text>
                 <Text sx={{ fontSize: 1 }}>
                   This website uses cookies. For further information on how we
-                  use cookies you can read our Privacy and cookies Notice
+                  use cookies, you can read our Privacy and Cookies Notice.
                 </Text>
-                <Button sx={{ backgroundColor: "#192A41" }}>
+                <Button
+                  sx={{ backgroundColor: "#192A41" }}
+                  onClick={handleAcceptCookies}
+                >
                   ACCEPT COOKIES
                 </Button>
               </Box>
             </Flex>
           </Box>
-        </>
+        </Flex>
       )}
-    </Flex>
+    </>
   );
 };
 

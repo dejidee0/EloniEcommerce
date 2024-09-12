@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useEffect, useState } from "react";
 import { Box, Button, Input, Text, Heading, Image, Flex } from "theme-ui";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -43,10 +44,14 @@ const SubscribeModal: React.FC = () => {
               left: "50%",
               transform: "translate(-50%, -50%)",
               backgroundColor: "white",
+<<<<<<< HEAD
               padding: ["30px", "40px", "50px"],
+=======
+              padding: ["55px", "50px", "50px"],
+>>>>>>> e6a03c8968f0c4a9b76ff0ff0fea303f24943f7b
               borderRadius: "12px",
               zIndex: 11,
-              textAlign: "center",
+              textAlign: ["center", "center"],
               boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.15)",
               display: "flex",
               flexDirection: ["column", "row"],
@@ -78,11 +83,22 @@ const SubscribeModal: React.FC = () => {
               src="/Telegram logo.png"
               alt="Telegram Icon"
               sx={{
+<<<<<<< HEAD
                 width: "35%",
                 marginRight: ["0", "5px"],
                 marginBottom: ["20px", "0"],
                 display: ["none", "block"],
                 borderRadius: "10px",
+=======
+                // width: "50%",
+                width: '35%',
+                height: '230px',
+                marginRight: ['0', "5px"],
+                marginTop: 10,
+                display: ["none", "block"],
+                marginBottom: ["20px", "0"],
+                borderRadius: "10px"
+>>>>>>> e6a03c8968f0c4a9b76ff0ff0fea303f24943f7b
               }}
             />
 
@@ -136,6 +152,7 @@ const SubscribeModal: React.FC = () => {
                     <ErrorMessage
                       name="email"
                       component="div"
+                      // @ts-ignore
                       style={{
                         color: "red",
                         fontSize: "12px",

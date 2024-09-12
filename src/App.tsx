@@ -14,36 +14,36 @@ import store from "./store/store.ts";
 import CartList from "./components/Cart/CartList.tsx";
 import Orders from "./pages/Orders/Orders.tsx";
 import MyAccount from "./pages/MyAccount/MyAccount.tsx";
-import EmptyCart from "./pages/EmptyCart/EmptyCart.tsx";
 import AddressBook from "./pages/AddressBook/AddressBook.tsx";
 
 export default function App() {
   return (
     <ThemeUIProvider theme={theme}>
       <BrowserRouter>
-  <Provider store={store}>
-    <Routes>
-      <Route path="/sign-in" element={<SignIn />} />
-      <Route path="/sign-up" element={<SignUp />} />
-      <Route path="/" element={<UsersDashboard />} />
-      <Route path="/otp-page" element={<Otp />} />
-      <Route path="/wishlist" element={<WishList />} />
-      <Route path="/orders" element={<Orders />} />
-      <Route path="/my-account" element={<MyAccount />} />
-      <Route path="/cart" element={<EmptyCart />} />
-      <Route path="/cart" element={<CartList />} />
-      <Route path="/address-book" element={<AddressBook />} />
-      <Route
-        path="/admin-dashboard"
-        element={
-          <PrivateRoute roleRequired="admin">
-            <AdminDashboard />
-          </PrivateRoute>
-        }
-      />
-    </Routes>
-  </Provider>
-      </BrowserRouter >
-    </ThemeUIProvider >
+        <Provider store={store}>
+          <Routes>
+            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/" element={<UsersDashboard />} />
+            <Route path="/otp-page" element={<Otp />} />
+            <Route path="/wishlist" element={<WishList />} />
+            <Route path="/cart" element={<CartList />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/my-account" element={<MyAccount />} />
+            <Route path="/address-book" element={<AddressBook />} />
+            <Route path="/my-account" element={<MyAccount />} />
+            <Route path="/address-book" element={<AddressBook />} />
+            <Route
+              path="/admin-dashboard"
+              element={
+                <PrivateRoute roleRequired="admin">
+                  <AdminDashboard />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+        </Provider>
+      </BrowserRouter>
+    </ThemeUIProvider>
   );
 }

@@ -44,10 +44,10 @@ const PopupModal: React.FC = () => {
               position: "fixed",
               bottom: 0,
               left: visible ? 0 : "-400px",
-              margin: "20px",
-              width: ["90%", "400px"],
+              margin: ["0px", "20px"],
+              width: ["80%", "400px"],
               backgroundColor: "white",
-              padding: "20px",
+              padding: ["15px", "20px"],
               borderRadius: "8px",
               zIndex: 9,
               boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
@@ -67,7 +67,7 @@ const PopupModal: React.FC = () => {
                 border: "none",
                 fontSize: "24px",
                 cursor: "pointer",
-                color: "#000000",
+                color: "red",
               }}
             >
               &times;
@@ -77,9 +77,9 @@ const PopupModal: React.FC = () => {
               sx={{
                 padding: 3,
                 alignItems: "center",
-                gap: "10px",
-                display: "flex",
-                flexDirection: "row",
+                gap: ["10px", "15px"],
+                flexDirection: ["column", "row"],
+                justifyContent: "center",
               }}
             >
               <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -87,30 +87,33 @@ const PopupModal: React.FC = () => {
                   src="/T-shirt.jpg"
                   alt="cloth"
                   sx={{
-                    width: "100px",
-                    height: "100px",
-                    display: ["none", "none", "block"],
+                    width: "80px",
+                    height: "80px",
+                    display: ["none", "block"],
                   }}
                 />
               </Box>
+
               <Box
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  textAlign: "center",
+                  textAlign: ["center", "left"],
                   alignItems: "center",
                   justifyContent: "space-between",
                   padding: 2,
-                  width: '220px'
+                  width: ["auto", "220px"],
                 }}
               >
-                <Text sx={{ fontSize: 1 }}>
+                <Text sx={{ fontSize: [0, 1], textAlign: "center" }}>
                   A recent purchase was just made by a new customer.
                 </Text>
-                <Text sx={{ fontSize: 2, fontWeight: 'bold', marginTop: 10 }}>
-                  Gildan Adult ultra cotton T-shirt.
+                <Text
+                  sx={{ fontSize: [1, 2], fontWeight: "bold", marginTop: 10 }}
+                >
+                  Gildan Adult Ultra Cotton T-shirt.
                 </Text>
-                <Text sx={{ fontSize: 1, marginTop: 10 }}>Just now</Text>
+                <Text sx={{ fontSize: [0, 1], marginTop: 10 }}>Just now</Text>
               </Box>
             </Flex>
 
@@ -122,7 +125,9 @@ const PopupModal: React.FC = () => {
                 resetForm();
                 setVisible(false);
               }}
-            ></Formik>
+            >
+              {({ handleSubmit }) => <form onSubmit={handleSubmit}></form>}
+            </Formik>
           </Box>
         </>
       )}

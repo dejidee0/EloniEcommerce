@@ -3,18 +3,16 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { Box, Flex, Image, Button, Text, Divider } from "theme-ui";
+import EmptyCart from "@/pages/EmptyCart/EmptyCart";
 
 const CartList: React.FC = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const totalAmount = useSelector((state: RootState) => state.cart.totalAmount);
 
   return (
-    <Box sx={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
-      <Text as="h2" sx={{ fontSize: "24px", fontWeight: "bold", mb: 4 }}>
-        Shopping Cart
-      </Text>
+    <Box sx={{ margin: "0 auto" }}>
       {cartItems.length === 0 ? (
-        <Text>Your cart is empty.</Text>
+        <EmptyCart />
       ) : (
         <>
           <Box as="ul" sx={{ listStyle: "none", padding: 0 }}>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /** @jsxImportSource theme-ui */
 import { Box, Button, Input, Label, Select, Textarea, Image, Message } from '@theme-ui/components';
 import { Spinner, Heading,  Radio, Checkbox } from 'theme-ui';
@@ -731,7 +732,7 @@ const AdminForm: React.FC = () => {
               accept="image/*"
             />
             {formik.touched.productImages && formik.errors.productImages && (
-              // @ts-ignore
+              // @ts-expect-error
               <Box sx={{ color: 'red' }}>{formik?.errors?.productImages}</Box>
             )}
             {imagePreviews.length > 0 && (
