@@ -92,7 +92,7 @@ function NewArrival() {
               display: 'flex',
               gap: 3,
               overflowX: 'auto',
-              marginTop: 4,
+              marginTop: 4, paddingBottom: '10px',
               scrollSnapType: 'x mandatory',
               width: '100%'
             }}
@@ -129,7 +129,7 @@ function NewArrival() {
               display: 'flex',
               gap: 3,
               overflowX: 'auto',
-              marginTop: 4,
+              marginTop: 4, paddingBottom: '10px',
               scrollSnapType: 'x mandatory',
               '@media screen and (max-width: 620px)': {
                 width: '100%',
@@ -168,7 +168,7 @@ function NewArrival() {
               display: 'flex',
               gap: 3,
               overflowX: 'auto',
-              marginTop: 4,
+              marginTop: 4, paddingBottom: '10px',
               scrollSnapType: 'x mandatory',
               '@media screen and (max-width: 620px)': {
                 width: '100%',
