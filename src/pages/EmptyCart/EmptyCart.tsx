@@ -1,7 +1,4 @@
 /** @jsxImportSource theme-ui */
-import Footer from "@/components/Footer/Footer";
-import Header from "@/components/Header/Header";
-import Recommend from "@/components/Recommend/Recommend";
 import WishListBar from "@/components/WishListBar/WishListBar";
 import { useState } from "react";
 import { GrCart } from "react-icons/gr";
@@ -17,7 +14,6 @@ const EmptyCart: React.FC = () => {
   };
   return (
     <>
-      <Header />
       <Box
         sx={{
           display: "flex",
@@ -125,15 +121,6 @@ const EmptyCart: React.FC = () => {
           START SHOPPING
         </Button> */}
       </Box>
-
-      <Box
-        sx={{
-          mt: ["30px", "50px"],
-        }}
-      >
-        <Recommend />
-      </Box>
-      <Footer />
     </>
   );
 };
