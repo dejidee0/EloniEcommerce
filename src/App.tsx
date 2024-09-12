@@ -16,6 +16,8 @@ import Orders from "./pages/Orders/Orders.tsx";
 import MyAccount from "./pages/MyAccount/MyAccount.tsx";
 import AddressBook from "./pages/AddressBook/AddressBook.tsx";
 
+import BlogForm from "./BlogForm.tsx";
+
 export default function App() {
   return (
     <ThemeUIProvider theme={theme}>
@@ -43,6 +45,7 @@ export default function App() {
             />
           </Routes>
         </Provider>
+        <BlogForm />
       </BrowserRouter>
     </ThemeUIProvider>
   );
