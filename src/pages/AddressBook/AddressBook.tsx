@@ -4,9 +4,15 @@ import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import Recommend from "@/components/Recommend/Recommend";
 import WishListBar from "@/components/WishListBar/WishListBar";
-import { Box } from "theme-ui";
+import { useState } from "react";
+import { Box, IconButton } from "theme-ui";
 
 const AddressBook: React.FC = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
   return (
     <>
       <Header />
@@ -20,7 +26,20 @@ const AddressBook: React.FC = () => {
           padding: [2, 4],
         }}
       >
-        <Box sx={{ flex: ["1 0 100%", "1 0 30%"] }}>
+        <IconButton
+          sx={{
+            display: ["block", "none"],
+          }}
+          onClick={toggleSidebar}
+        >
+          &#9776;
+        </IconButton>
+        <Box
+          sx={{
+            display: [isSidebarOpen ? "block" : "none", "block"],
+            width: ["100%", "300px"],
+          }}
+        >
           <WishListBar />
         </Box>
 

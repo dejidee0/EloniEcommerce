@@ -3,8 +3,10 @@ import Header from "@/components/Header/Header";
 import { Box, Flex, IconButton } from "theme-ui";
 import WishListBar from "@/components/WishListBar/WishListBar";
 import Cookies from "@/components/Cookies/Cookies";
-import OrdersContent from "@/components/OrdersContent/OrdersContent";
+// import OrdersContent from "@/components/OrdersContent/OrdersContent";
 import Footer from "@/components/Footer/Footer";
+import EmptyOrder from "@/components/EmptyOrder/EmptyOrder";
+import Recommend from "@/components/Recommend/Recommend";
 
 const Orders: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -46,13 +48,17 @@ const Orders: React.FC = () => {
             p: [2, 4],
           }}
         >
-          <OrdersContent />
+          {/* <OrdersContent /> */}
+          <EmptyOrder />
         </Box>
         <Box>
           <Cookies />
         </Box>
       </Flex>
-      <Footer />
+      <Box>
+        <Recommend />
+        <Footer />
+      </Box>
     </>
   );
 };

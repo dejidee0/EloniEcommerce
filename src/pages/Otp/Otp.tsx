@@ -15,7 +15,9 @@ const Otp: React.FC = () => {
       otp: Yup.array()
         .of(Yup.string().length(1, "Each digit must be a single character"))
         // @ts-ignore
-        .test("complete", "Please enter the complete 4-digit OTP.", (value) => value.every((val) => val !== "")),
+        .test("complete", "Please enter the complete 4-digit OTP.", (value) =>
+          value.every((val) => val !== "")
+        ),
     }),
     onSubmit: (values) => {
       const otpValue = values.otp.join("");
@@ -24,7 +26,10 @@ const Otp: React.FC = () => {
     },
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
     if (!isNaN(Number(e.target.value))) {
       const newOtp = [...formik.values.otp];
       newOtp[index] = e.target.value;
@@ -70,7 +75,8 @@ const Otp: React.FC = () => {
         Verification Code
       </Heading>
       <Text sx={{ textAlign: "center", mb: 4, color: "textSecondary" }}>
-        A 4-digit verification code has been sent to your email. Please enter it below.
+        A 4-digit verification code has been sent to your email. Please enter it
+        below.
       </Text>
 
       <form onSubmit={formik.handleSubmit}>
@@ -100,7 +106,9 @@ const Otp: React.FC = () => {
         </Flex>
 
         {formik.errors.otp && (
-          <Text sx={{ color: "red", mb: 3, textAlign: "center" }}>{formik.errors.otp}</Text>
+          <Text sx={{ color: "red", mb: 3, textAlign: "center" }}>
+            {formik.errors.otp}
+          </Text>
         )}
 
         <Button
@@ -113,7 +121,7 @@ const Otp: React.FC = () => {
             color: "white",
             fontSize: 18,
             transition: "background-color 0.3s ease, box-shadow 0.3s ease",
-            cursor: 'pointer',
+            cursor: "pointer",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
             "&:hover": {
               backgroundColor: "primaryHover",
@@ -125,11 +133,17 @@ const Otp: React.FC = () => {
         </Button>
       </form>
 
-      <Text sx={{ mt: 3, color: "textSecondary", fontSize: 14, textAlign: "center" }}>
+      <Text
+        sx={{
+          mt: 3,
+          color: "textSecondary",
+          fontSize: 14,
+          textAlign: "center",
+        }}
+      >
         Didn’t receive the code?{" "}
         <Button
           variant="link"
-
           sx={{
             p: 1,
             color: "#fff",
@@ -154,7 +168,11 @@ const Otp: React.FC = () => {
         }}
       >
         <Text>
-          Need help? Visit our <a href="/help" style={{ color: "#f39c12" }}>Help Center</a> or contact support.
+          Need help? Visit our{" "}
+          <a href="/help" style={{ color: "#f39c12" }}>
+            Help Center
+          </a>{" "}
+          or contact support.
         </Text>
         <Heading as="h3" sx={{ mt: 2 }}>
           Eloni
