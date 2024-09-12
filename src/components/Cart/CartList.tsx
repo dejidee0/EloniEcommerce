@@ -1,12 +1,18 @@
 /** @jsxImportSource theme-ui */
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store/store";
 import { Box, Flex, Image, Button, Text, Divider } from "theme-ui";
+import {
+  removeItemFromCart,
+  increaseItemQuantity,
+  decreaseItemQuantity,
+} from "../../store/cartSlice";
 
 const CartList: React.FC = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const totalAmount = useSelector((state: RootState) => state.cart.totalAmount);
+  const dispatch = useDispatch();
 
   return (
     <Box sx={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
@@ -43,16 +49,45 @@ const CartList: React.FC = () => {
                   >
                     {item.name}
                   </Text>
-                  <Text
-                    as="p"
-                    sx={{
-                      fontSize: "14px",
-                      color: "#777",
-                      mb: 1,
-                    }}
-                  >
+                  <Text as="p" sx={{ fontSize: "14px", color: "#777", mb: 1 }}>
                     ${item.price} x {item.quantity}
                   </Text>
+
+                  {/* Quantity Controls */}
+                  <Flex sx={{ alignItems: "center" }}>
+                    <Button
+                      sx={{
+                        padding: "5px 10px",
+                        fontSize: "14px",
+                        backgroundColor: "#e76f51",
+                        color: "#ffffff",
+                        borderRadius: "4px",
+                        cursor: "pointer",
+                        mr: 2,
+                      }}
+                      onClick={() => dispatch(decreaseItemQuantity(item.id))}
+                    >
+                      -
+                    </Button>
+                    <Text sx={{ fontSize: "14px", fontWeight: "bold", mx: 2 }}>
+                      {item.quantity}
+                    </Text>
+                    <Button
+                      sx={{
+                        padding: "5px 10px",
+                        fontSize: "14px",
+                        backgroundColor: "#2a9d8f",
+                        color: "#ffffff",
+                        borderRadius: "4px",
+                        cursor: "pointer",
+                        ml: 2,
+                      }}
+                      onClick={() => dispatch(increaseItemQuantity(item.id))}
+                    >
+                      +
+                    </Button>
+                  </Flex>
+
                   <Button
                     sx={{
                       padding: "5px 10px",
@@ -63,7 +98,7 @@ const CartList: React.FC = () => {
                       cursor: "pointer",
                       mt: 2,
                     }}
-                    // Add functionality for removing item
+                    onClick={() => dispatch(removeItemFromCart(item.id))}
                   >
                     Remove
                   </Button>

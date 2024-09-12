@@ -51,10 +51,6 @@ const TodaysDeal: React.FC = () => {
       {products.map((product) => (
         <DealCard key={product.id} product={product} />
       ))}
-      {/* <DealCard />
-      <DealCard />
-      <DealCard />
-      <DealCard /> */}
     </Box>
   );
 };
