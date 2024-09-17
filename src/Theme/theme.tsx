@@ -378,7 +378,7 @@ export const theme: any = {
       paddingBottom: '5px'
     },
     showCaseContainer: {
-      minWidth: ['', '', '50%', '100%'],
+      minWidth: ['100%', '', '50%', '100%'],
       padding: '0 5px',
       scrollSnapAlign: 'start'
     },
@@ -416,12 +416,12 @@ export const theme: any = {
       showCaseContainer: {
         minWidth: '100%',                          // Full-width container
         padding: '30px',                           // Padding
-        border: '1px solid var(--cultured)',        // Border with cultured color
-        borderRadius: 'var(--border-radius-md)',    // Border radius from variable
+        border: '1px solid #ededed',        // Border with cultured color
+        borderRadius: '10px',    // Border radius from variable
         scrollSnapAlign: 'start',                  // Scroll snapping alignment
 
         // Browser-specific prefixes for border radius
-        WebkitBorderRadius: 'var(--border-radius-md)', // WebKit-specific border radius
+        WebkitBorderRadius: '10px', // WebKit-specific border radius
       },
 
       showcase: {
@@ -559,6 +559,7 @@ export const theme: any = {
           background: '#ededed',
           borderRadius: '10px',
           textAlign: 'center',
+          minWidth: 'auto'
         },
 
         displayText: {

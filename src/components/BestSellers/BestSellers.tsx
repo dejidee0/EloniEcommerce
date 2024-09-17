@@ -53,7 +53,7 @@ const BestSellers: React.FC = () => {
         <Box>
           {
             bestSellers.map(el => (
-              <Box sx={{ ...theme.productContainer.showCase }}>
+              <Box sx={{ ...theme.productContainer.showCase }} key={el.id}>
                 <Link to={''}>
                   <img src={el.showcaseImg} height={75} width={75} sx={{ ...theme.productContainer.showcaseImg }} />
                 </Link>

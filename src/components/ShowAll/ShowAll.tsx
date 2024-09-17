@@ -78,6 +78,7 @@ const ShowAll = () => {
      {
       category.map(el => (
        <Box
+        key={el.id}
         sx={{ ...theme.categoryStyles.categoryItem }}
        >
         <Box sx={{ ...theme.categoryStyles.categoryImgBox }}>
