@@ -47,3 +47,7 @@ img, ion-icon, button, a {
 a {
     text-decoration: none;
 }
+
+li {
+    list-style: none;
+}

@@ -14,32 +14,31 @@ export const theme: any = {
     eerieBlack: '#232F3E', // Define eerie black for reuse
     black: '#000',
   },
-  containers: {
-    headerMain: {
-      backgroundColor: 'black',
-      padding: '25px 0',
-      container: {
-        display: ['block', 'block', 'flex'],
-        // padding: ['25px 0'],
-        // paddingLeft: [0, 0, 0, 0, 15, 255],
-        // paddingRight: [0, 0, 0, 0, 15, 255],
-        alignItems: ['normal', 'normal', 'center'], // Flexbox align items,
-        justifyContent: ['normal', 'normal', 'space-between'],
-        maxWidth: [
-          '100%',   // No change for 570px
-          '750px',  // min-width 768px
-          '980px',  // min-width 1024px
-          '1200px', // min-width 1200px
-          '1350px', // min-width 1400px
-        ],
-        // margin: [0, 0, 0, 'auto'],
-        margin: 'auto',
 
-        gap: [0, 0, '80px'],
-        padding: '0 15px'
+  headerMain: {
+    backgroundColor: 'black',
+    padding: '20px 0',
 
-      }
+    '@media screen and (min-width: 480px)': {
+      padding: '25px 0'
     },
+
+    container: {
+      margin: 'auto',
+      padding: '0 15px',
+      '@media screen and (min-width: 570px)': {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+      },
+      '@media screen and (min-width: 768px)': {
+        gap: '80px'
+      },
+    }
+  },
+
+
+  containers: {
     headerTop: {
       display: ['none', 'block', 'block', 'flex'], // flexbox starts from 570px
       justifyContent: ['normal', 'normal', 'space-between'],
@@ -80,10 +79,89 @@ export const theme: any = {
     },
   },
 
+  headerTop: {
+    display: ['none', 'block',], // flexbox starts from 570px
+    justifyContent: ['normal', 'normal', 'space-between'],
+    alignItems: ['normal', 'normal', 'center'],
+    backgroundColor: 'eerieBlack',
+    padding: ['0', '10px 0'],
+    flexGrow: 1,
+
+    container: {
+      backgroundColor: 'eerieBlack',
+      padding: '0 15px',
+      '@media screen and (min-width: 570px)': {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+      }
+    },
+
+    headerSocialContainer: {
+      '@media screen and (min-width: 480px)': {
+        display: 'none'
+      },
+      '@media screen and (min-width: 1024px)': {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '4px'
+      },
+    },
+
+    socialLink: {
+      '@media screen and (min-width: 1024px)': {
+        padding: '5px',
+        background: 'hsl(0, 0%, 95%)',
+        borderRadius: '5px',
+        color: '#0f1111',
+        transition: '0.2s ease',
+      }
+    },
+    headerTopActions: {
+      '@media screen and (min-width: 480px)': {
+        display: 'none'
+      },
+      '@media screen and (min-width: 570px)': {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px'
+      },
+
+      select: {
+        '@media screen and (min-width: 570px)': {
+          border: 'none',
+          display: 'block',
+          minWidth: '80px',
+          padding: '5px 0',
+          font: 'inherit',
+          color: '#0f1111',
+          fontSize: '0.813rem',
+          textTransform: 'uppercase',
+          cursor: 'pointer',
+          transition: '0.2s ease',
+          WebkitTransition: '0.2s ease',
+          OTransition: '0.2s ease',
+        }
+      }
+    },
+  },
+
   container: {
     padding: '0 15px',
-    margin: ['', '', 'auto', 'auto', 'auto', 'auto'],
-    maxWidth: ['', '', '', '750px', '980px', '1200px', '1350px']
+
+    '@media screen and (min-width: 768px)': {
+      maxWidth: '750px',
+      margin: 'auto'
+    },
+    '@media screen and (min-width: 1024px)': {
+      maxWidth: '980px',
+    },
+    '@media screen and (min-width: 1200px)': {
+      maxWidth: '1200px',
+    },
+    '@media screen and (min-width: 1400px)': {
+      maxWidth: '1350px',
+    },
   },
 
   navigation: {
