@@ -1,10 +1,12 @@
 /** @jsxImportSource theme-ui */
 import React from 'react';
-import Product from './Product'; 
+import Product from './Product';
+import { theme } from '@/Theme/theme';
+import { Box } from 'theme-ui';
 
 interface ProductData {
 
-   id: string;
+  id: string;
   topSelection: string,
   productName: string,
   discount: string,
@@ -21,38 +23,20 @@ const ProductContainer: React.FC<ProductContainerProps> = ({ products }) => {
   // Split the products into chunks of 4
   const productChunks = products.reduce<ProductData[][]>((resultArray, item, index) => {
     const chunkIndex = Math.floor(index / 4);
-    
+
     if (!resultArray[chunkIndex]) {
       resultArray[chunkIndex] = []; // Start a new chunk
     }
-    
+
     resultArray[chunkIndex].push(item);
-    
+
     return resultArray;
   }, []);
 
   return (
-    <div sx={{
-        minWidth: '100%',
-        
-    }}>
+    <>
       {productChunks.map((chunk, index) => (
-        <div
-          key={index}
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 3,
-            scrollSnapAlign: 'start',
-            
-
-            '@media screen and (max-width: 620px)': {
-                minWidth: '100%', 
-              },
-           
-            
-          }}
-        >
+        <Box className='showCaseContainer' sx={{ ...theme.productContainer.showCaseContainer }} key={index}>
           {chunk.map((product, idx) => (
             <Product
               key={idx}
@@ -63,9 +47,9 @@ const ProductContainer: React.FC<ProductContainerProps> = ({ products }) => {
               discount={product.discount}
             />
           ))}
-        </div>
+        </Box>
       ))}
-    </div>
+    </>
   );
 };
 

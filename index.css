@@ -40,3 +40,10 @@ body {
    
 }
 
+img, ion-icon, button, a {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}

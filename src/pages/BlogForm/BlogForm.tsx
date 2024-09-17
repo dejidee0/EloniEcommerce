@@ -2,8 +2,8 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Box, Button, Input, Label, Text } from 'theme-ui';
-import { collection, addDoc } from 'firebase/firestore';
-import { db } from './firebaseConfig'; // import Firebase configuration
+// import { collection, addDoc } from 'firebase/firestore';
+// import { db } from '@/firebaseConfig'; // import Firebase configuration
 
 const BlogForm = () => {
   const formik = useFormik({
@@ -22,13 +22,13 @@ const BlogForm = () => {
     onSubmit: async (values) => {
       try {
         // Add blog data to Firestore
-        const docRef = await addDoc(collection(db, "blogs"), {
-          image: values.image,
-          category: values.category,
-          name: values.name,
-          author: values.author,
-        });
-        alert("Blog created with ID: " + docRef.id);
+        // const docRef = await addDoc(collection(db, "blogs"), {
+        //   image: values.image,
+        //   category: values.category,
+        //   name: values.name,
+        //   author: values.author,
+        // });
+        // alert("Blog created with ID: " + docRef.id);
       } catch (e) {
         console.error("Error adding document: ", e);
       }

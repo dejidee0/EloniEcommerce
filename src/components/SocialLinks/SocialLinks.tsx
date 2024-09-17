@@ -6,7 +6,7 @@ const SocialLinks = () => {
   return (
     <ul sx={{
         listStyleType: 'none',
-        display: 'flex',
+        display: ['none', 'none', 'none', 'none','flex'],
         flexDirection: 'row',
         width: 140,
         justifyContent: 'space-evenly',
