@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Box, Button, Input, Label, Text } from 'theme-ui';
 import { collection, addDoc } from 'firebase/firestore';
-import { db } from '@/firebaseConfig'; // import Firebase configuration
+import { db } from '@/firebaseConfig/firebaseConfig'; // import Firebase configuration
 
 const BlogForm = () => {
   const formik = useFormik({
