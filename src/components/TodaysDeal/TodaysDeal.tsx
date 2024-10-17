@@ -1,9 +1,9 @@
 /** @jsxImportSource theme-ui */
 import React, { useEffect, useState } from "react";
 import DealCard from "../DealCard/DealCard";
-import { Box, Text } from "theme-ui";
 import { db } from "@/firebaseConfig/firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
+import { theme } from "@/Theme/theme";
 
 const TodaysDeal: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -28,34 +28,12 @@ const TodaysDeal: React.FC = () => {
   }, []);
 
   return (
-    <Box sx={{ justifyContent: "right", width: "142%" }}>
-      <Box
-        sx={{
-          borderBottom: "1px solid #e0e0e0",
-          py: "10px",
-          // justifyContent: 'right',
-          width: "142%",
-        }}
-      >
-        <Text
-          as={"h4"}
-          sx={{
-            fontWeight: 600,
-            color: "#000",
-            fontSize: "1.5rem",
-          }}
-        >
-          Today's Deal
-        </Text>
-      </Box>
+    <>
+      <h4 className="title" sx={{ ...theme.productContainer.title }}>Today's Deal</h4>
       {products.map((product) => (
         <DealCard key={product.id} product={product} />
       ))}
-      {/* <DealCard />
-      <DealCard />
-      <DealCard />
-      <DealCard /> */}
-    </Box>
+    </>
   );
 };
 

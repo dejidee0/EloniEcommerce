@@ -15,6 +15,9 @@ import CartList from "./components/Cart/CartList.tsx";
 import Orders from "./pages/Orders/Orders.tsx";
 import MyAccount from "./pages/MyAccount/MyAccount.tsx";
 import AddressBook from "./pages/AddressBook/AddressBook.tsx";
+// import './App.css'
+
+import BlogForm from "@/pages/BlogForm/BlogForm.tsx";
 
 export default function App() {
   return (
@@ -33,6 +36,7 @@ export default function App() {
             <Route path="/address-book" element={<AddressBook />} />
             <Route path="/my-account" element={<MyAccount />} />
             <Route path="/address-book" element={<AddressBook />} />
+            <Route path="/blog-form" element={<BlogForm />} />
             <Route
               path="/admin-dashboard"
               element={

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '@/firebaseConfig/firebaseConfig';
 import ProductContainer from './ProductContainer';
+import { theme } from '@/Theme/theme';
 
 interface Product {
   id: string;
@@ -38,7 +39,7 @@ function NewArrival() {
           return { ...data, id: doc.id };
         });
 
-     
+
         setLatestProducts(
           chunkArray(productsList.filter((product) => product.topSelection === 'isLatest'), 4)
         );
@@ -56,134 +57,50 @@ function NewArrival() {
     fetchProducts();
   }, []);
 
-  console.log('latestProducts',latestProducts);
-  
+  console.log('latestProducts', latestProducts);
+
 
   return (
-    <Box
-      sx={{
-        marginBottom: ['0', '0', '0', '20px'],
-        display: ['block', 'flex'],
-        flexWrap: ['nowrap', 'wrap'],
-        justifyContent: ['flex-start', 'center'],
-        gap: ['0', '20px'],
-      }}
-    >
-      {/* Latest Products */}
-      <div
-        sx={{
-          width: '340px',
-          padding: 2,
-          '@media screen and (max-width: 620px)': {
-            width: '100%',
-          },
-        }}
-      >
-        <h3
-          sx={{
-            borderBottom: '1px solid #ddd',
-            paddingBottom: 3,
-          }}
-        >
+
+    <Box className='productMinimal' sx={{ ...theme.productContainer.productMinimal }}>
+      <Box className='productShowCase' sx={{ ...theme.productContainer.productShowCase }}>
+        <h2 className='title' sx={{ ...theme.productContainer.title }}>
           Latest Arrivals
-        </h3>
-        
-          
-          <div
-            
-            sx={{
-              display: 'flex',
-              gap: 3,
-              overflowX: 'auto',
-              marginTop: 4, paddingBottom: '10px',
-              scrollSnapType: 'x mandatory',
-              width: '100%'
-            }}
-          >
-            {latestProducts.map((chunk, index) => (
-            <ProductContainer products={chunk} key={index} />
-            ))}
-          </div>
-       
-      </div>
+        </h2>
+        <Box className='showCaseWrapper' sx={{ ...theme.productContainer.showCaseWrapper }}>
+          {
+            latestProducts.map((latestProduct, index) => (
+              <ProductContainer products={latestProduct} key={index} />
+            ))
+          }
 
-      {/* Trending Products */}
-      <div
-        sx={{
-          width: '340px',
-          padding: 2,
-          '@media screen and (max-width: 620px)': {
-            width: '100%',
-          },
-        }}
-      >
-        <h3
-          sx={{
-            borderBottom: '1px solid #ddd',
-            paddingBottom: 3,
-          }}
-        >
+        </Box>
+      </Box>
+      <Box className='productShowCase' sx={{ ...theme.productContainer.productShowCase }}>
+        <h2 className='title' sx={{ ...theme.productContainer.title }}>
           Trending
-        </h3>
-        
-          <div
-           
-            sx={{
-              display: 'flex',
-              gap: 3,
-              overflowX: 'auto',
-              marginTop: 4, paddingBottom: '10px',
-              scrollSnapType: 'x mandatory',
-              '@media screen and (max-width: 620px)': {
-                width: '100%',
-              },
-            }}
-          >
-            {trendingProducts.map((chunk, index) => (
-            <ProductContainer products={chunk} key={index} />
-            ))}
-          </div>
-       
-      </div>
-
-      {/* Top Rated Products */}
-      <div
-        sx={{
-          width: '340px',
-          padding: 2,
-          '@media screen and (max-width: 620px)': {
-            width: '100%',
-          },
-        }}
-      >
-        <h3
-          sx={{
-            borderBottom: '1px solid #ddd',
-            paddingBottom: 3,
-          }}
-        >
+        </h2>
+        <Box className='showCaseWrapper' sx={{ ...theme.productContainer.showCaseWrapper }}>
+          {
+            trendingProducts.map((trendingProduct, index) => (
+              <ProductContainer products={trendingProduct} key={index} />
+            ))
+          }
+        </Box>
+      </Box>
+      <Box className='productShowCase' sx={{ ...theme.productContainer.productShowCase }}>
+        <h2 className='title' sx={{ ...theme.productContainer.title }}>
           Top Rated
-        </h3>
-        
-          <div
-            
-            sx={{
-              display: 'flex',
-              gap: 3,
-              overflowX: 'auto',
-              marginTop: 4, paddingBottom: '10px',
-              scrollSnapType: 'x mandatory',
-              '@media screen and (max-width: 620px)': {
-                width: '100%',
-              },
-            }}
-          >
-            {topRatedProducts.map((chunk, index) => (
-            <ProductContainer products={chunk} key={index} />
-            ))}
-          </div>
-        
-      </div>
+        </h2>
+        <Box className='showCaseWrapper' sx={{ ...theme.productContainer.showCaseWrapper }}>
+          {
+            topRatedProducts.map((topRatedProduct, index) => (
+              <ProductContainer products={topRatedProduct} key={index} />
+            ))
+          }
+
+        </Box>
+      </Box>
     </Box>
   );
 }

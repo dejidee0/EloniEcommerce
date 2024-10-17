@@ -5,6 +5,7 @@ import CategoryItems from "@/components/CategoryItems/CategoryItems";
 import { fetchProductsByCategory } from "../../utils/categories"; // Import the function to fetch products
 import { Box, Heading } from "theme-ui";
 import Categories from "../../utils/categories";
+import { theme } from "@/Theme/theme";
 
 const Category = () => {
   const [categories] = useState(Categories);
@@ -32,51 +33,41 @@ const Category = () => {
   }, [categories]);
 
   console.log('products', products);
-  
+
 
   return (
     <Box
+    className="sidebarCategory"
       sx={{
-        border: "1px solid #ededed",
-        borderRadius: "10px",
-        padding: "20px",
-        marginBottom: "30px",
+        ...theme.productContainer.sidebarCategory
       }}
     >
       <Heading
         sx={{
-          paddingLeft: "15px",
-          color: "#454545",
-          fontWeight: "600",
-          textTransform: "uppercase",
-          fontSize: "0.941rem",
-          letterSpacing: "0.8px",
-          width: "20%",
+          // paddingLeft: "15px",
+          // color: "#454545",
+          // fontWeight: "600",
+          // textTransform: "uppercase",
+          // fontSize: "0.941rem",
+          // letterSpacing: "0.8px",
+          // width: "20%",
+          ...theme.productContainer.sidebarTop
         }}
       >
         Category
       </Heading>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          marginBottom: "10px",
-        }}
-      >
-        <ul sx={{ width: "100%", padding: 0 }}>
-          {categories.map((category, index: number) => (
-            <CategoryItems
-              key={index}
-              image={category.image}
-              name={category.name}
-              addOutline={addOutline}  // Use the state to control the addOutline prop
-              // @ts-ignore
-              subItems={products[category.name] || []} // Ensure subItems is an array
-            />
-          ))}
-        </ul>
-      </Box>
+      <ul sx={{ width: "100%", padding: 0 }}>
+        {categories.map((category, index: number) => (
+          <CategoryItems
+            key={index}
+            image={category.image}
+            name={category.name}
+            addOutline={addOutline}  // Use the state to control the addOutline prop
+            // @ts-ignore
+            subItems={products[category.name] || []} // Ensure subItems is an array
+          />
+        ))}
+      </ul>
     </Box>
   );
 };

@@ -2,470 +2,94 @@
 import React from "react";
 import { Box } from "theme-ui";
 import { IonIcon } from "@ionic/react";
-import { star, starHalf } from "ionicons/icons";
-import hat from "../../assets/hat.jpg";
-import jacket from "../../assets/jacket.jpg";
-import TShirt from "../../assets/T-Shirt.jpg";
+import { star} from "ionicons/icons";
+// import hat from "../../assets/hat.jpg";
+// import jacket from "../../assets/jacket.jpg";
+// import TShirt from "../../assets/T-Shirt.jpg";
 import shoePair from "../../assets/shoePair.jpg";
+import { theme } from "@/Theme/theme";
+import { Link } from "react-router-dom";
+
+const bestSellers = [
+  {
+    id: 1,
+    showcaseImg: shoePair,
+    showcaseTitle: 'Men Sport shoes',
+    stars: 5,
+    del: '6.00',
+    price: '4.00'
+  },
+  {
+    id: 2,
+    showcaseImg: shoePair,
+    showcaseTitle: 'Men Sport shoes',
+    stars: 5,
+    del: '6.00',
+    price: '4.00'
+  },
+  {
+    id: 3,
+    showcaseImg: shoePair,
+    showcaseTitle: 'Men Sport shoes',
+    stars: 5,
+    del: '6.00',
+    price: '4.00'
+  },
+  {
+    id: 4,
+    showcaseImg: shoePair,
+    showcaseTitle: 'Men Sport shoes',
+    stars: 5,
+    del: '6.00',
+    price: '4.00'
+  },
+]
 
 const BestSellers: React.FC = () => {
   return (
-    <Box
-      sx={{
-        width: "100%",
-        display: ["none", "flex"],
-      }}
-    >
-      <Box
-        className="sidebar-category2"
-        sx={{
-          marginTop: 3,
-        }}
-      >
-        <h2 className="sidebar-title">Best Sellers</h2>
+    <Box className="productShowCase">
+      <h3 sx={{ ...theme.productContainer.showcaseHeading }}>Best Sellers</h3>
+      <Box>
+        <Box>
+          {
+            bestSellers.map(el => (
+              <Box sx={{ ...theme.productContainer.showCase }} key={el.id}>
+                <Link to={''}>
+                  <img src={el.showcaseImg} height={75} width={75} sx={{ ...theme.productContainer.showcaseImg }} />
+                </Link>
 
-        <Box
-          className="sidebar-top"
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            width: "400px",
-            padding: 2,
-            marginTop: -2,
-          }}
-        >
-          <Box
-            className="sidebar-top"
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "flex-start",
-              alignItems: "center",
-              width: "400px",
-            }}
-          >
-            <img src={shoePair} height={100} width={100} />
-            <Box sx={{ marginLeft: "10px" }}>
-              <h3 className="bestseller-title">Men Sport Shoes</h3>
-              <Box
-                style={{
-                  padding: 0,
-                  marginTop: -9,
-                }}
-              >
-                <IonIcon
-                  icon={star}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
+                <Box sx={{ ...theme.productContainer.showcaseContent }}>
+                  <Link to={''}>
+                    <h4 sx={{ ...theme.productContainer.showcaseTitle }}>{el.showcaseTitle}</h4>
+                  </Link>
+                  <Box sx={{ ...theme.productContainer.showcaseRating }}>
+                    {
+                      Array.from({ length: el.stars }, (_, index) => (
+                        <IonIcon
+                          key={index}
+                          icon={star}
+                          role="img"
+                          aria-label="logo star"
+                          sx={{
+                            color: "rgb(255, 145, 0)",
 
-                    fontSize: 20,
-                  }}
-                />
-                <IonIcon
-                  icon={star}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
+                            fontSize: 12.17,
+                          }}
+                        />
+                      ))
+                    }
 
-                    fontSize: 20,
-                  }}
-                />
-                <IonIcon
-                  icon={star}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
-
-                    fontSize: 20,
-                  }}
-                />
-                <IonIcon
-                  icon={star}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
-
-                    fontSize: 20,
-                  }}
-                />
-                <IonIcon
-                  icon={starHalf}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
-                    fontSize: 20,
-                  }}
-                />
+                  </Box>
+                  <Box sx={{ ...theme.productContainer.priceBox }}>
+                    <del sx={{ ...theme.productContainer.del }}>{el.del}</del>
+                    <p sx={{ ...theme.productContainer.price }}>
+                      {el.price}
+                    </p>
+                  </Box>
+                </Box>
               </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  width: "100px",
-                }}
-              >
-                <del
-                  sx={{
-                    marginTop: 2,
-                    paddingRight: "10px",
-                    color: "rgb(167, 167, 167);",
-                  }}
-                >
-                  $6.00
-                </del>
-                <h3
-                  className="sidebar-title-price"
-                  sx={{
-                    marginTop: "7px",
-                    paddingRight: "10px",
-                  }}
-                >
-                  $4.00
-                </h3>
-              </Box>
-            </Box>
-          </Box>
-        </Box>
-
-        <Box
-          className="sidebar-top"
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            width: "400px",
-            padding: 2,
-            marginTop: -2,
-          }}
-        >
-          <Box
-            className="sidebar-top"
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "flex-start",
-              alignItems: "center",
-              width: "400px",
-            }}
-          >
-            <img src={jacket} height={100} width={100} />
-            <Box sx={{ marginLeft: "10px" }}>
-              <h3 className="bestseller-title">Men's Hoodies T-shirt</h3>
-              <Box
-                style={{
-                  padding: 0,
-                  marginTop: -9,
-                }}
-              >
-                <IonIcon
-                  icon={star}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
-
-                    fontSize: 20,
-                  }}
-                />
-                <IonIcon
-                  icon={star}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
-
-                    fontSize: 20,
-                  }}
-                />
-                <IonIcon
-                  icon={star}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
-
-                    fontSize: 20,
-                  }}
-                />
-                <IonIcon
-                  icon={star}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
-
-                    fontSize: 20,
-                  }}
-                />
-                <IonIcon
-                  icon={star}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
-                    fontSize: 20,
-                  }}
-                />
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  width: "100px",
-                }}
-              >
-                <del
-                  sx={{
-                    marginTop: 2,
-                    paddingRight: "10px",
-                    color: "rgb(167, 167, 167);",
-                  }}
-                >
-                  $7.00
-                </del>
-                <h3
-                  className="sidebar-title-price"
-                  sx={{
-                    marginTop: "7px",
-                    paddingRight: "10px",
-                  }}
-                >
-                  $4.00
-                </h3>
-              </Box>
-            </Box>
-          </Box>
-        </Box>
-
-        <Box
-          className="sidebar-top"
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            width: "400px",
-            padding: 2,
-            marginTop: -2,
-          }}
-        >
-          <Box
-            className="sidebar-top"
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "flex-start",
-              alignItems: "center",
-              width: "400px",
-            }}
-          >
-            <img src={TShirt} height={100} width={100} />
-            <Box sx={{ marginLeft: "10px" }}>
-              <h3 className="bestseller-title">Men's Hoodies T-SHirt</h3>
-              <Box
-                style={{
-                  padding: 0,
-                  marginTop: -9,
-                }}
-              >
-                <IonIcon
-                  icon={star}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
-
-                    fontSize: 20,
-                  }}
-                />
-                <IonIcon
-                  icon={star}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
-
-                    fontSize: 20,
-                  }}
-                />
-                <IonIcon
-                  icon={star}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
-
-                    fontSize: 20,
-                  }}
-                />
-                <IonIcon
-                  icon={star}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
-
-                    fontSize: 20,
-                  }}
-                />
-                <IonIcon
-                  icon={starHalf}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
-                    fontSize: 20,
-                  }}
-                />
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  width: "100px",
-                }}
-              >
-                <del
-                  sx={{
-                    marginTop: 2,
-                    paddingRight: "10px",
-                    color: "rgb(167, 167, 167);",
-                  }}
-                >
-                  $4.00
-                </del>
-                <h3
-                  className="sidebar-title-price"
-                  sx={{
-                    marginTop: "7px",
-                    paddingRight: "10px",
-                  }}
-                >
-                  $7.00
-                </h3>
-              </Box>
-            </Box>
-          </Box>
-        </Box>
-
-        <Box
-          className="sidebar-top"
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            width: "400px",
-            padding: 2,
-            marginTop: -2,
-          }}
-        >
-          <Box
-            className="sidebar-top"
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "flex-start",
-              alignItems: "center",
-              width: "400px",
-            }}
-          >
-            <img src={hat} height={100} width={100} />
-            <Box sx={{ marginLeft: "10px" }}>
-              <h3 className="bestseller-title">Woolen Hat For Men</h3>
-              <Box
-                style={{
-                  padding: 0,
-                  marginTop: -9,
-                }}
-              >
-                <IonIcon
-                  icon={star}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
-
-                    fontSize: 20,
-                  }}
-                />
-                <IonIcon
-                  icon={star}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
-
-                    fontSize: 20,
-                  }}
-                />
-                <IonIcon
-                  icon={star}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
-
-                    fontSize: 20,
-                  }}
-                />
-                <IonIcon
-                  icon={star}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
-
-                    fontSize: 20,
-                  }}
-                />
-                <IonIcon
-                  icon={starHalf}
-                  role="img"
-                  aria-label="logo star"
-                  sx={{
-                    color: "rgb(255, 145, 0)",
-                    fontSize: 20,
-                  }}
-                />
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  width: "100px",
-                }}
-              >
-                <del
-                  sx={{
-                    marginTop: 2,
-                    paddingRight: "10px",
-                    color: "rgb(167, 167, 167);",
-                  }}
-                >
-                  $18.00
-                </del>
-                <h3
-                  className="sidebar-title-price"
-                  sx={{
-                    marginTop: "7px",
-                    paddingRight: "10px",
-                  }}
-                >
-                  $11.00
-                </h3>
-              </Box>
-            </Box>
-          </Box>
+            ))
+          }
         </Box>
       </Box>
     </Box>

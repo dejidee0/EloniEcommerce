@@ -1,12 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /** @jsxImportSource theme-ui */
 import React from "react";
-import { Box, Flex, Text, Image, Button, Progress } from "theme-ui";
+import { Box, Text, Image, Button } from "theme-ui";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addItemToCart } from "./../../store/cartSlice";
+import { addItemToCart } from "@/store/cartSlice";
+import { theme } from "@/Theme/theme";
+import { IonIcon } from "@ionic/react";
+import { star } from "ionicons/icons";
 
-const DealCard: React.FC<{ product: any; key: any }> = ({ key, product }) => {
+
+const DealCard: React.FC<{ product: any; key: any }> = ({ product }) => {
   const dispatch = useDispatch();
+  const naviagate = useNavigate();
 
   const handleAddToCart = () => {
     const item = {
@@ -19,139 +25,165 @@ const DealCard: React.FC<{ product: any; key: any }> = ({ key, product }) => {
 
     dispatch(addItemToCart(item));
     console.log("Added successfully");
+
+    naviagate("/cart");
   };
   return (
     <Box
-      sx={{
-        border: "1px solid #e0e0e0",
-        borderRadius: "8px",
-        padding: ["15px", "20px"],
-        width: "100%",
-        backgroundColor: "#ffffff",
-        margin: "20px auto",
-      }}
-      key={key}
+      className="showCaseWrapper"
+      sx={{ ...theme.productContainer.productFeatured.showCaseWrapper }}
     >
-      <Flex
-        sx={{
-          flexDirection: ["column", "row"],
-        }}
+      <Box
+        className="showCaseContainer"
+        sx={{ ...theme.productContainer.productFeatured.showCaseContainer }}
       >
-        {/* Product Image */}
-        <Box sx={{ flexBasis: ["100%", "40%"], mb: [3, 0], height: "100%" }}>
-          <Image
-            src={product?.productImages[0]}
-            alt="product image"
-            sx={{
-              width: "100%",
-              height: "400px",
-              objectFit: "cover",
-              borderRadius: "4px",
-            }}
-          />
-        </Box>
-
-        {/* Product Details */}
-        <Box sx={{ flexBasis: ["100%", "60%"], paddingLeft: [0, "20px"] }}>
-          {/* Ratings */}
-          <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-            <Box sx={{ color: "#FFA41C", fontSize: "18px", mr: 2 }}>★★★★☆</Box>
-          </Box>
-
-          {/* Product Title */}
-          <Text sx={{ fontSize: ["16px", "20px"], fontWeight: "bold", mb: 2 }}>
-            {product?.productName}
-          </Text>
-          <br />
-          {/* Product Description */}
-          <Text sx={{ color: "#555", mb: 2 }}>
-            {product?.productDescription}
-          </Text>
-
-          {/* Pricing */}
-          <Flex sx={{ alignItems: "center", my: 2 }}>
-            {product?.discount && (
-              <Text
-                sx={{
-                  fontSize: ["20px", "24px"],
-                  fontWeight: "bold",
-                  color: "#e63946",
-                  mr: 3,
-                }}
-              >
-                ${product?.discount}
-              </Text>
-            )}
-            <Text
-              sx={{
-                textDecoration: product?.discount && "line-through",
-                color: "#555",
-              }}
-            >
-              ${product?.price}
-            </Text>
-          </Flex>
-
-          {/* Add to Cart Button */}
-          <Button
-            sx={{
-              backgroundColor: "#d62828",
-              color: "#ffffff",
-              width: ["100%", "200px"],
-              mb: 3,
-              cursor: "pointer",
-            }}
-            onClick={handleAddToCart}
+        <Box
+          className="showCase"
+          sx={{ ...theme.productContainer.productFeatured.showcase }}
+        >
+          <Box
+            className="showCaseBanner"
+            sx={{ ...theme.productContainer.productFeatured.showCaseBanner }}
           >
-            ADD TO CART
-          </Button>
-
-          {/* Stock Details */}
-          <Box sx={{ py: "5px" }}>
-            <Flex sx={{ justifyContent: "space-between", mb: 2 }}>
-              <Text>ALREADY SOLD: 150</Text>
-              <Text>AVAILABLE: 200</Text>
-            </Flex>
-
-            {/* Progress Bar for stock details */}
-            <Progress sx={{ color: "#d62828", mb: 2 }} max={350} value={150} />
+            <Image
+              className="showCaseImage"
+              sx={{ ...theme.productContainer.productFeatured.showCaseImage }}
+              src={product?.productImages[0]}
+              alt="product image"
+            />
           </Box>
 
-          {/* Offer Timer */}
-          <Box sx={{ py: "5px" }}>
-            <Text sx={{ fontWeight: "bold", mb: 2 }}>
-              HURRY UP! OFFER ENDS IN:
-            </Text>
-            <Flex
-              sx={{
-                flexDirection: ["column", "row"],
-                marginTop: "10px",
-              }}
+          <Box
+            className="showCaseContent"
+            sx={{ ...theme.productContainer.productFeatured.showCaseContent }}
+          >
+            <Box
+              className="showCaseRating"
+              sx={{ ...theme.productContainer.productFeatured.showCaseRating }}
             >
-              {["Days", "Hours", "Min", "Sec"].map((item) => (
-                <Flex
-                  key={item}
-                  sx={{
-                    flex: 1,
-                    flexDirection: "column",
-                    backgroundColor: "#f0f0f0",
-                    borderRadius: "4px",
-                    padding: "10px",
-                    marginBottom: ["10px", 0],
-                    marginRight: ["0", "10px"],
-                    textAlign: "center",
-                  }}
-                >
-                  <Text sx={{ fontWeight: "bold", fontSize: "18px" }}>
-                    EXPIRED
-                  </Text>
-                  <Text>{item}</Text>
-                </Flex>
+              {Array.from({ length: 5 }, (_, index) => (
+                <IonIcon
+                  key={index}
+                  icon={star}
+                  role="img"
+                  aria-label="logo star"
+                />
               ))}
-            </Flex>
+
+            </Box>
+
+            <Link to={''}>
+              <h4
+                className="showcaseTitle"
+                sx={{ ...theme.productContainer.productFeatured.showcaseTitle }}
+              >{product?.productName}</h4>
+            </Link>
+
+            <p
+              className="showcaseDesc"
+              sx={{ ...theme.productContainer.productFeatured.showcaseDesc }}
+            >
+              {product?.productDescription}
+            </p>
+
+            <Box
+              className="priceBox"
+              sx={{ ...theme.productContainer.productFeatured.priceBox }}
+            >
+              <p
+                className="price"
+                sx={{ ...theme.productContainer.productFeatured.price }}
+              >{product?.price}</p>
+              <del
+                className="del"
+                sx={{ ...theme.productContainer.productFeatured.del }}
+              >{product?.discount}</del>
+            </Box>
+
+            <Button
+              className="addCartBtn"
+              sx={{ ...theme.productContainer.productFeatured.addCartBtn }}
+              onClick={handleAddToCart}
+            >
+              ADD TO CART
+            </Button>
+
+            <Box
+              className="showCaseStatus"
+              sx={{ ...theme.productContainer.productFeatured.showCaseStatus }}
+            >
+              <Box
+                className="wrapper"
+                sx={{ ...theme.productContainer.productFeatured.wrapper }}
+              >
+                <Text>ALREADY SOLD: <b>150</b></Text>
+                <Text>AVAILABLE: <b>200</b></Text>
+              </Box>
+
+              {/* Progress Bar for stock details */}
+              <Box
+                className="showcaseStatusBar"
+                sx={{ ...theme.productContainer.productFeatured.showcaseStatusBar }}
+              ></Box>
+            </Box>
+
+            <Box className="countDownBox">
+              <p
+                className="countdownDesc"
+                sx={{ ...theme.productContainer.productFeatured.countDownBox.countdownDesc }}
+              >
+                Hurry Up! Offer ends in:
+              </p>
+
+              <Box
+                className="countDown"
+                sx={{ ...theme.productContainer.productFeatured.countDownBox.countDown }}
+              >
+                <Box
+                  className="countdownContent"
+                  sx={{ ...theme.productContainer.productFeatured.countDownBox.countdownContent }}
+                >
+                  <p>EXPIRED</p>
+                  <p
+                    className="displayText"
+                    sx={{ ...theme.productContainer.productFeatured.countDownBox.displayText }}
+                  >Days</p>
+                </Box>
+                <Box
+                  className="countdownContent"
+                  sx={{ ...theme.productContainer.productFeatured.countDownBox.countdownContent }}
+                >
+                  <p>EXPIRED</p>
+                  <p
+                    className="displayText"
+                    sx={{ ...theme.productContainer.productFeatured.countDownBox.displayText }}
+                  >Days</p>
+                </Box>
+                <Box
+                  className="countdownContent"
+                  sx={{ ...theme.productContainer.productFeatured.countDownBox.countdownContent }}
+                >
+                  <p>EXPIRED</p>
+                  <p
+                    className="displayText"
+                    sx={{ ...theme.productContainer.productFeatured.countDownBox.displayText }}
+                  >Days</p>
+                </Box>
+                <Box
+                  className="countdownContent"
+                  sx={{ ...theme.productContainer.productFeatured.countDownBox.countdownContent }}
+                >
+                  <p>EXPIRED</p>
+                  <p
+                    className="displayText"
+                    sx={{ ...theme.productContainer.productFeatured.countDownBox.displayText }}
+                  >Days</p>
+                </Box>
+              </Box>
+            </Box>
           </Box>
         </Box>
-      </Flex>
+      </Box>
     </Box>
   );
 };
