@@ -476,6 +476,7 @@ function Banner() {
 
             }} src={elon_banner_2} alt="banner-img" />
           </div>
+          
           <div sx={{
             width: '50%', margin: 'auto',
             '@media screen and (max-width: 768px)': {
@@ -498,6 +499,7 @@ function Banner() {
 
             }} src={elon_banner_1} alt="banner-img" />
           </div>
+
           <div sx={{
             width: '50%', margin: 'auto',
             '@media screen and (max-width: 768px)': {
@@ -520,6 +522,7 @@ function Banner() {
 
             }} src={elon_banner_3} alt="banner-img" />
           </div>
+
           <div sx={{
             width: '50%', margin: 'auto',
             '@media screen and (max-width: 768px)': {
