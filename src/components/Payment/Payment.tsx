@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import { useState } from 'react'
+import { useState } from 'react';
 import { PaystackButton } from "react-paystack";
 import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
@@ -10,7 +10,7 @@ function Payment() {
     const totalAmount = useSelector((state: RootState) => state.cart.totalAmount);
     const [ name, setName ] = useState("")
     const [ email, setEmail ] = useState("")
-    const [ amount, setAmount ] = useState(totalAmount);
+    const [ amount ] = useState(totalAmount);
     const [ phoneNumber, setPhoneNumber ] = useState("");
 
    
