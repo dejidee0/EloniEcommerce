@@ -13,6 +13,8 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import Recommend from "@/components/Recommend/Recommend";
 
+import { Link } from "react-router-dom";
+
 
 
 const CartList: React.FC = () => {
@@ -20,6 +22,8 @@ const CartList: React.FC = () => {
   const totalAmount = useSelector((state: RootState) => state.cart.totalAmount);
   const dispatch = useDispatch();
 
+ 
+ 
   return (
     <Box sx={{ margin: "0 auto" }}>
       <Header />
@@ -147,6 +151,7 @@ const CartList: React.FC = () => {
             </Flex>
 
             {/* Checkout Button */}
+            <Link to="/payment">
             <Button
               sx={{
                 width: "100%",
@@ -160,6 +165,8 @@ const CartList: React.FC = () => {
             >
               Proceed to Checkout
             </Button>
+            </Link>
+            
           </>
         )}
         <Box
