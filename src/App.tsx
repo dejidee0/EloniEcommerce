@@ -18,6 +18,7 @@ import AddressBook from "./pages/AddressBook/AddressBook.tsx";
 // import './App.css'
 
 import BlogForm from "@/pages/BlogForm/BlogForm.tsx";
+import Payment from "./components/Payment/Payment.tsx";
 
 export default function App() {
   return (
@@ -31,6 +32,7 @@ export default function App() {
             <Route path="/otp-page" element={<Otp />} />
             <Route path="/wishlist" element={<WishList />} />
             <Route path="/cart" element={<CartList />} />
+            <Route path="/payment" element={<Payment />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/my-account" element={<MyAccount />} />
             <Route path="/address-book" element={<AddressBook />} />
