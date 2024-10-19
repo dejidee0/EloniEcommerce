@@ -8,6 +8,7 @@ import Footer from '../Footer/Footer';
 
 function Payment() {
     const totalAmount = useSelector((state: RootState) => state.cart.totalAmount);
+    
     const [ name, setName ] = useState("")
     const [ email, setEmail ] = useState("")
     const [ amount, setAmount ] = useState(totalAmount);

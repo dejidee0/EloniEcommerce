@@ -32,7 +32,7 @@ export default function App() {
             <Route path="/otp-page" element={<Otp />} />
             <Route path="/wishlist" element={<WishList />} />
             <Route path="/cart" element={<CartList />} />
-            <Route path="/payment" element={<Payment />} />
+            {/* <Route path="/payment" element={<Payment />} /> */}
             <Route path="/orders" element={<Orders />} />
             <Route path="/my-account" element={<MyAccount />} />
             <Route path="/address-book" element={<AddressBook />} />
@@ -44,6 +44,14 @@ export default function App() {
               element={
                 <PrivateRoute roleRequired="admin">
                   <AdminDashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/payment"
+              element={
+                <PrivateRoute roleRequired="user">
+                  <Payment /> 
                 </PrivateRoute>
               }
             />
