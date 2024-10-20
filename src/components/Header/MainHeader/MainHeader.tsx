@@ -10,8 +10,12 @@ import { Link, useNavigate } from 'react-router-dom';
 // import "../SideBar/css/style.css"
 import Modal from '@/components/Modal/Modal'
 import { theme } from '@/Theme/theme';
+import { RootState } from '../../../store/store';
+import { useSelector } from "react-redux";
 
 const MainHeader: React.FC = () => {
+    const cartItem = useSelector((state: RootState) => state.cart.items.length)
+
  const navigate = useNavigate();
  const [showModal, setShowModal] = useState(false)
 
@@ -282,7 +286,7 @@ const MainHeader: React.FC = () => {
         textAlign: 'center'
        }}
       >
-       0
+       {cartItem}
       </span>
      </Link>
     </Box>

@@ -52,7 +52,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, roleRequired }) =
   }
 
   if (!user || (roleRequired && role !== roleRequired)) {
-    return <Navigate to="/" />;
+    return <Navigate to="/sign-in" />;
   }
 
   return children;
