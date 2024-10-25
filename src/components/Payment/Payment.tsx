@@ -1,6 +1,6 @@
 /** @jsxImportSource theme-ui */
 import { useState } from 'react';
-import { PaystackButton } from "react-paystack";
+import { PaystackButton } from 'react-paystack';
 import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
 import Header from '../Header/Header';
