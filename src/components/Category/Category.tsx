@@ -6,6 +6,7 @@ import { fetchProductsByCategory } from "../../utils/categories"; // Import the 
 import { Box, Heading } from "theme-ui";
 import Categories from "../../utils/categories";
 import { theme } from "@/Theme/theme";
+import { Helmet } from 'react-helmet-async';
 
 const Category = () => {
   const [categories] = useState(Categories);
@@ -36,6 +37,15 @@ const Category = () => {
 
 
   return (
+    <>
+    {/* Helmet for SEO optimization */}
+<Helmet>
+    <meta name="description" content="Explore a wide range of product categories at EloniEcommerce. From electronics to fashion, find everything you need in one place with unbeatable deals." />
+    <meta name="keywords" content="EloniEcommerce, product categories, online shopping, electronics, fashion, home essentials, best deals, shop now, buy online" />
+    <meta property="og:title" content="Shop by Category | EloniEcommerce" />
+    <meta property="og:description" content="Browse through various product categories at EloniEcommerce, including electronics, fashion, home essentials, and more. Find the best deals today!" />
+</Helmet>
+
     <Box
     className="sidebarCategory"
       sx={{
@@ -69,6 +79,7 @@ const Category = () => {
         ))}
       </ul>
     </Box>
+    </>
   );
 };
 

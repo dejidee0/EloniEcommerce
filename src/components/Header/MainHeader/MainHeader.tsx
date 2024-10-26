@@ -7,7 +7,7 @@ import { Box, Button, Image, Input } from 'theme-ui';
 import { signOut } from 'firebase/auth';
 import { auth } from '@/firebaseConfig/firebaseConfig';
 import { Link, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet'; // Added for SEO
+import { Helmet } from 'react-helmet-async';
 import Modal from '@/components/Modal/Modal'
 import { theme } from '@/Theme/theme';
 import { RootState } from '../../../store/store';
@@ -17,7 +17,6 @@ const MainHeader: React.FC = () => {
     const cartItem = useSelector((state: RootState) => state.cart.items.length)
     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false)
-    const userLoggedIn = true; // Assuming a way to check if the user is logged in
 
     const handleLogout = async () => {
         try {
@@ -36,8 +35,10 @@ const MainHeader: React.FC = () => {
         <>
             {/* Helmet for SEO optimization */}
             <Helmet>
-                <title>{userLoggedIn ? "Welcome Back to EloniEcommerce!" : "Welcome to EloniEcommerce - Shop Now"}</title>
-                <meta name="description" content={userLoggedIn ? "Manage your cart, wishlist, and explore your account." : "Discover top products at EloniEcommerce, your go-to online store."} />
+            <meta name="description" content="Discover top-quality products at EloniEcommerce, your trusted online store for electronics, fashion, and more. Shop now for the best deals and enjoy fast shipping!" />
+            <meta name="keywords" content="EloniEcommerce, online shopping, best deals, electronics, fashion, ecommerce, buy online, fast shipping, quality products, shop online" />
+            <meta property="og:title" content="EloniEcommerce - Your Trusted Online Store for Quality Products" />
+            <meta property="og:description" content="Explore the best deals on electronics, fashion, home essentials, and more at EloniEcommerce. Shop now for fast and secure delivery!" />
             </Helmet>
 
             <Box

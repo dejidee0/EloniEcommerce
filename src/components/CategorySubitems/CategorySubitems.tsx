@@ -2,6 +2,7 @@
 
 import { SubItem } from "@/type/SubItem";
 import { Link, Paragraph } from "theme-ui";
+import { Helmet } from 'react-helmet-async';
 
 type CategoryItemsProps = {
  visibility: boolean
@@ -13,6 +14,14 @@ const CategorySubitems = (props: CategoryItemsProps) => {
 
  return (
   <>
+  {/* Helmet for SEO optimization */}
+<Helmet>
+    <meta name="description" content="Shop from a wide selection of subcategories in electronics, fashion, home essentials, and more at EloniEcommerce. Find the right products tailored to your needs." />
+    <meta name="keywords" content="EloniEcommerce, subcategories, electronics, fashion, home goods, online store, ecommerce, top brands, shop now" />
+    <meta property="og:title" content="Discover Subcategories | EloniEcommerce" />
+    <meta property="og:description" content="Explore a variety of product subcategories at EloniEcommerce, from electronics to fashion and more. Get the best products delivered fast!" />
+</Helmet>
+
    {
     visibility && (
      <ul sx={{
