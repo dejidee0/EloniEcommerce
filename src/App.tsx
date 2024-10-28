@@ -19,6 +19,9 @@ import AddressBook from "./pages/AddressBook/AddressBook.tsx";
 
 import BlogForm from "@/pages/BlogForm/BlogForm.tsx";
 import Payment from "./components/Payment/Payment.tsx";
+import BecomeASeller from "./components/BecomeASeller/BecomeASeller.tsx";
+import SellerSignUp from "./components/SignUpFollow/SellerForm/SellerSignUp.tsx";
+import EmailForm from "./components/SignUpFollow/EmailForm/EmailForm.tsx";
 
 export default function App() {
   return (
@@ -53,6 +56,24 @@ export default function App() {
                 <PrivateRoute roleRequired="user">
                   <Payment /> 
                 </PrivateRoute>
+              }
+            />
+            <Route
+              path="/become-a-seller"
+              element={
+                // <PrivateRoute roleRequired="user">
+                //  <BecomeASeller />
+                <SellerSignUp />
+                // </PrivateRoute>
+              }
+            />
+            <Route
+              path="/email-verification"
+              element={
+                // <PrivateRoute roleRequired="user">
+                //  <BecomeASeller />
+                <EmailForm />
+                // </PrivateRoute>
               }
             />
           </Routes>
