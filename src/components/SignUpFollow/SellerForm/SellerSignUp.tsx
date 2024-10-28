@@ -16,17 +16,17 @@ function SellerSignUp() {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   useEffect(() => {
-    setIsButtonDisabled(sellerCountry !== "Select your Country");
+    setIsButtonDisabled(sellerCountry === "");
   }, [sellerCountry]);
 
-  const handleNext = (e: any) => {
-    e.preventDefault()
+  const handleNext = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     console.log(sellerCountry);
-    
+    console.log("helo");
     if (sellerCountry !== "Select your Country") {
       dispatch(updateCountry(sellerCountry));
       console.log(sellerCountry);
-    
+      navigate("/seller-signup");
     }
   };
 
@@ -42,11 +42,17 @@ function SellerSignUp() {
         height: "100vh",
       }}
     >
-      <div>
-        <img src={seller_bg_image} alt="seller bg image" />
+      <div
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <img src={seller_bg_image} alt="seller bg image" width={"100%"} />
       </div>
       <div sx={{ marginTop: "1rem" }}>
-        <form sx={{ width: "28rem", textAlign: "center" }}>
+        <form sx={{ width: "80%", textAlign: "center", margin: "0 auto" }}>
           <div sx={{ marginBottom: "1.5rem" }}>
             <h1
               sx={{
@@ -148,7 +154,10 @@ function SellerSignUp() {
                 width: "100%",
                 padding: "15px 20px",
                 marginBottom: "10px",
-                cursor: "pointer", background: "#f68B1e", border: "none", color: "#fff",
+                cursor: "pointer",
+                background: "#f68B1e",
+                border: "none",
+                color: "#fff",
               }}
               onClick={handleNext}
               disabled={isButtonDisabled}
@@ -167,6 +176,35 @@ function SellerSignUp() {
             </div>
           </div>
         </form>
+        <div
+          sx={{
+            width: "80%",
+            margin: "0 auto",
+            textAlign: "center",
+            marginTop: "1rem",
+          }}
+        >
+          <p
+            sx={{
+              textAlign: "center",
+              fontSize: "16px",
+              color: "#0009",
+              fontWeight: 400,
+            }}
+          >
+            Already have an account?
+            <a
+              href="/sign-in"
+              sx={{
+                color: "#f68B1e",
+                textDecoration: "none",
+                fontWeight: 500,
+              }}
+            >
+              Sign In
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );

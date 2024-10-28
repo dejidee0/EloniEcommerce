@@ -1,25 +1,17 @@
 /** @jsxImportSource theme-ui */
-import React, { useState } from "react";
 import seller_bg_image from "../../../assets/signup-background-image.svg";
-import { useDispatch } from "react-redux";
-import { updateEmail } from "../../../store/formSlice";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-function EmailForm() {
-  const [email, setEmail] = useState("");
-  const dispatch = useDispatch();
+import { RootState } from "./../../../store/store"; // Adjust the path to your store file
+
+function EmailVerification() {
+  const email = useSelector((state: RootState) => state.form.email);
   const navigate = useNavigate();
 
-  const handleEmail = (e: React.FormEvent<HTMLInputElement>) => {
-    setEmail((e.target as HTMLInputElement).value);
+  const handleVerification = () => {
+    navigate("/seller/personal-info");
   };
-
-  const handleVerify = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    console.log(email);
-    dispatch(updateEmail(email));
-    navigate("/seller/verification");
-  };
-
+  console.log(email);
   return (
     <div
       sx={{
@@ -84,7 +76,7 @@ function EmailForm() {
                 fontWeight: 400,
                 fontSize: "14px",
                 ":focus-within label": {
-                  //   color: "red",
+                  // color: "red",
                   transform: "translate(5px, -28px) ",
                   zIndex: "1111px",
                   lineHeight: "20px",
@@ -108,7 +100,7 @@ function EmailForm() {
                   },
                 }}
                 value={email}
-                onChange={handleEmail}
+                readOnly
               />
               <label
                 htmlFor="email"
@@ -120,10 +112,61 @@ function EmailForm() {
                   background: "#fff",
                   cursor: "pointer",
                   transition: "0.2s ease",
+                  // transform: "translate(0)",
                   transform: email ? "translate(5px, -28px)" : "translate(0)",
                 }}
               >
                 Email Address *
+              </label>
+            </div>
+            <div
+              sx={{
+                width: "100%",
+                textAlign: "left",
+                cursor: "pointer",
+                marginBottom: "10px",
+                position: "relative",
+                fontWeight: 400,
+                fontSize: "14px",
+                ":focus-within label": {
+                  // color: "red",
+                  transform: "translate(5px, -28px) ",
+                  zIndex: "1111px",
+                  lineHeight: "20px",
+                  height: "20px",
+                  fontSize: "14px",
+                },
+              }}
+            >
+              <input
+                type="text"
+                sx={{
+                  width: "100%",
+                  padding: "15px 12px",
+                  outline: "none",
+                  lineHeight: "20px",
+                  fontSize: "18px",
+                  "&:focus": {
+                    // color: "red",
+                    border: "2px solid black",
+                    zIndex: 1,
+                  },
+                }}
+              />
+              <label
+                htmlFor="verification_code"
+                sx={{
+                  position: "absolute",
+                  display: "block",
+                  margin: "0 20px",
+                  top: "18px",
+                  background: "#fff",
+                  cursor: "pointer",
+                  transition: "0.2s ease",
+                  transform: "translate(0)",
+                }}
+              >
+                Enter the verification code *
               </label>
             </div>
 
@@ -137,9 +180,22 @@ function EmailForm() {
                 border: "none",
                 color: "#fff",
               }}
-              onClick={handleVerify}
+              onClick={handleVerification}
             >
               VERIFY
+            </button>
+            <button
+              sx={{
+                width: "100%",
+                padding: "15px 20px",
+                marginBottom: "10px",
+                cursor: "pointer",
+                color: "#f68B1e",
+                border: "1px solid #ddd",
+                background: "#fff",
+              }}
+            >
+              RESEND CODE{" "}
             </button>
           </div>
         </form>
@@ -148,4 +204,4 @@ function EmailForm() {
   );
 }
 
-export default EmailForm;
+export default EmailVerification;
