@@ -2,7 +2,7 @@
 import seller_bg_image from "../../../assets/signup-background-image.svg";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { RootState } from "./../../../store/store"; // Adjust the path to your store file
+import { RootState } from "../../../store/store"; // Adjust the path to your store file
 
 function EmailVerification() {
   const email = useSelector((state: RootState) => state.form.email);
