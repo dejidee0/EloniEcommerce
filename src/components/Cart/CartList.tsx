@@ -12,6 +12,7 @@ import {
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import Recommend from "@/components/Recommend/Recommend";
+import { Helmet } from 'react-helmet-async';
 
 import { Link } from "react-router-dom";
 
@@ -25,6 +26,15 @@ const CartList: React.FC = () => {
  
  
   return (
+    <>
+    {/* Helmet for SEO optimization */}
+<Helmet>
+    <meta name="description" content="View and manage the items in your cart at EloniEcommerce. Shop top-quality products, add or remove items, and proceed to checkout for a seamless shopping experience." />
+    <meta name="keywords" content="EloniEcommerce, shopping cart, checkout, online store, add to cart, ecommerce, buy online, top products, fast delivery" />
+    <meta property="og:title" content="Your Shopping Cart | EloniEcommerce" />
+    <meta property="og:description" content="Easily manage your shopping cart at EloniEcommerce. Add or remove items and checkout securely with fast delivery." />
+</Helmet>
+
     <Box sx={{ margin: "0 auto" }}>
       <Header />
       <Container sx={{ marginLeft: 'auto', marginRight: 'auto', maxWidth: '1184px' }}>
@@ -179,6 +189,7 @@ const CartList: React.FC = () => {
       </Container>
       <Footer />
     </Box>
+    </>
   );
 };
 
