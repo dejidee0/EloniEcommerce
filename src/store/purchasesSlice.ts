@@ -1,10 +1,10 @@
 // store.ts
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { db } from '../firebaseConfig/firebaseConfig'; // Firebase config file
-import { collection, doc, getDoc, increment, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, increment, updateDoc } from 'firebase/firestore';
 
 // Types
-interface Voucher {
+export interface Voucher {
   code: string;
   isRedeemed: boolean;
   expiration: Date;

@@ -1,7 +1,7 @@
 import  { useEffect } from 'react';
 import { useAppDispatch } from '../../store/hook'; 
 import { useSelector } from 'react-redux';
-import { fetchPurchaseCount, incrementPurchaseCount, redeemVoucher } from '../../store/purchasesSlice';
+import { fetchPurchaseCount, incrementPurchaseCount, redeemVoucher, Voucher } from '../../store/purchasesSlice';
 import Header from "../Header/Header"
 
 
