@@ -4,7 +4,7 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <Box as="footer" sx={{ backgroundColor: '#192A41', padding: [4, 5], color: '#FFFFFF' }}>
+    <Box as="footer" sx={{ backgroundColor: '#192A41', padding: [4, 2], color: '#FFFFFF' }}>
       {/* Main Footer Sections */}
       <Flex
         sx={{
@@ -105,6 +105,25 @@ const Footer = () => {
                 </Link>
               </Flex>
             </li>
+          </ul>
+        </Box>
+
+        {/* Make Money With Eloni */}
+        <Box sx={{ flex: '1 1 200px', marginBottom: [4, 4, 0] , marginRight: 1}}>
+          <Text as="h4" sx={{ fontSize: 2, marginBottom: 3, fontWeight: 'bold', color: '#FFFFFF' }}>
+          Make Money With Eloni
+          </Text>
+          <ul sx={{ listStyle: 'none', padding: 0, margin: 0 }}>
+            
+            <li>
+              <Flex sx={{ alignItems: 'center', marginBottom: 2 }}>
+                 <Link href="/become-a-seller" sx={{ color: '#FFFFFF', textDecoration: 'none', marginBottom: 2, display: 'block', '&:hover': { color: '#6C757D' } }}>
+                  Become a Seller
+                </Link>
+                <Text sx={{ color: '#FFFFFF' }}></Text>
+              </Flex>
+            </li>
+         
           </ul>
         </Box>
       </Flex>

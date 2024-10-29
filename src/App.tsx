@@ -19,6 +19,12 @@ import AddressBook from "./pages/AddressBook/AddressBook.tsx";
 
 import BlogForm from "@/pages/BlogForm/BlogForm.tsx";
 import Payment from "./components/Payment/Payment.tsx";
+// import BecomeASeller from "./components/BecomeASeller/BecomeASeller.tsx";
+import SellerSignUp from "./components/SignUpFollow/SellerForm/SellerSignUp.tsx";
+import EmailVerification from "./components/SignUpFollow/EmailVerification/EmailVerification.tsx";
+import EmailForm from "./components/SignUpFollow/EmailForm/EmailForm.tsx";
+import SellerPersonalInformation from "./components/SignUpFollow/PersonalInformation/PersonalInformation.tsx";
+import ShopInformation from "./components/SignUpFollow/ShopInformation/ShopInformation.tsx";
 
 export default function App() {
   return (
@@ -51,8 +57,53 @@ export default function App() {
               path="/payment"
               element={
                 <PrivateRoute roleRequired="user">
-                  <Payment /> 
+                  <Payment />
                 </PrivateRoute>
+              }
+            />
+            <Route
+              path="/become-a-seller"
+              element={
+                // <PrivateRoute roleRequired="user">
+                //  <BecomeASeller />
+                <SellerSignUp />
+                // </PrivateRoute>
+              }
+            />
+            <Route
+              path="/seller-signup"
+              element={
+                // <PrivateRoute roleRequired="user">
+                //  <BecomeASeller />
+                <EmailForm />
+                // </PrivateRoute>
+              }
+            />
+            <Route
+              path="/seller/verification"
+              element={
+                // <PrivateRoute roleRequired="user">
+                //  <BecomeASeller />
+                <EmailVerification />
+                // </PrivateRoute>
+              }
+            />
+            <Route
+              path="/seller/personal-info"
+              element={
+                // <PrivateRoute roleRequired="user">
+                //  <BecomeASeller />
+                <SellerPersonalInformation />
+                // </PrivateRoute>
+              }
+            />
+            <Route
+              path="/seller/shop-info"
+              element={
+                // <PrivateRoute roleRequired="user">
+                //  <BecomeASeller />
+                <ShopInformation />
+                // </PrivateRoute>
               }
             />
           </Routes>
