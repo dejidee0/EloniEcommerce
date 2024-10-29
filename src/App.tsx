@@ -20,11 +20,11 @@ import AddressBook from "./pages/AddressBook/AddressBook.tsx";
 import BlogForm from "@/pages/BlogForm/BlogForm.tsx";
 import Payment from "./components/Payment/Payment.tsx";
 // import BecomeASeller from "./components/BecomeASeller/BecomeASeller.tsx";
-import SellerSignUp from "./components/SignUpFollow/SellerForm/SellerSignUp.tsx";
-import EmailVerification from "./components/SignUpFollow/EmailVerification/EmailVerification.tsx";
-import EmailForm from "./components/SignUpFollow/EmailForm/EmailForm.tsx";
-import SellerPersonalInformation from "./components/SignUpFollow/PersonalInformation/PersonalInformation.tsx";
-import ShopInformation from "./components/SignUpFollow/ShopInformation/ShopInformation.tsx";
+import SellerSignUp from "./pages/SellersSignUpFlow/SellerForm/SellerSignUp.tsx";
+import EmailVerification from "./pages/SellersSignUpFlow/EmailVerification/EmailVerification.tsx";
+import EmailForm from "./pages/SellersSignUpFlow/EmailForm/EmailForm.tsx";
+import SellerPersonalInformation from "./pages/SellersSignUpFlow/PersonalInformation/PersonalInformation.tsx";
+import ShopInformation from "./pages/SellersSignUpFlow/ShopInformation/ShopInformation.tsx";
 
 export default function App() {
   return (
