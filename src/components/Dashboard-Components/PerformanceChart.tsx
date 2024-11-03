@@ -45,6 +45,7 @@ const PerformanceChart: React.FC = () => {
     animationEnabled: true,
     title: {
       text: 'Performance',
+    
     },
     axisX: {
       valueFormatString: 'MMM',
@@ -109,9 +110,10 @@ const PerformanceChart: React.FC = () => {
   let chart: CanvasJSReact.CanvasJSChart | null = null;
 
   return (
-    <Box sx={{ Width: "100%" }}>
+      <Box sx={{width:"100%", display:"flex", flexDirection:"column", justifyContent:"space-around", alignItems:"center",borderRadius:"15px"}}>
       <CanvasJSChart options={options} onRef={(ref: any) => (chart = ref)} />
-    </Box>
+      </Box>
+    
   );
 };
 

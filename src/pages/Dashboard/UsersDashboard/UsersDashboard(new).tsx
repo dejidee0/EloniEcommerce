@@ -21,6 +21,8 @@ const Dashboard: React.FC = () => {
           width: '100%',
           flexDirection: 'column',
         },
+        justifyContent:"space-around",
+        alignItems:"center"
       }}
     >
       <Box
@@ -68,12 +70,12 @@ const Dashboard: React.FC = () => {
         </Box>
         <Box sx={{
             display: "flex",
-            // flexDirection: ["column", "row", "row"],
-            width: "100%", 
-            justifyContent: ["center"],
-            alignItems: "center",
-            alignContent:"center",
-            padding: "0px",
+            flexDirection: ["column", "row", "row"],
+            width: ["90%", "100%"], 
+            justifyContent: ["space-around"],
+            borderRadius:"15px"
+            // border:"1px solid black",
+            
           }}>
             <PerformanceChart />
           </Box>
