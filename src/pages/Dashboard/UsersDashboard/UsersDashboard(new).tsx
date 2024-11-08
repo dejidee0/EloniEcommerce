@@ -3,10 +3,11 @@ import React from 'react';
 import Header from '@/components/Dashboard-Components/Header';
 // import NotificationDropdown from '@/components/Dashboard-Components/NotificationDropdown';
 import PerformanceChart from '@/components/Dashboard-Components/PerformanceChart';
-
+import ConversionsChart from '@/components/Dashboard-Components/ConversionsChart';
 import OrderCard from '@/components/Dashboard-Components/Card';
 import { Box } from 'theme-ui'; // Assuming you're using theme-ui or adapt as needed
-
+import SecondDataTable from '@/components/Dashboard-Components/secondDataTable';
+import DataTable from '@/components/Dashboard-Components/DataTable';
 const Dashboard: React.FC = () => {
   return (
     <Box sx={{backgroundColor: "#faf8f6;"}}>
@@ -82,6 +83,29 @@ const Dashboard: React.FC = () => {
           
       
       </Box>
+      <Box sx={{
+            display: "flex",
+            flexDirection: ["column", "row", "row"],
+            width: ["90%", "100%"], 
+            justifyContent: ["space-around"],
+            borderRadius:"15px"
+            // border:"1px solid black",
+            
+          }}>
+            <ConversionsChart conversionRate={65.2} thisWeek='' lastWeek='' />
+            <DataTable/>
+          </Box>
+          <Box sx={{
+            display: "flex",
+            flexDirection: ["column", "row", "row"],
+            width: ["90%", "100%"], 
+            justifyContent: ["space-around"],
+            borderRadius:"15px"
+            // border:"1px solid black",
+            
+          }}>
+            <SecondDataTable/>
+          </Box>
       
 
       <Box as="main" sx={{ p: 4 }}>

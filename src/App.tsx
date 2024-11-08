@@ -16,6 +16,7 @@ import CartList from "./components/Cart/CartList.tsx";
 import Orders from "./pages/Orders/Orders.tsx";
 import MyAccount from "./pages/MyAccount/MyAccount.tsx";
 import AddressBook from "./pages/AddressBook/AddressBook.tsx";
+import ProductList from "./pages/productList/page.tsx";
 
 
 // import './App.css'
@@ -42,6 +43,7 @@ export default function App() {
             <Route path="/my-account" element={<MyAccount />} />
             <Route path="/address-book" element={<AddressBook />} />
             <Route path="/blog-form" element={<BlogForm />} />
+            <Route path="/product-list" element={<ProductList />} />
             <Route
               path="/admin-dashboard"
               element={
