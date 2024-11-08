@@ -1,8 +1,8 @@
 import React from 'react';
-import { Box, Flex, Button, } from 'theme-ui';
-import { FaPenAlt, FaPlus, FaTrashAlt, FaRegEye } from 'react-icons/fa';
-import { FaEye, FaPen, FaTrash, FaStar } from 'react-icons/fa';
-import shoePair from "../../assets/shoePair.jpg";
+import { Box, Button, } from 'theme-ui';
+import { FaPenAlt, FaPlus, FaTrashAlt, FaStar, FaRegEye } from 'react-icons/fa';
+// import { FaEye, FaPen, FaTrash, FaStar } from 'react-icons/fa';
+import shoePair from "../../../assets/shoePair.jpg";
 import { theme } from "@/Theme/theme";
 
 interface ProductData {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from 'theme-ui';
-import ProductTable from '@/components/productListView/page';
+import ProductTable from '@/components/productListView/Admin/page';
 import Header from '@/components/Dashboard-Components/Header';
 
 
