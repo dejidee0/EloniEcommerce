@@ -23,13 +23,14 @@ const DataTable: React.FC = () => {
     <Box
       sx={{
         margin: "10px",
-        width: "100%",
+        width: ["100%", "70%"],
+        // border:"1px solid black",
         height: "600px",
         backgroundColor: "white",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-around",
-        alignContent: "center",
+        alignSelf: "center",
         boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
         borderRadius: "20px",
         fontSize: '12px', // Set the base font size to 12px

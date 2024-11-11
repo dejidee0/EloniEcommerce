@@ -42,11 +42,12 @@ const ConversionsChart: React.FC<ConversionsChartProps> = ({ conversionRate, thi
   return (
     <Box
       sx={{
-        width: "100%",
+        width: ["100%", "70%"],
+        // border:"1px solid black",
         height: "600px",
         display: "flex",
+        alignSelf: "center",
         flexDirection: "column",
-        justifyContent: "center",
         alignItems: "center",
         backgroundColor: "white",
         borderRadius: "15px",

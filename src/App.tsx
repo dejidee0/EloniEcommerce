@@ -39,7 +39,7 @@ export default function App() {
             <Route path="/cart" element={<CartList />} />
             {/* <Route path="/payment" element={<Payment />} /> */}
             <Route path="/orders" element={<Orders />} />
-            <Route path="/my-account" element={<UsersDashboard2 />} />
+            <Route path="/my-account" element={<UsersDashboard />} />
             <Route path="/address-book" element={<AddressBook />} />
             <Route path="/my-account" element={<MyAccount />} />
             <Route path="/address-book" element={<AddressBook />} />
