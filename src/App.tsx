@@ -24,12 +24,12 @@ import UserProductList from "./pages/productList/User/page.tsx";
 
 import BlogForm from "@/pages/BlogForm/BlogForm.tsx";
 import Payment from "./components/Payment/Payment.tsx";
-// import BecomeASeller from "./components/BecomeASeller/BecomeASeller.tsx";
 import SellerSignUp from "./pages/SellersSignUpFlow/SellerForm/SellerSignUp.tsx";
 import EmailVerification from "./pages/SellersSignUpFlow/EmailVerification/EmailVerification.tsx";
 import EmailForm from "./pages/SellersSignUpFlow/EmailForm/EmailForm.tsx";
 import SellerPersonalInformation from "./pages/SellersSignUpFlow/PersonalInformation/PersonalInformation.tsx";
 import ShopInformation from "./pages/SellersSignUpFlow/ShopInformation/ShopInformation.tsx";
+import Sidebar from "./components/Sidebar/Sidebar"; 
 
 export default function App() {
   return (
@@ -43,7 +43,6 @@ export default function App() {
             <Route path="/otp-page" element={<Otp />} />
             <Route path="/wishlist" element={<WishList />} />
             <Route path="/cart" element={<CartList />} />
-            {/* <Route path="/payment" element={<Payment />} /> */}
             <Route path="/orders" element={<Orders />} />
             {/* <Route path="/my-account" element={<AdminDashboard />} /> */}
             <Route path="/address-book" element={<AddressBook />} />
@@ -71,49 +70,26 @@ export default function App() {
             />
             <Route
               path="/become-a-seller"
-              element={
-                // <PrivateRoute roleRequired="user">
-                //  <BecomeASeller />
-                <SellerSignUp />
-                // </PrivateRoute>
-              }
+              element={<SellerSignUp />}
             />
             <Route
               path="/seller-signup"
-              element={
-                // <PrivateRoute roleRequired="user">
-                //  <BecomeASeller />
-                <EmailForm />
-                // </PrivateRoute>
-              }
+              element={<EmailForm />}
             />
             <Route
               path="/seller/verification"
-              element={
-                // <PrivateRoute roleRequired="user">
-                //  <BecomeASeller />
-                <EmailVerification />
-                // </PrivateRoute>
-              }
+              element={<EmailVerification />}
             />
             <Route
               path="/seller/personal-info"
-              element={
-                // <PrivateRoute roleRequired="user">
-                //  <BecomeASeller />
-                <SellerPersonalInformation />
-                // </PrivateRoute>
-              }
+              element={<SellerPersonalInformation />}
             />
             <Route
               path="/seller/shop-info"
-              element={
-                // <PrivateRoute roleRequired="user">
-                //  <BecomeASeller />
-                <ShopInformation />
-                // </PrivateRoute>
-              }
+              element={<ShopInformation />}
             />
+            {/* Add Sidebar Route */}
+            <Route path="/sidebar" element={<Sidebar />} />
           </Routes>
         </Provider>
       </BrowserRouter>
