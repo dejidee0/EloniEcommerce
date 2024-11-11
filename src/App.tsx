@@ -44,7 +44,7 @@ export default function App() {
             <Route path="/wishlist" element={<WishList />} />
             <Route path="/cart" element={<CartList />} />
             <Route path="/orders" element={<Orders />} />
-            {/* <Route path="/my-account" element={<AdminDashboard />} /> */}
+            <Route path="/my-account" element={<UsersDashboard />} />
             <Route path="/address-book" element={<AddressBook />} />
             <Route path="/users-my-account" element={<MyAccount />} />
             <Route path="/address-book" element={<AddressBook />} />

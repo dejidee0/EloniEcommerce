@@ -22,7 +22,7 @@ const OrderCard: React.FC<CardProps> = ({ iconName, cardTitle, cardValue, percen
       <Box className="card-body" sx={{
         background: "white",
         height:["150px", "150px"],
-        width:["90%", "450px",],
+        width:["90%", "380px",],
         borderRadius:"15px",
         boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.07)',
        
