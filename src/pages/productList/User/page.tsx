@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, } from 'theme-ui';
+import { Box } from 'theme-ui';
 // import ProductTable from '@/components/productListView/User/page';
 import ProductCard from '@/components/productListView/User/card';
 import Header from '@/components/Dashboard-Components/Header';

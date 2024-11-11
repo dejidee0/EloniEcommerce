@@ -1,20 +1,19 @@
 import React from 'react';
 import { Box, Button, Text } from 'theme-ui';
+// @ts-ignore
 import CanvasJSReact from '@canvasjs/react-charts';
 
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 interface ConversionsChartProps {
   conversionRate: number; // Percentage value (e.g., 65.2)
-  thisWeek: string;
-  lastWeek: string;
 }
 
-const ConversionsChart: React.FC<ConversionsChartProps> = ({ conversionRate, thisWeek, lastWeek }) => {
+const ConversionsChart: React.FC<ConversionsChartProps> = ({ conversionRate }) => {
   // Define the number of segments for a clear segmented arc
   const totalSegments = 500; // Total number of segments for the entire arc
   const filledSegments = Math.floor((conversionRate / 100) * totalSegments);
-  
+
   // Create dataPoints with alternating colors for the segmented arc
   const dataPoints = [];
   for (let i = 0; i < totalSegments; i++) {
@@ -57,10 +56,10 @@ const ConversionsChart: React.FC<ConversionsChartProps> = ({ conversionRate, thi
       }}
     >
       <Text sx={{ fontSize: 16, fontWeight: 'bold', color: '#333', mb: 3 }}>Conversions</Text>
-      
+
       <Box sx={{ width: '100%', height: '500px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <CanvasJSChart options={options} />
-        
+
         {/* Centered label for percentage */}
         <Box sx={{ position: 'absolute', textAlign: 'center' }}>
           <Text sx={{ fontSize: 24, fontWeight: 'bold', color: '#333' }}>{conversionRate}%</Text>
@@ -69,7 +68,7 @@ const ConversionsChart: React.FC<ConversionsChartProps> = ({ conversionRate, thi
           </Box>
         </Box>
       </Box>
-      
+
       <Button
         sx={{
           width: "100%",

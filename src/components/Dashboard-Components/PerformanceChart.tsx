@@ -1,5 +1,6 @@
 // PerformanceChart.tsx
 import React from 'react';
+// @ts-ignore
 import CanvasJSReact from '@canvasjs/react-charts';
 import { Box } from 'theme-ui';
 

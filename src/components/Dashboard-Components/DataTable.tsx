@@ -1,6 +1,6 @@
 // DataTable.tsx
 import React from 'react';
-import { Box, Flex } from 'theme-ui';
+import { Box } from 'theme-ui';
 
 interface PageData {
   pagePath: string;
