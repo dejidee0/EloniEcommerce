@@ -9,12 +9,15 @@ import AdminDashboard from "@/pages/Dashboard/AdminDashboard/AdminDashboard";
 import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
 import Otp from "./pages/Otp/Otp.tsx";
 import UsersDashboard from "./pages/Dashboard/UsersDashboard/UsersDashboard.tsx";
+import UsersDashboard2 from "./pages/Dashboard/UsersDashboard/UsersDashboard(new).tsx";
 import WishList from "./pages/WishList/WishList.tsx";
 import store from "./store/store.ts";
 import CartList from "./components/Cart/CartList.tsx";
 import Orders from "./pages/Orders/Orders.tsx";
 import MyAccount from "./pages/MyAccount/MyAccount.tsx";
 import AddressBook from "./pages/AddressBook/AddressBook.tsx";
+
+
 // import './App.css'
 
 import BlogForm from "@/pages/BlogForm/BlogForm.tsx";
@@ -40,7 +43,7 @@ export default function App() {
             <Route path="/cart" element={<CartList />} />
             {/* <Route path="/payment" element={<Payment />} /> */}
             <Route path="/orders" element={<Orders />} />
-            <Route path="/my-account" element={<MyAccount />} />
+            <Route path="/my-account" element={<UsersDashboard2 />} />
             <Route path="/address-book" element={<AddressBook />} />
             <Route path="/my-account" element={<MyAccount />} />
             <Route path="/address-book" element={<AddressBook />} />
