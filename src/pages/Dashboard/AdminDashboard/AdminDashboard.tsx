@@ -119,7 +119,7 @@ const AdminDashboard: React.FC = () => {
             // border:"1px solid black",
             
           }}>
-            <ConversionsChart conversionRate={65.2} thisWeek='' lastWeek=''/>
+            <ConversionsChart conversionRate={65.2} />
             <DataTable/>
           </Box>
       </Box>

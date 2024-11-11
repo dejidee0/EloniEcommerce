@@ -1,3 +1,4 @@
+/** @jsxImportSource theme-ui */
 import React from 'react';
 import { Box, Button, } from 'theme-ui';
 import { FaPenAlt, FaPlus, FaTrashAlt, FaStar, FaRegEye } from 'react-icons/fa';

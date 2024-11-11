@@ -1,5 +1,6 @@
+/** @jsxImportSource theme-ui */
 import React from 'react';
-import { Box, Flex, Button, } from 'theme-ui';
+import { Box, Button, } from 'theme-ui';
 import { FaPenAlt, FaPlus, FaTrashAlt, FaRegEye, FaStar  } from 'react-icons/fa';
 import shoePair from "../../../assets/shoePair.jpg";
 import { theme } from "@/Theme/theme";
