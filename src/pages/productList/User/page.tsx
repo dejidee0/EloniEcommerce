@@ -11,12 +11,14 @@ const UserProductList: React.FC = () => {
       <Header/>
       <Box sx={{
         backgroundColor: "#faf8f6",
-        padding: 0.5, display:"flex",
+        padding: 0.5, display:["flex", "grid"],
+        gridTemplateColumns: [null, 'repeat(2, 1fr)', 'repeat(4, 1fr)'],
         flexDirection:["column","row"],
         justifyContent:"center",
         alignItems:"center",
         alignSelf:"center",
         alignContent:"center",
+        placeItems: 'center',     
         width:["90%", "100%"]
         }}>
       <ProductCard />
