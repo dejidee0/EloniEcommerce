@@ -1,1 +1,17 @@
-{ "rewrites": [{ "source": "/(.*)", "destination": "/" }] }
+{
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "/"
+      }
+    ],
+    "build": {
+      "env": {
+        "NODE_OPTIONS": "--max_old_space_size=8192"
+      },
+      "commands": [
+        "npm install --legacy-peer-deps",
+        "npm run build"
+      ]
+    }
+  }

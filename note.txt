@@ -1,1 +1,5 @@
 Developers communicate your conceern here
+
+Use this to reauthenticated successfully
+
+git remote set-url origin https://YOUR-USERNAME@github.com/dejidee0/EloniEcommerce.git
