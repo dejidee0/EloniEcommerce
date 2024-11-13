@@ -2,8 +2,8 @@
 import React from 'react';
 import Header from '@/components/Dashboard-Components/Header';
 // import NotificationDropdown from '@/components/Dashboard-Components/NotificationDropdown';
-// import PerformanceChart from '@/components/Dashboard-Components/PerformanceChart';
-// import ConversionsChart from '@/components/Dashboard-Components/ConversionsChart';
+import PerformanceChart from '@/components/Dashboard-Components/PerformanceChart';
+import ConversionsChart from '@/components/Dashboard-Components/ConversionsChart';
 import OrderCard from '@/components/Dashboard-Components/Card';
 import { Box } from 'theme-ui'; // Assuming you're using theme-ui or adapt as needed
 import SecondDataTable from '@/components/Dashboard-Components/secondDataTable';
@@ -93,7 +93,7 @@ const AdminDashboard: React.FC = () => {
             // border:"1px solid black",
             
           }}>
-            {/* <PerformanceChart /> */}
+            <PerformanceChart />
           </Box>
           
       
@@ -119,7 +119,7 @@ const AdminDashboard: React.FC = () => {
             // border:"1px solid black",
             
           }}>
-            {/* <ConversionsChart conversionRate={65.2} thisWeek='' lastWeek=''/> */}
+            <ConversionsChart conversionRate={65.2} thisWeek='' lastWeek=''/>
             <DataTable/>
           </Box>
       </Box>
