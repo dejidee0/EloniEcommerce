@@ -144,7 +144,7 @@ const PerformanceChart: React.FC = () => {
         margin: "20px 0"
       }}
     >
-      <CanvasJSChart options={options} onRef={(ref: any) => (chart = ref)} />
+      <CanvasJSChart options={options} ref={(ref: any) => (chart = ref)} />
     </Box>
   );
 };

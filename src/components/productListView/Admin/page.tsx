@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Button, } from 'theme-ui';
+import { Box, Button, } from 'theme-ui';
 import { FaPenAlt, FaPlus, FaTrashAlt, FaRegEye, FaStar  } from 'react-icons/fa';
 import shoePair from "../../../assets/shoePair.jpg";
 import { theme } from "@/Theme/theme";
@@ -80,7 +80,7 @@ const ProductTable: React.FC = () => {
           <Box as="tbody">
             {tableData.map((row, index) => (
               <Box as="tr" key={index}>
-                  <Box as="td" sx={{ display:"flex", flexDirection:"row", justifyContent:"flex-start", alignItems:"center", padding: '15px', borderBottom: '1px solid rgba(0, 0, 0, 0.1)', textAlign: 'left', color: '#5d7186' }}><img src={shoePair} height={75} width={75} sx={{ ...theme.productContainer.showcaseImg }} />{row.productName}</Box>
+                  <Box as="td" sx={{ display:"flex", flexDirection:"row", justifyContent:"flex-start", alignItems:"center", padding: '15px', borderBottom: '1px solid rgba(0, 0, 0, 0.1)', textAlign: 'left', color: '#5d7186' }}><img src={shoePair} height={75} width={75} style={{ ...theme.productContainer.showcaseImg }} />{row.productName}</Box>
                 <Box as="td" sx={{ padding: '15px', borderBottom: '1px solid rgba(0, 0, 0, 0.1)', textAlign: 'left', color: '#5d7186' }}>{row.price}</Box>
                 <Box as="td" sx={{ padding: '15px', borderBottom: '1px solid rgba(0, 0, 0, 0.1)', textAlign: 'left', color: '#5d7186' }}>{row.stock}</Box>
                 <Box as="td" sx={{ padding: '15px', borderBottom: '1px solid rgba(0, 0, 0, 0.1)', textAlign: 'left', color: '#5d7186' }}>{row.category}</Box>

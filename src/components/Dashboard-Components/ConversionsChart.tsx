@@ -10,7 +10,7 @@ interface ConversionsChartProps {
   lastWeek: string;
 }
 
-const ConversionsChart: React.FC<ConversionsChartProps> = ({ conversionRate, thisWeek, lastWeek }) => {
+const ConversionsChart: React.FC<ConversionsChartProps> = ({ conversionRate}) => {
   // Define the number of segments for a clear segmented arc
   const totalSegments = 500; // Total number of segments for the entire arc
   const filledSegments = Math.floor((conversionRate / 100) * totalSegments);

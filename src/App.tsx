@@ -9,7 +9,6 @@ import AdminDashboard from "@/pages/Dashboard/AdminDashboard/AdminDashboard";
 import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
 import Otp from "./pages/Otp/Otp.tsx";
 import UsersDashboard from "./pages/Dashboard/UsersDashboard/UsersDashboard.tsx";
-import UsersDashboard2 from "./pages/Dashboard/UsersDashboard/UsersDashboard(new).tsx";
 import WishList from "./pages/WishList/WishList.tsx";
 import store from "./store/store.ts";
 import CartList from "./components/Cart/CartList.tsx";

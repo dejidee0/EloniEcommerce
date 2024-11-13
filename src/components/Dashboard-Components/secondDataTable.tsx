@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex } from 'theme-ui';
+import { Box } from 'theme-ui';
 import { FaPlus } from 'react-icons/fa';
 
 interface OrderData {
@@ -80,7 +80,7 @@ const SecondDataTable: React.FC = () => {
                 <Box as="td" sx={{ padding: '15px', borderBottom: '1px solid rgba(0, 0, 0, 0.1)', textAlign: 'left', color: '#5d7186' }}>{row.phone}</Box>
                 <Box as="td" sx={{ padding: '15px', borderBottom: '1px solid rgba(0, 0, 0, 0.1)', textAlign: 'left', color: '#5d7186' }}>{row.address}</Box>
                 <Box as="td" sx={{ padding: '15px', borderBottom: '1px solid rgba(0, 0, 0, 0.1)', textAlign: 'left', color: '#5d7186' }}>{row.paymentType}</Box>
-                <Box as="td" sx={{ padding: '15px', borderBottom: '1px solid rgba(0, 0, 0, 0.1)', textAlign: 'left', color: '#5d7186', color: row.status === 'Completed' ? 'green' : 'orange' }}>{row.status}</Box>
+                <Box as="td" sx={{ padding: '15px', borderBottom: '1px solid rgba(0, 0, 0, 0.1)', textAlign: 'left', color: row.status === 'Completed' ? 'green' : 'orange' }}>{row.status}</Box>
               </Box>
             ))}
           </Box>
