@@ -26,14 +26,14 @@ const ProductCard: React.FC = () => {
         alignItems:"center",
         alignContent: "center",
         alignSelf:"center",
-        width: ['100%', '350px'],
+        width: ['90%', '350px'],
         boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
         borderRadius: "20px",
         fontSize: '12px',
         color: '#5d7186',
       }}
     >
-    <Box sx={{height: "400px", display: "flex", flexDirection: "column", width:"100%", borderRadius:"25px 25px 5px 5px", border:"1px solid #C0C0C0", justifyContent: "flex-start",alignItems:"center", alignSelf:"center"}}>
+    <Box sx={{height: "400px", display: "flex", flexDirection: "column", width:"100%", borderRadius:"25px 25px 5px 5px", borderBottom:"1px solid #C0C0C0", justifyContent: "flex-start",alignItems:"center", alignSelf:"center"}}>
         <img src={shoePair} height={300} width={"100%"} style={{
             ...theme.productContainer.showcaseImg,
             borderRadius:"25px 25px 5px 5px"}} />

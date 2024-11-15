@@ -31,9 +31,9 @@ const Sidebar = () => {
             top: '1rem',
             right: '1rem',
             zIndex: 1100, 
-            display: ['flex', 'none'], 
+            display: 'flex', 
             cursor: 'pointer',
-            color: '#ff8c00', 
+            color: 'gray', 
           }}
           onClick={() => setIsSidebarOpen(true)}
         >
@@ -45,7 +45,13 @@ const Sidebar = () => {
         <Box
           sx={{
             position: 'fixed', // Make the sidebar fixed
-            width: ['70%', '250px'], // Responsive width
+            width: '70%', // Responsive width
+            '@media screen and (min-width: 768px)': {
+              width: '50%', // Tablet screens
+          },
+          '@media screen and (min-width: 1024px)': {
+            width: '250px', // Desktop screens
+          },
             bg: '#2c2f48',
             color: 'white',
             height: '100vh', // Set height to fill the viewport
@@ -63,7 +69,7 @@ const Sidebar = () => {
               justifyContent: 'flex-end',
               paddingRight: '1rem',
               cursor: 'pointer',
-              display: ['flex', 'none'], 
+              display: ['flex'], 
             }}
             onClick={() => setIsSidebarOpen(false)}
           >
