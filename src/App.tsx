@@ -15,6 +15,10 @@ import CartList from "./components/Cart/CartList.tsx";
 import Orders from "./pages/Orders/Orders.tsx";
 import MyAccount from "./pages/MyAccount/MyAccount.tsx";
 import AddressBook from "./pages/AddressBook/AddressBook.tsx";
+import AdminProductList from "./pages/productList/Admin/page.tsx";
+import UserProductList from "./pages/productList/User/page.tsx";
+
+
 // import './App.css'
 
 import BlogForm from "@/pages/BlogForm/BlogForm.tsx";
@@ -25,6 +29,9 @@ import EmailVerification from "./pages/SellersSignUpFlow/EmailVerification/Email
 import EmailForm from "./pages/SellersSignUpFlow/EmailForm/EmailForm.tsx";
 import SellerPersonalInformation from "./pages/SellersSignUpFlow/PersonalInformation/PersonalInformation.tsx";
 import ShopInformation from "./pages/SellersSignUpFlow/ShopInformation/ShopInformation.tsx";
+import AdminLayout from "./components/AdminLayout.tsx";
+import AdminForm from "./components/AddProduct.tsx";
+import AddProduct from "./components/AddProduct.tsx";
 
 export default function App() {
   return (
@@ -40,19 +47,27 @@ export default function App() {
             <Route path="/cart" element={<CartList />} />
             {/* <Route path="/payment" element={<Payment />} /> */}
             <Route path="/orders" element={<Orders />} />
-            <Route path="/my-account" element={<MyAccount />} />
+            <Route path="/my-account" element={<UsersDashboard />} />
             <Route path="/address-book" element={<AddressBook />} />
             <Route path="/my-account" element={<MyAccount />} />
             <Route path="/address-book" element={<AddressBook />} />
             <Route path="/blog-form" element={<BlogForm />} />
+            {/* NEWLY ADDED ROUTES */}
+            <Route path="/product_list" element={<UserProductList />} />
             <Route
-              path="/admin-dashboard"
+              path="/admin/*"
               element={
                 <PrivateRoute roleRequired="admin">
-                  <AdminDashboard />
+                  <AdminLayout />
                 </PrivateRoute>
               }
-            />
+            >
+              <Route index element={<AdminDashboard />} />
+              <Route path="product-add" element={<AddProduct />} />
+              <Route path="product-list" element={<AdminProductList />} />
+            </Route>
+
+
             <Route
               path="/payment"
               element={
