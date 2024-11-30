@@ -31,7 +31,6 @@ import SellerPersonalInformation from "./pages/SellersSignUpFlow/PersonalInforma
 import ShopInformation from "./pages/SellersSignUpFlow/ShopInformation/ShopInformation.tsx";
 import Sidebar from "./components/Sidebar/Sidebar"; 
 import AdminLayout from "./components/AdminLayout.tsx";
-import AdminForm from "./components/AddProduct.tsx";
 import AddProduct from "./components/AddProduct.tsx";
 
 export default function App() {

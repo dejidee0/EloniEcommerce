@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /** @jsxImportSource theme-ui */
-import { Box, Button, Input, Label, Select, Textarea, Image, Message, Text, Flex } from '@theme-ui/components';
-import { Spinner, Heading, Radio, Checkbox } from 'theme-ui';
+import { Box, Message, Text, Flex } from '@theme-ui/components';
+import { Heading } from 'theme-ui';
 import React, { useEffect, useRef, useState } from 'react';
 import { db, storage } from '@/firebaseConfig/firebaseConfig'; // Adjust the import path as needed
 import { addDoc, collection } from 'firebase/firestore';
@@ -18,15 +18,15 @@ import PricingDetails from './PricingDetails';
 import ProductCard from './ProductCard';
 
 // Define categories with subitems
-const categories = [
-  { name: 'Clothes', subItems: ['Shirt', 'Shorts & Jeans', 'Jacket', 'Dress & Frock'] },
-  { name: 'Footwear', subItems: ['Sports', 'Formal', 'Casual', 'Safety Shoes'] },
-  { name: 'Jewelry', subItems: ['Earrings', 'Couple Rings', 'Necklace'] },
-  { name: 'Perfume', subItems: ['Clothes Perfume', 'Deodorant'] },
-  { name: 'Cosmetics', subItems: ['Shampoo', 'Sunscreen', 'Body Wash', 'Makeup Kit'] },
-  { name: 'Glasses', subItems: ['Sunglasses', 'Lenses'] },
-  { name: 'Bags', subItems: ['Shopping Bag', 'Gym Backpack', 'Purse', 'Wallet'] },
-];
+// const categories = [
+//   { name: 'Clothes', subItems: ['Shirt', 'Shorts & Jeans', 'Jacket', 'Dress & Frock'] },
+//   { name: 'Footwear', subItems: ['Sports', 'Formal', 'Casual', 'Safety Shoes'] },
+//   { name: 'Jewelry', subItems: ['Earrings', 'Couple Rings', 'Necklace'] },
+//   { name: 'Perfume', subItems: ['Clothes Perfume', 'Deodorant'] },
+//   { name: 'Cosmetics', subItems: ['Shampoo', 'Sunscreen', 'Body Wash', 'Makeup Kit'] },
+//   { name: 'Glasses', subItems: ['Sunglasses', 'Lenses'] },
+//   { name: 'Bags', subItems: ['Shopping Bag', 'Gym Backpack', 'Purse', 'Wallet'] },
+// ];
 
 // Form validation schema
 const validationSchema = Yup.object({
@@ -68,8 +68,8 @@ const validationSchema = Yup.object({
 const AddProduct: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [selectedSubItem, setSelectedSubItem] = useState<string>('');
-  const [imagePreviews, setImagePreviews] = useState<string[]>([]);
-  const [uploading, setUploading] = useState(false);
+  const [, setImagePreviews] = useState<string[]>([]);
+  const [, setUploading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>("");
 
   const formik = useFormik({
@@ -113,26 +113,26 @@ const AddProduct: React.FC = () => {
     },
   });
 
-  const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCategory(event.target.value);
-    setSelectedSubItem('');
-    formik.setFieldValue('productCategory', event.target.value);
-  };
+  // const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  //   setSelectedCategory(event.target.value);
+  //   setSelectedSubItem('');
+  //   formik.setFieldValue('productCategory', event.target.value);
+  // };
 
-  const handleSubItemChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedSubItem(event.target.value);
-    formik.setFieldValue('productSubCategory', event.target.value);
-  };
+  // const handleSubItemChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  //   setSelectedSubItem(event.target.value);
+  //   formik.setFieldValue('productSubCategory', event.target.value);
+  // };
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files) {
-      const files = Array.from(event.target.files);
-      const imageUrls = files.map((file) => URL.createObjectURL(file));
+  // const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (event.target.files) {
+  //     const files = Array.from(event.target.files);
+  //     const imageUrls = files.map((file) => URL.createObjectURL(file));
 
-      setImagePreviews(imageUrls);
-      formik.setFieldValue('productImages', files);
-    }
-  };
+  //     setImagePreviews(imageUrls);
+  //     formik.setFieldValue('productImages', files);
+  //   }
+  // };
 
   const uploadImages = async (files: File[]): Promise<string[]> => {
     const uploadPromises = files.map(async (file) => {
@@ -170,7 +170,7 @@ const AddProduct: React.FC = () => {
     }
   };
 
-  const selectedCategoryObj = categories.find((cat) => cat.name === selectedCategory);
+  // const selectedCategoryObj = categories.find((cat) => cat.name === selectedCategory);
 
   useEffect(() => {
     const timerId = setTimeout(() => {
@@ -183,7 +183,7 @@ const AddProduct: React.FC = () => {
   const [dragActive, setDragActive] = useState(false);
   const inputRef = useRef(null);
 
-  const handleDrag = (e) => {
+  const handleDrag = (e: { preventDefault: () => void; stopPropagation: () => void; type: string; }) => {
     e.preventDefault();
     e.stopPropagation();
     if (e.type === "dragenter" || e.type === "dragover") {
@@ -193,7 +193,7 @@ const AddProduct: React.FC = () => {
     }
   };
 
-  const handleDrop = (e) => {
+  const handleDrop = (e: { preventDefault: () => void; stopPropagation: () => void; dataTransfer: { files: any; }; }) => {
     e.preventDefault();
     e.stopPropagation();
     setDragActive(false);
@@ -201,19 +201,21 @@ const AddProduct: React.FC = () => {
     handleFiles(files);
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: { preventDefault: () => void; target: { files: any; }; }) => {
     e.preventDefault();
     const files = e.target.files;
     handleFiles(files);
   };
 
-  const handleFiles = (files) => {
+  const handleFiles = (files: any) => {
     // Handle your file upload logic here
     console.log("Files to upload:", files);
   };
 
   const onButtonClick = () => {
-    inputRef.current.click();
+    if(inputRef.current) {
+      inputRef.current.click();
+    }
   };
 
   return (
@@ -243,7 +245,7 @@ const AddProduct: React.FC = () => {
           <Box sx={{
             width: ['100%', null, null, '33.33%', '25%'],
           }}>
-              <ProductCard />
+            <ProductCard />
           </Box>
 
           <Box sx={{

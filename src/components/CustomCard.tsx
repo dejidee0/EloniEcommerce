@@ -1,5 +1,5 @@
 /** @jsxImportSource theme-ui */
-import { Box, Card, StylePropertyValue } from "theme-ui"
+import { Card, } from "theme-ui"
 
 type CustomCardProps = {
     children: any
