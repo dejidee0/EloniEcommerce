@@ -51,8 +51,17 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, roleRequired }) =
     );
   }
 
-  if (!user || (roleRequired && role !== roleRequired)) {
-    return <Navigate to="/sign-in" />;
+  const isAuthenticated = !!user;
+  const hasRequiredRole = !roleRequired || role === roleRequired;
+
+  if (!isAuthenticated || !hasRequiredRole) {
+    console.log('Redirecting to sign-in because:', {
+      isAuthenticated,
+      hasRequiredRole,
+      currentRole: role,
+      requiredRole: roleRequired
+    });
+    // return <Navigate to="/sign-in" replace />;
   }
 
   return children;

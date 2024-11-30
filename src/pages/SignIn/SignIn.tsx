@@ -40,8 +40,7 @@ const SignIn: React.FC = () => {
           console.log('userData', userData);
 
           if (userData.role === 'admin') {
-            console.log('admin-dashboard');
-            navigate('/admin-dashboard');
+            navigate('/admin');
           } else {
             console.log('users-dashboard');
             navigate('/');

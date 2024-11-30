@@ -43,6 +43,7 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
-    "src",
-  ]
+    "src/**/*",              // Include all files in the src folder
+    "src/canvasjs-react-charts.d.ts"  // Explicitly include the declaration file
+  ],
 }

@@ -92,7 +92,7 @@ const Dashboard: React.FC = () => {
             // border:"1px solid black",
             
           }}>
-            <ConversionsChart conversionRate={65.2} />
+            <ConversionsChart conversionRate={65.2}/>
             <DataTable/>
           </Box>
           <Box sx={{

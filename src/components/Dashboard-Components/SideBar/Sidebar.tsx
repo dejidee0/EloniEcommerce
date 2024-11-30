@@ -9,10 +9,11 @@ import logo from '@/assets/logos/Eloni_logo.png'
 const Sidebar = () => {
   const [openSections, setOpenSections] = useState<{ [key: string]: boolean }>({
     general: true,
+    products: false,
     users: false,
     other: false,
   });
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true); 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const toggleSection = (section: string) => {
     setOpenSections((prevState) => ({
@@ -30,10 +31,10 @@ const Sidebar = () => {
             position: 'fixed',
             top: '1rem',
             right: '1rem',
-            zIndex: 1100, 
-            display: ['flex', 'none'], 
+            zIndex: 1100,
+            display: 'flex',
             cursor: 'pointer',
-            color: '#ff8c00', 
+            color: 'gray',
           }}
           onClick={() => setIsSidebarOpen(true)}
         >
@@ -45,14 +46,20 @@ const Sidebar = () => {
         <Box
           sx={{
             position: 'fixed', // Make the sidebar fixed
-            width: ['70%', '250px'], // Responsive width
+            width: '70%', // Responsive width
+            '@media screen and (min-width: 768px)': {
+              width: '50%', // Tablet screens
+            },
+            '@media screen and (min-width: 1024px)': {
+              width: '250px', // Desktop screens
+            },
             bg: '#2c2f48',
             color: 'white',
             height: '100vh', // Set height to fill the viewport
             paddingTop: '1rem',
             paddingLeft: '1rem',
             fontFamily: 'Arial, sans-serif',
-            zIndex: 1000, 
+            zIndex: 1000,
             transition: 'transform 0.3s ease',
             // border: "1px solid red"
           }}
@@ -63,7 +70,7 @@ const Sidebar = () => {
               justifyContent: 'flex-end',
               paddingRight: '1rem',
               cursor: 'pointer',
-              display: ['flex', 'none'], 
+              display: ['flex'],
             }}
             onClick={() => setIsSidebarOpen(false)}
           >
@@ -71,16 +78,16 @@ const Sidebar = () => {
           </Flex>
 
           {/* Sidebar Header */}
-          <Link to="/" className="header-logo" style={{marginRight: "8px", marginBottom:"50px"}} >
+          <Link to="/" className="header-logo" style={{ marginRight: "8px", marginBottom: "50px" }} >
             <Image
-            src={logo}
-            sx={{
-              // display: ["", "flex"],
-              // justifyContent: ["", "center"]
-            }}
-            //   alt="Eloni's shop logo"
-            width="120"
-            height="30"
+              src={logo}
+              sx={{
+                // display: ["", "flex"],
+                // justifyContent: ["", "center"]
+              }}
+              //   alt="Eloni's shop logo"
+              width="120"
+              height="30"
             />
           </Link>
 
@@ -99,8 +106,21 @@ const Sidebar = () => {
             </Flex>
             {openSections.general && (
               <Box mt={2}>
-                <NavItem icon={<MdDashboard />} link="/admin-dashboard" label="Dashboard" />
-                <NavItem icon={<MdCategory />} link="product-list" label="Products" />
+                <NavItem icon={<MdDashboard />} link="/" label="Dashboard" />
+                <Flex
+                  sx={{
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    cursor: 'pointer',
+                  }}
+                  onClick={() => toggleSection('products')}
+                >
+                  <NavItem icon={<MdCategory />} label="Products" />
+                  {openSections.products ? <MdExpandLess /> : <MdExpandMore />}
+                </Flex>
+                {openSections.products && (<NavItem link="/admin/product-add" label="Create" />)}
+                {openSections.products && (<NavItem link="product-list" label="List" />)}
+                
                 <NavItem icon={<MdInventory />} link="product-list" label="Category" />
                 <NavItem icon={<MdShoppingCart />} link="product-list" label="Inventory" />
                 <NavItem icon={<MdShoppingCart />} link="product-list" label="Orders" />
@@ -162,22 +182,24 @@ const Sidebar = () => {
   );
 };
 
-const NavItem = ({ icon, label, link }: { icon: React.ReactNode; label: string , link: string}) => (
-  <Button href={link}><Flex
-    sx={{
-      alignItems: 'center',
-      padding: '0.5rem 0',
-      cursor: 'pointer',
-      color: 'white',
-      fontSize: '1.1rem', 
-      '&:hover': {
-        color: '#ff8c00', 
-      },
-    }}
-  >
-    <Box mr={2} sx={{ fontSize: '1.2rem', color: '#ff8c00' }}>{icon}</Box>
-    <Text mr={1}>{label}</Text>
-  </Flex></Button>  
+const NavItem = ({ icon, label, link }: { icon?: React.ReactNode; label: string, link?: string }) => (
+  <Button href={link}>
+    <Flex
+      sx={{
+        alignItems: 'center',
+        padding: '0.5rem 0',
+        cursor: 'pointer',
+        color: 'white',
+        fontSize: '1.1rem',
+        '&:hover': {
+          color: '#ff8c00',
+        },
+      }}
+    >
+      <Box mr={2} sx={{ fontSize: '1.2rem', color: '#ff8c00' }}>{icon}</Box>
+      <Text mr={1}>{label}</Text>
+    </Flex>
+  </Button>
 );
 
 export default Sidebar;

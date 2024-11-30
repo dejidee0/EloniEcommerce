@@ -30,6 +30,9 @@ import EmailForm from "./pages/SellersSignUpFlow/EmailForm/EmailForm.tsx";
 import SellerPersonalInformation from "./pages/SellersSignUpFlow/PersonalInformation/PersonalInformation.tsx";
 import ShopInformation from "./pages/SellersSignUpFlow/ShopInformation/ShopInformation.tsx";
 import Sidebar from "./components/Sidebar/Sidebar"; 
+import AdminLayout from "./components/AdminLayout.tsx";
+import AdminForm from "./components/AddProduct.tsx";
+import AddProduct from "./components/AddProduct.tsx";
 
 export default function App() {
   return (
@@ -50,16 +53,21 @@ export default function App() {
             <Route path="/address-book" element={<AddressBook />} />
             <Route path="/blog-form" element={<BlogForm />} />
             {/* NEWLY ADDED ROUTES */}
-            <Route path="/product-list" element={<AdminProductList />} />
             <Route path="/product_list" element={<UserProductList />} />
             <Route
-              path="/admin-dashboard"
+              path="/admin/*"
               element={
                 <PrivateRoute roleRequired="admin">
-                  <AdminDashboard />
+                  <AdminLayout />
                 </PrivateRoute>
               }
-            />
+            >
+              <Route index element={<AdminDashboard />} />
+              <Route path="product-add" element={<AddProduct />} />
+              <Route path="product-list" element={<AdminProductList />} />
+            </Route>
+
+
             <Route
               path="/payment"
               element={

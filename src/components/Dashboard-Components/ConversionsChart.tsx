@@ -1,48 +1,26 @@
 import React from 'react';
 import { Box, Button, Text } from 'theme-ui';
-// @ts-ignore
-import CanvasJSReact from '@canvasjs/react-charts';
-
-const CanvasJSChart = CanvasJSReact.CanvasJSChart;
+import { PieChart, Pie, Cell } from 'recharts';
 
 interface ConversionsChartProps {
   conversionRate: number; // Percentage value (e.g., 65.2)
 }
 
 const ConversionsChart: React.FC<ConversionsChartProps> = ({ conversionRate }) => {
-  // Define the number of segments for a clear segmented arc
-  const totalSegments = 500; // Total number of segments for the entire arc
+  const totalSegments = 100; // Increased total segments for a smoother arc
   const filledSegments = Math.floor((conversionRate / 100) * totalSegments);
+  const emptySegments = totalSegments - filledSegments;
 
-  // Create dataPoints with alternating colors for the segmented arc
-  const dataPoints = [];
-  for (let i = 0; i < totalSegments; i++) {
-    dataPoints.push({
-      y: 1, // Fixed size for each segment
-      color: i < filledSegments ? (i % 2 === 0 ? "#FF8C00" : "#E0E0E0") : "#E0E0E0",
-    });
-  }
-
-  const options = {
-    animationEnabled: true,
-    data: [
-      {
-        type: "doughnut",
-        innerRadius: "75%", // Increased inner radius to make the doughnut thinner
-        outerRadius: "85%", // Decreased outer radius to make the doughnut smaller
-        startAngle: 180,
-        endAngle: -180,
-        indexLabel: "",
-        dataPoints,
-      }
-    ]
-  };
+  // Generate data array with more segments
+  const data = [
+    ...Array(filledSegments).fill({ value: 1, color: "#FF8C00" }),
+    ...Array(emptySegments).fill({ value: 1, color: "#E0E0E0" }),
+  ];
 
   return (
     <Box
       sx={{
         width: ["100%", "70%"],
-        // border:"1px solid black",
         height: "600px",
         display: "flex",
         alignSelf: "center",
@@ -57,17 +35,36 @@ const ConversionsChart: React.FC<ConversionsChartProps> = ({ conversionRate }) =
     >
       <Text sx={{ fontSize: 16, fontWeight: 'bold', color: '#333', mb: 3 }}>Conversions</Text>
 
-      <Box sx={{ width: '100%', height: '500px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <CanvasJSChart options={options} />
+      <Box sx={{ position: "relative", width: "100%", height: "500px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <PieChart width={400} height={400}>
+          <Pie
+            data={data}
+            dataKey="value"
+            cx="50%"
+            cy="50%"
+            innerRadius={120}
+            outerRadius={150}
+            startAngle={180}
+            endAngle={-180}
+            paddingAngle={0.5}
+            isAnimationActive={true} // Enable animation
+            animationBegin={0} // Start immediately
+            animationDuration={1500} // Duration of 1.5 seconds
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.color} />
+            ))}
+          </Pie>
+        </PieChart>
 
-        {/* Centered label for percentage */}
+         {/* Centered label for percentage */}
         <Box sx={{ position: 'absolute', textAlign: 'center' }}>
-          <Text sx={{ fontSize: 24, fontWeight: 'bold', color: '#333' }}>{conversionRate}%</Text>
-          <Box>
-            <Text sx={{ fontSize: 14, color: '#777' }}>Returning Customer</Text>
-          </Box>
+        <Text sx={{ fontSize: 24, fontWeight: 'bold', color: '#333' }}>{conversionRate}%</Text>
+        <Box>
+          <Text sx={{ fontSize: 14, color: '#777' }}>Returning Customer</Text>
         </Box>
-      </Box>
+        </Box>
+        </Box>
 
       <Button
         sx={{
@@ -91,3 +88,8 @@ const ConversionsChart: React.FC<ConversionsChartProps> = ({ conversionRate }) =
 };
 
 export default ConversionsChart;
+
+
+
+
+
