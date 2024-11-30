@@ -181,7 +181,7 @@ const AddProduct: React.FC = () => {
   }, [errorMessage])
 
   const [dragActive, setDragActive] = useState(false);
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleDrag = (e: { preventDefault: () => void; stopPropagation: () => void; type: string; }) => {
     e.preventDefault();
